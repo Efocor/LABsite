@@ -1,8 +1,5 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# BIOLABsite
+Este repositorio está dedicado a la construcción de un sitio web para el laboratorio de bioinformática UOH.
+- Frontend hecho en REACT
+- Se incluyen archivos y otros detalles
+>>>>>>> 6d9932119a4f2c04ee23e33a0a6d78e81c11ff57
