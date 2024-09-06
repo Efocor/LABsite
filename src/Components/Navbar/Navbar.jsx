@@ -13,7 +13,7 @@ const Navbar = () => {
         <li>Noticias</li>
         <li>Tools</li>
         <li><button className='btn'>Contacto</button></li>
-        <li>Placeholder para buscador</li>
+        <li>Placeholder para search</li>
       </ul>
     </nav>
   )
