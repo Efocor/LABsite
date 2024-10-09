@@ -341,7 +341,7 @@ export const testimonial: TestimonialSection = {
  */
 
 export const contact: ContactSection = {
-  headerText: 'Get in touch.',
+  headerText: 'Ponte en contacto.',
   description: 'Aqui is a good spot for a message to your readers to let them know how best to reach out to you.',
   items: [
     {
