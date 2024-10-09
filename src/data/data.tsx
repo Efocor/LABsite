@@ -25,6 +25,7 @@ import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
 import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
 import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
 import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
+import porfolioImage12 from '../images/portfolio/portfolio-12.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -55,7 +56,7 @@ export const SectionId = {
   Hero: 'hero',
   About: 'about',
   Contact: 'contact',
-  Portfolio: 'portfolio',
+  Portfolio: 'Proyectos',
   Resume: 'resume',
   Skills: 'skills',
   Stats: 'stats',
@@ -76,11 +77,13 @@ export const heroData: Hero = {
       La ciencia no es solo un conjunto de conocimientos, es una <strong className="text-stone-100">forma de pensar</strong>, que nos impulsa
         a <strong className="text-stone-100">cuestionar, explorar y descubrir</strong> lo que aún no conocemos.
       </p>
+      {/*
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
         plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
         <strong className="text-stone-100">Vancouver Island</strong>.
       </p>
+      */}
     </>
   ),
   actions: [
@@ -193,20 +196,20 @@ export const skills: SkillGroup[] = [
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Project title 1',
-    description: 'Give a short description of your project here.',
+    title: 'Supercomputación para innovación en Salud Regional: HPC-UOH y HRLBO Juntos hacia la Medicina de Precisión',
+    description: 'Proyecto financiado por el Gobierno Regional, que busca implementar tecnología HPC avanzada en la Región de O’Higgins, para formar y capacitar estudiantes y profesionales en HPC.',
     url: 'https://reactresume.com',
     image: porfolioImage1,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
+    title: 'Modelo de crecimiento de plantas',
+    description: 'El modelado de crecimiento de plantas se enfoca en simular el desarrollo de las plantas bajo diversas condiciones ambientales como luz, agua y nutrientes.',
     url: 'https://reactresume.com',
     image: porfolioImage2,
   },
   {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
+    title: 'Sistemas de Diagnóstico Portátiles Basados en ADN',
+    description: 'Desarrollo de dispositivos portátiles que utilizan tecnología de secuenciación rápida de ADN para la detección de enfermedades en tiempo real.',
     url: 'https://reactresume.com',
     image: porfolioImage3,
   },
@@ -257,6 +260,12 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'Give a short description of your project here.',
     url: 'https://reactresume.com',
     image: porfolioImage11,
+  },
+  {
+    title: 'Project title 12',
+    description: 'Give a short description of your project here.',
+    url: 'https://reactresume.com',
+    image: porfolioImage12,
   },
 ];
 
@@ -352,8 +361,8 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Github,
-      text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      text: 'camoragaq',
+      href: 'https://github.com/camoragaq',
     },
   ],
 };
@@ -362,9 +371,9 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/camoragaq'},
+  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://www.uoh.cl/investigacion/academico/carol-moraga/'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/camoragaq/'},
+  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/la_uoh/'},
+  {label: 'Twitter', Icon: TwitterIcon, href: 'https://x.com/ici_uoh'},
 ];
