@@ -20,9 +20,9 @@ const Home: FC = memo(() => {
     <Page description={description} title={title}>
       <Header />
       <Hero />
+      <Portfolio />
       <About />
       <Resume />
-      <Portfolio />
       <Testimonials />
       <Contact />
       <Footer />
