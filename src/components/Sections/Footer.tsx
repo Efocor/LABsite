@@ -1,34 +1,33 @@
-import {BoltIcon, ChevronUpIcon} from '@heroicons/react/24/solid';
-import {FC, memo} from 'react';
-
-import {SectionId} from '../../data/data';
-import Socials from '../Socials';
+import { FC, memo } from 'react';
+import Socials from '../Socials'; // Suponiendo que tienes los íconos de redes sociales listos
+import { SectionId } from '../../data/data';
 
 const currentYear = new Date().getFullYear();
 
 const Footer: FC = memo(() => (
-  <div className="relative bg-neutral-900 px-4 pb-6 pt-12 sm:px-8 sm:pb-8 sm:pt-14">
+  <div className="relative bg-white px-4 pb-6 pt-12 sm:px-8 sm:pb-8 sm:pt-14 border-t-2 border-neutral-300">
     <div className="absolute inset-x-0 -top-4 flex justify-center sm:-top-6">
       <a
-        className="rounded-full bg-neutral-100 p-1 ring-white ring-offset-2 ring-offset-gray-700/80 focus:outline-none focus:ring-2 sm:p-2"
-        href={`/#${SectionId.Hero}`}>
-        <ChevronUpIcon className="h-6 w-6 bg-transparent sm:h-8 sm:w-8" />
+        className="rounded-full bg-white p-1 ring-white ring-offset-2 focus:outline-none focus:ring-2"
+        href={`/#${SectionId.Hero}`}
+      >
+        <img
+          src="C: Users/HP/Downloads/WhatsApp Image 2024-09-01 at 17.38.23" // Cambia esto por el logo que quieras
+          className="h-8 w-8"
+          alt="Logo"
+        />
       </a>
     </div>
     <div className="flex flex-col items-center gap-y-6">
-      <div className="flex gap-x-4 text-neutral-500">
-        <Socials />
+      <p className="text-neutral-700 text-lg text-center">
+        Somos un equipo de investigación que, con pasión y colaboración, transforma ideas en realidad y construye el futuro.
+      </p>
+      <div className="flex gap-x-4 text-neutral-700">
+        <Socials /> {/* Asegúrate que los íconos tengan estilos consistentes */}
       </div>
-      <a
-        className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2"
-        href="https://reactresume.com">
-        <BoltIcon className="h-5 w-5 text-yellow" />
-        <span>
-          Creado con <span className="text-white">React</span>
-          <span className="italic text-yellow">Resume</span>
-        </span>
-      </a>
-      <span className="text-sm text-neutral-700">© Copyright {currentYear} InnovaTech</span>
+      <span className="text-sm text-neutral-600">
+        © Copyright 2018 - {currentYear} | UOHLAB
+      </span>
     </div>
   </div>
 ));
