@@ -279,32 +279,34 @@ export const portfolioItems: PortfolioItem[] = [
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: 'April 2023',
+    location: 'Universidad O´Higgins',
+    title: 'Modelado de redes de Señalización',
+    content: <p>Explora cómo las señales internas y externas son procesadas para activar respuestas específicas, 
+      como la defensa contra patógenos.</p>,
   },
-  {
+ /* {
     date: 'March 2003',
     location: 'School of Business',
     title: 'What did you study 101',
     content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
-  },
+  },*/
 ];
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2010 - Present',
-    location: 'Awesome Development Company',
-    title: 'Senior UX Engineer',
+    date: 'March 2024',
+    location: 'Universidad O´Higgins',
+    title: 'Modelado de fotosíntesis',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        El modelado de fotosíntesis simula cómo las plantas convierten la luz solar en energía química, 
+        teniendo en cuenta factores como intensidad de luz, concentración de CO2 y temperatura.
+        
       </p>
     ),
   },
-  {
+ /* {
     date: 'March 2007 - February 2010',
     location: 'Garage Startup Studio',
     title: 'Junior bug fixer',
@@ -314,7 +316,7 @@ export const experience: TimelineItem[] = [
         anything else that would be useful for an employer to know.
       </p>
     ),
-  },
+  },*/
 ];
 
 /**
