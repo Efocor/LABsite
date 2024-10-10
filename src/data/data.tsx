@@ -88,10 +88,11 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: '/assets/resume.pdf',
-      text: 'Resume',
+      // href: '/assets/resume.pdf',
+      href: `#${SectionId.About}`,
+      text: 'Nosotros',
       primary: true,
-      Icon: ArrowDownTrayIcon,
+      // Icon: ArrowDownTrayIcon,
     },
     {
       href: `#${SectionId.Contact}`,
