@@ -20,16 +20,6 @@ const Footer: FC = memo(() => (
         <Socials />
       </div>
       <a
-<<<<<<< HEAD
-  className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2"
-  href="https://reactresume.com">
-  <span>
-    <span className="text-white">Somos un equipo de investigación que, con pasión y colaboración, transforma ideas en realidad y construye el futuro.  </span>
-  </span>
-</a>
-
-
-=======
         className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2"
         href="https://uoh.cl">
         <BoltIcon className="h-5 w-5 text-yellow" />
@@ -38,7 +28,6 @@ const Footer: FC = memo(() => (
           <span className="italic text-yellow">Tech</span>
         </span>
       </a>
->>>>>>> 79eddccafc120e930d2ea48c4ae6f3b9d4455965
       <span className="text-sm text-neutral-700">© Copyright {currentYear} InnovaTech</span>
     </div>
   </div>
