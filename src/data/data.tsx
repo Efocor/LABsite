@@ -27,7 +27,7 @@ import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
 import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
 import porfolioImage12 from '../images/portfolio/portfolio-12.jpg';
 import profilepic from '../images/profilepic.jpg';
-import testimonialImage from '../images/testimonial.webp';
+import testimonialImage from '../images/header-background.webp';
 import {
   About,
   ContactSection,
@@ -54,7 +54,7 @@ export const homePageMeta: HomepageMeta = {
  */
 export const SectionId = {
   Hero: 'hero',
-  About: 'about',
+  About: 'Nosotros',
   Contact: 'contact',
   Portfolio: 'Proyectos',
   Resume: 'resume',
@@ -213,7 +213,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://reactresume.com',
     image: porfolioImage3,
   },
-  {
+ /**{
     title: 'Hola wua ',
     description: 'Give a short description of your project here.',
     url: 'https://reactresume.com',
@@ -267,7 +267,11 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://reactresume.com',
     image: porfolioImage12,
   },
-];
+
+*/
+
+
+];         
 
 /**
  * Resume section -- TODO: Standardize resume contact format or offer MDX
