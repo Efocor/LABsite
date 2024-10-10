@@ -45,8 +45,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: 'Laboratorio de Bioinformática',
+  description: "Este sitio fue creado con el motivo de muestra de las actividades del laboratorio de Bioinformática de la UOH",
 };
 
 /**
@@ -110,10 +110,10 @@ export const aboutData: About = {
   aboutItems: [
     {label: 'Áreas de Investigación', text: 'Nos enfocamos en diversas áreas, incluyendo inteligencia artificial, biotecnología, y nanotecnología. A través de proyectos innovadores y colaboraciones con universidades y empresas, buscamos desarrollar soluciones que puedan transformar industrias y mejorar la calidad de vida.', Icon: MapIcon},
     {label: 'Compromiso y Futuro', text: 'Además de nuestra labor investigativa, nos dedicamos a la educación, ofreciendo programas que forman a jóvenes científicos. Nuestro compromiso es con la transferencia de conocimiento y tecnología que tenga un impacto positivo en la sociedad. Con una mirada al futuro, estamos enfocados en expandir nuestras capacidades y continuar liderando la innovación científica.', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: BuildingOffice2Icon},
+    {label: 'Nacionalidad', text: 'Chilena', Icon: FlagIcon},
+    {label: 'Intereses', text: 'Genómica, Reino Plantae, Cancer, Software', Icon: SparklesIcon},
+    {label: 'Centro de Estudio', text: 'Universidad de O´Higgins', Icon: AcademicCapIcon},
+    {label: 'Integrantes', text: '10', Icon: BuildingOffice2Icon},
   ],
 };
 
