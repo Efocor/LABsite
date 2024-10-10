@@ -53,13 +53,15 @@ export const homePageMeta: HomepageMeta = {
  * Section definition
  */
 export const SectionId = {
+  Inicio: 'Inicio',
   Hero: 'hero',
   About: 'Nosotros',
-  Contact: 'contact',
+  Contact: 'Contacto',
   Portfolio: 'Proyectos',
-  Resume: 'resume',
+  Resume: 'Visión',
   Skills: 'skills',
   Stats: 'stats',
+  Software: 'Software',
   Testimonials: 'Noticias',
 } as const;
 
