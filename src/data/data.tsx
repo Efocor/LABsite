@@ -97,7 +97,7 @@ export const heroData: Hero = {
     },
     {
       href: `#${SectionId.Contact}`,
-      text: 'Contact',
+      text: 'Contacto',
       primary: false,
     },
   ],
