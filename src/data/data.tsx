@@ -1,6 +1,6 @@
 import {
   AcademicCapIcon,
-  ArrowDownTrayIcon,
+  // ArrowDownTrayIcon,
   BuildingOffice2Icon,
   CalendarIcon,
   FlagIcon,
