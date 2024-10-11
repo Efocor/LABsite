@@ -1,129 +1,86 @@
 import dynamic from 'next/dynamic';
 import { FC, memo } from 'react';
-
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
 import { homePageMeta } from '../data/data';
+import Image from 'next/image';
+import testimonialImage from '../images/header-background.webp';
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
 
-// Componente para cada sección
-const MissionSection: FC = () => (
+// Componente para la sección de software
+const SoftwareSection: FC = () => (
   <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-white mb-4">A nivel de desarrollo</h2>
-    <p className="text-gray-300">
-      En el Laboratorio de Bioingeniería, nuestro objetivo es desarrollar herramientas informáticas avanzadas
-      que faciliten la investigación en biomedicina y biotecnología. Nos enfocamos en mejorar la salud humana
-      a través de la ciencia y la tecnología, ofreciendo soluciones innovadoras para el análisis de datos biomédicos.
-    </p>
-  </section>
-);
-
-const ToolsSection: FC = () => (
-  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-white mb-4">Herramientas de Análisis</h2>
-    <ul className="list-disc list-inside text-gray-300">
-      <li>
-        <strong>Análisis de Secuencias Genómicas:</strong> Desarrollo de software para el análisis de datos
-        genómicos, incluyendo alineamiento de secuencias y variantes genéticas.
-      </li>
-      <li>
-        <strong>Algoritmos de Predicción:</strong> Implementación de algoritmos de aprendizaje automático
-        para la predicción de resultados en estudios clínicos.
-      </li>
-      <li>
-        <strong>Estudios de Cáncer:</strong> Herramientas para el análisis de muestras biológicas
-        y la identificación de marcadores genéticos relacionados con el cáncer.
-      </li>
-    </ul>
-  </section>
-);
-
-const ProgramsSection: FC = () => (
-  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-white mb-4">Programas y Proyectos</h2>
+    <h2 className="text-2xl font-bold text-white mb-4">Software construidos en el laboratorio</h2>
     <p className="text-gray-300 mb-4">
-      Actualmente estamos trabajando en un programa innovador para el análisis de muestras biológicas,
-      que integra algoritmos avanzados de análisis de datos con interfaces de usuario intuitivas.
+      En el laboratorio de Bioinformática, hemos desarrollado un conjunto de herramientas de software de código abierto para facilitar la investigación en genómica de alto rendimiento. Nuestro software está diseñado con la reproducibilidad en mente, utilizando tecnologías de contenedorización como Docker y Singularity para garantizar que nuestros flujos de trabajo se ejecuten de manera consistente en diferentes entornos y plataformas.
     </p>
-    <ul className="list-disc list-inside text-gray-300">
-      <li>
-        <strong>Software de Implementación:</strong> Herramientas desarrolladas para facilitar el
-        despliegue de modelos de análisis en entornos clínicos.
-      </li>
-      <li>
-        <strong>Colaboraciones en Investigación:</strong> Proyectos conjuntos con instituciones académicas
-        para el desarrollo de software personalizado en estudios de salud.
-      </li>
+    <p className="text-gray-300 mb-4">
+      Nuestro software está optimizado para ejecutarse en clústeres de computación de alto rendimiento (HPC), aprovechando al máximo los recursos de computación de alto rendimiento para permitir un análisis rápido de conjuntos de datos genómicos a gran escala.
+    </p>
+    <h3 className="text-xl font-bold text-white mb-2">Herramientas de Software</h3>
+    <h4 className="text-lg font-semibold text-gray-300 mb-1">Ensamblaje del Genoma</h4>
+    <ul className="list-disc list-inside text-gray-300 mb-4">
+      <li><strong>Wengan:</strong> Un ensamblador híbrido ultra-rápido y preciso que puede utilizar datos de lectura larga y corta para la reconstrucción óptima del genoma.</li>
+      <li><strong>Fast-SG:</strong> Un algoritmo sin alineación para la construcción ultra-rápida de grafos de andamiaje a partir de lecturas cortas o largas.</li>
+      <li><strong>FastKM:</strong> Una herramienta para la coincidencia ultra-rápida de k-mers utilizando hashing rodante y perfecto.</li>
+      <li><strong>hic-scaffolding-nf:</strong> Un pipeline de Nextflow para el andamiaje de ensamblajes genómicos con lecturas Hi-C.</li>
+      <li><strong>k-count:</strong> Un pipeline de Nextflow para contar k-mers y estimar el tamaño del genoma a partir de datos de secuenciación de genomas completos (WGS).</li>
     </ul>
-  </section>
-);
 
-const TeamSection: FC = () => (
-  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-white mb-4">Miembros del Equipo</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div className="p-4 bg-gray-800 rounded-lg shadow">
-        <h3 className="text-xl font-semibold text-white">Dr. Juan Pérez</h3>
-        <p className="text-gray-400">Investigador principal en bioinformática y análisis de datos.</p>
-      </div>
-      <div className="p-4 bg-gray-800 rounded-lg shadow">
-        <h3 className="text-xl font-semibold text-white">Dra. María López</h3>
-        <p className="text-gray-400">Experta en algoritmos y modelado de datos biomédicos.</p>
-      </div>
-      {/* Agrega más miembros según sea necesario */}
+    <h4 className="text-lg font-semibold text-gray-300 mb-1">Genómica del Cáncer</h4>
+    <ul className="list-disc list-inside text-gray-300 mb-4">
+      <li><strong>purple-nf:</strong> Un pipeline de Nextflow para la detección de variantes de número de copias somáticas (CNV) utilizando PURPLE.</li>
+      <li><strong>sv_somatic_cns:</strong> Una herramienta para el llamado de variantes estructurales somáticas a partir de datos de WGS emparejados.</li>
+      <li><strong>ampliconarchitect-nf:</strong> Un pipeline de Nextflow para descubrir ADN extracromosómico (ecDNA) en genomas cancerosos.</li>
+      <li><strong>nf-gene-fusions:</strong> Un pipeline de Nextflow para detectar fusiones de mRNA somáticas.</li>
+    </ul>
+
+    <h4 className="text-lg font-semibold text-gray-300 mb-1">Utilidades Generales</h4>
+    <ul className="list-disc list-inside text-gray-300">
+      <li><strong>alnsl:</strong> Un pipeline de Nextflow para la alineación de lecturas cortas de WGS.</li>
+      {/* Agrega más herramientas según sea necesario */}
+    </ul>
+
+    {/* Botón de descarga para Wengan */}
+    <br />
+    <h4 className="text-lg font-semibold text-gray-300 mb-1">Sección de descargas</h4>
+    <div className="mt-6">
+      <a
+        href="https://google.com" // Reemplaza con la URL de descarga real
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
+      >
+        Descargar Wengan
+      </a>
     </div>
   </section>
 );
 
-const PublicationsSection: FC = () => (
-  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-white mb-4">Publicaciones Recientes</h2>
-    <ul className="text-gray-300">
-      <li>
-        <a href="/publications/paper1" className="text-blue-400 hover:underline">Título del Paper 1</a> - Descripción breve sobre el análisis de secuencias.
-      </li>
-      <li>
-        <a href="/publications/paper2" className="text-blue-400 hover:underline">Título del Paper 2</a> - Estudio sobre la implementación de algoritmos en la biomedicina.
-      </li>
-      {/* Agrega más publicaciones según sea necesario */}
-    </ul>
-  </section>
-);
-
-const NewsSection: FC = () => (
-  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-white mb-4">Noticias</h2>
-    <p className="text-gray-300">No te pierdas las últimas novedades del laboratorio y eventos próximos.</p>
-    <ul className="list-disc list-inside text-gray-300">
-      <li>Evento sobre Bioingeniería el 20 de octubre.</li>
-      <li>Publicación de nuevo artículo en la revista científica el 15 de noviembre.</li>
-      {/* Agrega más noticias según sea necesario */}
-    </ul>
-  </section>
-);
-
+// Componente principal
 const Home: FC = memo(() => {
   const { title, description } = homePageMeta;
 
   return (
     <Page description={description} title={title}>
       <Header />
-      <main className="bg-white min-h-screen flex flex-col items-center">
-        <div className="bg-white bg-opacity-90 rounded-lg p-6 shadow-lg mb-10 mt-16">
-          <h1 className="text-4xl font-bold text-center text-blue-700">Bienvenidos al Laboratorio de Bioingeniería</h1>
-          <p className="text-gray-600 text-center mt-4">
-            Innovando en el campo de la biomedicina y la biotecnología.
-          </p>
-        </div>
-        <div className="flex flex-col items-center justify-center w-full pt-20">
-          <MissionSection />
-          <ToolsSection />
-          <ProgramsSection />
-          <TeamSection />
-          <PublicationsSection />
-          <NewsSection />
+      <main className="bg-gray-100 min-h-screen flex flex-col items-center">
+        {/* Contenedor principal con fondo de imagen */}
+        <div className="relative min-h-screen w-full flex justify-center items-center">
+          {/* Imagen de fondo optimizada con Next.js */}
+          <Image
+            alt="Background image"
+            className="absolute z-0 h-full w-full object-cover"
+            placeholder="blur"
+            priority
+            src={testimonialImage}
+          />
+          <div className="z-10 max-w-screen-lg px-4 lg:px-0">
+            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Desarrollo de Software</h1>
+            <SoftwareSection />
+          </div>
         </div>
       </main>
       <Footer />
@@ -132,3 +89,4 @@ const Home: FC = memo(() => {
 });
 
 export default Home;
+

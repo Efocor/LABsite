@@ -55,13 +55,15 @@ export const homePageMeta: HomepageMeta = {
 export const SectionId = {
   Hero: 'Inicio',
   About: 'Nosotros',
+  Miembros: 'Miembros',
   Contact: 'Contacto',
   Portfolio: 'Proyectos',
   Resume: 'Investigación',
   Skills: 'skills',
   Stats: 'stats',
   Software: 'Software',
-  Testimonials: 'Noticias',
+  Noticias: 'Noticias',
+  Testimonials: 'Noticia',
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
@@ -125,69 +127,69 @@ export const aboutData: About = {
  */
 export const skills: SkillGroup[] = [
   {
-    name: 'Spoken languages',
+    name: 'Software',
     skills: [
       {
-        name: 'English',
+        name: 'Wengan',
         level: 10,
       },
       {
-        name: 'French',
+        name: 'PlataCheck',
         level: 4,
       },
       {
-        name: 'Spanish',
+        name: 'DNASeq',
         level: 3,
       },
     ],
   },
   {
-    name: 'Frontend development',
+    name: 'Investigación',
     skills: [
       {
-        name: 'React',
+        name: 'Paper sobre secuenciación de DNA',
         level: 9,
       },
       {
-        name: 'Typescript',
+        name: 'Paper sobre algoritmo de IA para análisis de DNA',
         level: 7,
       },
       {
-        name: 'GraphQL',
+        name: 'Paper sobre cancer',
         level: 6,
       },
     ],
   },
   {
-    name: 'Backend development',
+    name: 'Tecnologías en operación',
     skills: [
       {
-        name: 'Node.js',
-        level: 8,
+        name: 'HPC',
+        level: 10,
       },
       {
-        name: 'Rust',
+        name: 'NGS',
         level: 5,
       },
       {
-        name: 'Golang',
+        name: 'Organovo´s NovoGen Bioprinter',
         level: 4,
       },
     ],
   },
   {
-    name: 'Mobile development',
+    name: 'Eventos o simposios',
     skills: [
       {
-        name: 'React Native',
+        name: 'Serie de charlas universitarias',
         level: 9,
       },
       {
-        name: 'Flutter',
+        name: 'Participaciones en congresos',
         level: 4,
       },
       {
-        name: 'Swift',
+        name: 'Participación en eventos de la Universidad',
         level: 3,
       },
     ],
@@ -201,7 +203,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Supercomputación para innovación en Salud Regional: HPC-UOH y HRLBO Juntos hacia la Medicina de Precisión',
     description: 'Proyecto financiado por el Gobierno Regional, que busca implementar tecnología HPC avanzada en la Región de O’Higgins, para formar y capacitar estudiantes y profesionales en HPC.',
-    url: 'https://reactresume.com',
+    url: '/proyecto1',
     image: porfolioImage1,
   },
   {

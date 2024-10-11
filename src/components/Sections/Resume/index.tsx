@@ -34,7 +34,7 @@ const Resume: FC = memo(() => {
           </button>
         </ResumeSection>
 
-        <ResumeSection title="Work">
+        <ResumeSection title="Trabajos">
   <div className="flex items-start mb-4">
     {/* Cuadrado para la imagen */}
     <div className="w-40 h-40 bg-gray-200 mr-4 flex items-center justify-center">
@@ -62,8 +62,8 @@ const Resume: FC = memo(() => {
 </ResumeSection>
 
 
-        <ResumeSection title="Skills">
-          <p className="pb-8">Here you can show a snapshot of your skills to show off to employers</p>
+        <ResumeSection title="Avances">
+          <p className="pb-8">Aquí puedes ver un resumen de avance de eventos, actividades, sistemas e investigaciones.</p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {skills.map((skillgroup, index) => (
               <SkillGroup key={`${skillgroup.name}-${index}`} skillGroup={skillgroup} />
