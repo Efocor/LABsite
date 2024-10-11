@@ -103,6 +103,7 @@ export const heroData: Hero = {
   ],
 };
 
+
 /**
  * About section
  */

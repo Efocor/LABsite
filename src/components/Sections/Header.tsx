@@ -123,12 +123,13 @@ const NavItem: FC<{
   activeClass: string;
   inactiveClass: string;
   onClick?: () => void;
-}> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
+}> = memo(({ section, current, inactiveClass, activeClass, onClick }) => {
+  const isSoftwareSection = section === 'Software'; // Verifica si es la sección Software
 
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
-      href={`/#${section}`}
+      href={isSoftwareSection ? '/software' : `/#${section}`} // Redirige a /software si es Software
       key={section}
       onClick={onClick}>
       {section}
