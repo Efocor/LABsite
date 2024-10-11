@@ -53,12 +53,11 @@ export const homePageMeta: HomepageMeta = {
  * Section definition
  */
 export const SectionId = {
-  Inicio: 'Inicio',
-  Hero: 'hero',
+  Hero: 'Inicio',
   About: 'Nosotros',
   Contact: 'Contacto',
   Portfolio: 'Proyectos',
-  Resume: 'Visión',
+  Resume: 'Investigación',
   Skills: 'skills',
   Stats: 'stats',
   Software: 'Software',
@@ -351,7 +350,11 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Ponte en contacto.',
+<<<<<<< HEAD
   description: 'Aqui es un buen espacio para colocar un mensaje al laboratorio y dejarles saber cómo contactarte',
+=======
+  description: 'Si tienes alguna pregunta o comentario, no dudes en contactarnos. Estamos aquí para ayudarte. También puedes encontrarnos en:',
+>>>>>>> 79eddccafc120e930d2ea48c4ae6f3b9d4455965
   items: [
     {
       type: ContactType.Email,
