@@ -55,6 +55,7 @@ export const homePageMeta: HomepageMeta = {
 export const SectionId = {
   Hero: 'Inicio',
   About: 'Nosotros',
+  Miembros: 'Miembros',
   Contact: 'Contacto',
   Portfolio: 'Proyectos',
   Resume: 'Investigación',

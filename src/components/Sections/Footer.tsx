@@ -28,7 +28,7 @@ const Footer: FC = memo(() => (
           <span className="italic text-yellow">Tech</span>
         </span>
       </a>
-      <span className="text-sm text-neutral-700">© Copyright {currentYear} InnovaTech</span>
+      <span className="text-sm text-neutral-700">© Copyright {currentYear} InnovaTech, todos los derechos reservados.</span>
     </div>
   </div>
 ));
