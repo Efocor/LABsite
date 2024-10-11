@@ -75,7 +75,6 @@ const DesktopNav: FC<{
             value={searchQuery}
             onChange={handleSearch}
             className="p-1 pr-10 rounded-md bg-white"
-            type="text"
             placeholder="Buscar..."
           />
           <MagnifyingGlassIcon className="absolute inset-y-0 left-2 w-5 h-5 text-gray-400" />
