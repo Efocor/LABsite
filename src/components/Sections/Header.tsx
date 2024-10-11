@@ -12,7 +12,7 @@ export const headerID = 'headerNav';
 const Header: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
   const navSections = useMemo(
-    () => [SectionId.Hero, SectionId.Portfolio, SectionId.About, SectionId.Resume, SectionId.Testimonials, SectionId.Software, SectionId.Contact],
+    () => [SectionId.Hero, SectionId.Noticias, SectionId.Portfolio, SectionId.About, SectionId.Resume, SectionId.Software, SectionId.Contact],
     [],
   );
 
@@ -125,11 +125,12 @@ const NavItem: FC<{
   onClick?: () => void;
 }> = memo(({ section, current, inactiveClass, activeClass, onClick }) => {
   const isSoftwareSection = section === 'Software'; // Verifica si es la sección Software
+  const isNewsSection = section === 'Noticias'; // Verifica si es la sección Noticias
 
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
-      href={isSoftwareSection ? '/software' : `/#${section}`} // Redirige a /software si es Software
+      href={isSoftwareSection ? '/software' : isNewsSection ? '/noticias' : `/#${section}`} // Redirige a /software o /noticias según la sección
       key={section}
       onClick={onClick}>
       {section}
