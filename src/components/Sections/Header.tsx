@@ -182,11 +182,14 @@ const NavItem: FC<{
   const isSoftwareSection = section === 'Software'; // Verifica si es la sección Software
   const isNewsSection = section === 'Noticias'; // Verifica si es la sección Noticias
   const isMembersSection = section === 'Miembros'; // Verifica si es la sección Miembros
-
+  const isContactSection = section === 'Contacto'; // Verifica si es la sección Contacto
+  const isProyectosSection = section === 'Proyectos'; // Verifica si es la sección Contacto
+  const isNosotrosSection = section === 'Nosotros'; // Verifica si es la sección Contacto
+  const isInvestigacionSection = section === 'Investigación'; // Verifica si es la sección Contacto
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
-      href={isSoftwareSection ? '/software' : isNewsSection ? '/noticias' : isMembersSection ? '/miembros' : `/#${section}`} // Redirige a /software o /noticias según la sección
+      href={isSoftwareSection ? '/software' : isNewsSection ? '/noticias' : isMembersSection ? '/miembros' : isContactSection ? '/contacto' : isProyectosSection ? '/proyectos' : isInvestigacionSection ? '/investigacion' : isNosotrosSection ? '/nosotros' :`/#${section}`} // Redirige a /software o /noticias según la sección
       key={section}
       onClick={onClick}>
       {section}
