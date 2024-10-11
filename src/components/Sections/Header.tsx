@@ -76,15 +76,15 @@ const DesktopNav: FC<{
           ))}
         </div>
         {/* Barra de búsqueda con margen agregado */}
-        <form onSubmit={handleSearchSubmit} className="flex items-center ml-4 mt-1"> {/* ml-4 y mt-4 para espaciado */}
+        <form onSubmit={handleSearchSubmit} className="flex items-center ml-4 mt-1 relative">
           <input
             type="text"
             value={searchQuery}
             onChange={handleSearch}
-            className="p-1 pr-10 rounded-md bg-white"
+            className="p-2 pl-10 pr-10 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
             placeholder="Buscar..."
           />
-          <MagnifyingGlassIcon className="absolute inset-y-0 left-2 w-5 h-5 text-gray-400" />
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
         </form>
       </nav>
     </header>
