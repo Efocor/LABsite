@@ -20,14 +20,14 @@ const Footer: FC = memo(() => (
         <Socials />
       </div>
       <a
-        className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2"
-        href="https://reactresume.com">
-        <BoltIcon className="h-5 w-5 text-yellow" />
-        <span>
-          Creado con <span className="text-white">React</span>
-          <span className="italic text-yellow">Resume</span>
-        </span>
-      </a>
+  className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2"
+  href="https://reactresume.com">
+  <span>
+    <span className="text-white">Somos un equipo de investigación que, con pasión y colaboración, transforma ideas en realidad y construye el futuro.  </span>
+  </span>
+</a>
+
+
       <span className="text-sm text-neutral-700">© Copyright {currentYear} InnovaTech</span>
     </div>
   </div>

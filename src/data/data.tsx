@@ -281,7 +281,7 @@ export const portfolioItems: PortfolioItem[] = [
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2023',
+    date: 'Abril 2023',
     location: 'Universidad O´Higgins',
     title: 'Modelado de redes de Señalización',
     content: <p>Explora cómo las señales internas y externas son procesadas para activar respuestas específicas, 
@@ -297,7 +297,7 @@ export const education: TimelineItem[] = [
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2024',
+    date: 'Marzo 2024',
     location: 'Universidad O´Higgins',
     title: 'Modelado de fotosíntesis',
     content: (
@@ -328,19 +328,19 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
+      name: '10 de agosto de 2024',
       text: 'El Centro de Innovación Tecnológica Marca un Hito con Avances Significativos en la Optimización de Redes',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/CICB%27s_Laboratory.jpg',
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: '31 de agosto de 2024',
+      text: 'Reunión de Investigación: El equipo del Centro de Innovación Tecnológica presentó avances en la optimización de redes, revisó resultados preliminares y discutió estrategias para futuros desafíos. Se definieron metas y pasos a seguir en el proyecto.',
+      image: 'https://uchile.cl/dam/jcr:796858c8-4355-4329-87cb-dcdb1397fde2/IMG_9110%20jpg.jpg',
     },
     {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+      name: '9 de marzo de 2024',
+      text: 'Avance en IA: Avance en IA MédicaNuevo algoritmo mejora la precisión diagnóstica en un 25% usando imágenes médicas.',
+      image: 'https://iccsi.com.ar/wp-content/uploads/que-avances-recientes-son-emocionantes-en-el-campo-de-la-ia-1.webp',
     },
   ],
 };
@@ -351,7 +351,7 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Ponte en contacto.',
-  description: 'Aqui is a good spot for a message to your readers to let them know how best to reach out to you.',
+  description: 'Aqui es un buen espacio para colocar un mensaje al laboratorio y dejarles saber cómo contactarte',
   items: [
     {
       type: ContactType.Email,
