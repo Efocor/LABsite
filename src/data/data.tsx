@@ -203,7 +203,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Supercomputación para innovación en Salud Regional: HPC-UOH y HRLBO Juntos hacia la Medicina de Precisión',
     description: 'Proyecto financiado por el Gobierno Regional, que busca implementar tecnología HPC avanzada en la Región de O’Higgins, para formar y capacitar estudiantes y profesionales en HPC.',
-    url: 'https://reactresume.com',
+    url: '/proyecto1',
     image: porfolioImage1,
   },
   {
