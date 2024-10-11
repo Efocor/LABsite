@@ -57,7 +57,7 @@ const Noticias: FC = memo(() => {
                   Una de las innovaciones más importantes es un nuevo algoritmo de optimización que ha reducido significativamente los tiempos de respuesta de las redes, lo que podría revolucionar 
                   la gestión de redes a gran escala. Además, el equipo se comprometió a seguir investigando soluciones creativas para garantizar la viabilidad de estas técnicas en entornos comerciales.
                 `}
-                link="https://www.google.com"
+                link="/noticiaej1"
               />
 
               {/* Noticia 2 */}
@@ -72,7 +72,7 @@ const Noticias: FC = memo(() => {
                   La plataforma incorpora algoritmos de última generación que permiten un análisis más rápido y preciso de las secuencias genómicas, reduciendo los tiempos de procesamiento en un 40%.
                   Además, incluye visualización interactiva de datos para facilitar el trabajo de los investigadores que están desarrollando soluciones agrícolas más sostenibles.
                 `}
-                link="https://www.google.com"
+                link="/noticiaej2"
               />
 
               {/* Noticia 3 */}
