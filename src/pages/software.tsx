@@ -10,38 +10,67 @@ const Header = dynamic(() => import('../components/Sections/Header'), { ssr: fal
 
 // Componente para cada sección
 const MissionSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-md mb-10">
-    <h2 className="text-2xl font-bold text-blue-700 mb-4">Nuestra Misión</h2>
-    <p className="text-gray-700">
-      En el Laboratorio de Bioingeniería, nos dedicamos a la investigación y desarrollo de soluciones innovadoras
-      para los desafíos en la biomedicina y la biotecnología. Nuestro objetivo es mejorar la salud humana y
-      el bienestar a través de la ciencia.
+  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
+    <h2 className="text-2xl font-bold text-white mb-4">A nivel de desarrollo</h2>
+    <p className="text-gray-300">
+      En el Laboratorio de Bioingeniería, nuestro objetivo es desarrollar herramientas informáticas avanzadas
+      que faciliten la investigación en biomedicina y biotecnología. Nos enfocamos en mejorar la salud humana
+      a través de la ciencia y la tecnología, ofreciendo soluciones innovadoras para el análisis de datos biomédicos.
     </p>
   </section>
 );
 
-const ResearchSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-md mb-10">
-    <h2 className="text-2xl font-bold text-green-700 mb-4">Investigaciones</h2>
-    <ul className="list-disc list-inside text-gray-700">
-      <li>Desarrollo de nuevos biomateriales para la regeneración de tejidos.</li>
-      <li>Estudio de sistemas de entrega de fármacos.</li>
-      <li>Investigación en ingeniería genética y biología sintética.</li>
+const ToolsSection: FC = () => (
+  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
+    <h2 className="text-2xl font-bold text-white mb-4">Herramientas de Análisis</h2>
+    <ul className="list-disc list-inside text-gray-300">
+      <li>
+        <strong>Análisis de Secuencias Genómicas:</strong> Desarrollo de software para el análisis de datos
+        genómicos, incluyendo alineamiento de secuencias y variantes genéticas.
+      </li>
+      <li>
+        <strong>Algoritmos de Predicción:</strong> Implementación de algoritmos de aprendizaje automático
+        para la predicción de resultados en estudios clínicos.
+      </li>
+      <li>
+        <strong>Estudios de Cáncer:</strong> Herramientas para el análisis de muestras biológicas
+        y la identificación de marcadores genéticos relacionados con el cáncer.
+      </li>
+    </ul>
+  </section>
+);
+
+const ProgramsSection: FC = () => (
+  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
+    <h2 className="text-2xl font-bold text-white mb-4">Programas y Proyectos</h2>
+    <p className="text-gray-300 mb-4">
+      Actualmente estamos trabajando en un programa innovador para el análisis de muestras biológicas,
+      que integra algoritmos avanzados de análisis de datos con interfaces de usuario intuitivas.
+    </p>
+    <ul className="list-disc list-inside text-gray-300">
+      <li>
+        <strong>Software de Implementación:</strong> Herramientas desarrolladas para facilitar el
+        despliegue de modelos de análisis en entornos clínicos.
+      </li>
+      <li>
+        <strong>Colaboraciones en Investigación:</strong> Proyectos conjuntos con instituciones académicas
+        para el desarrollo de software personalizado en estudios de salud.
+      </li>
     </ul>
   </section>
 );
 
 const TeamSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-md mb-10">
-    <h2 className="text-2xl font-bold text-yellow-700 mb-4">Miembros del Equipo</h2>
+  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
+    <h2 className="text-2xl font-bold text-white mb-4">Miembros del Equipo</h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div className="p-4 bg-gray-50 rounded-lg shadow">
-        <h3 className="text-xl font-semibold text-gray-800">Dr. Juan Pérez</h3>
-        <p className="text-gray-600">Investigador principal en biotecnología.</p>
+      <div className="p-4 bg-gray-800 rounded-lg shadow">
+        <h3 className="text-xl font-semibold text-white">Dr. Juan Pérez</h3>
+        <p className="text-gray-400">Investigador principal en bioinformática y análisis de datos.</p>
       </div>
-      <div className="p-4 bg-gray-50 rounded-lg shadow">
-        <h3 className="text-xl font-semibold text-gray-800">Dra. María López</h3>
-        <p className="text-gray-600">Experta en biomateriales y regeneración de tejidos.</p>
+      <div className="p-4 bg-gray-800 rounded-lg shadow">
+        <h3 className="text-xl font-semibold text-white">Dra. María López</h3>
+        <p className="text-gray-400">Experta en algoritmos y modelado de datos biomédicos.</p>
       </div>
       {/* Agrega más miembros según sea necesario */}
     </div>
@@ -49,14 +78,14 @@ const TeamSection: FC = () => (
 );
 
 const PublicationsSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-md mb-10">
-    <h2 className="text-2xl font-bold text-purple-700 mb-4">Publicaciones Recientes</h2>
-    <ul className="text-gray-700">
+  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
+    <h2 className="text-2xl font-bold text-white mb-4">Publicaciones Recientes</h2>
+    <ul className="text-gray-300">
       <li>
-        <a href="/publications/paper1" className="text-blue-500 hover:underline">Título del Paper 1</a> - Descripción breve.
+        <a href="/publications/paper1" className="text-blue-400 hover:underline">Título del Paper 1</a> - Descripción breve sobre el análisis de secuencias.
       </li>
       <li>
-        <a href="/publications/paper2" className="text-blue-500 hover:underline">Título del Paper 2</a> - Descripción breve.
+        <a href="/publications/paper2" className="text-blue-400 hover:underline">Título del Paper 2</a> - Estudio sobre la implementación de algoritmos en la biomedicina.
       </li>
       {/* Agrega más publicaciones según sea necesario */}
     </ul>
@@ -64,10 +93,10 @@ const PublicationsSection: FC = () => (
 );
 
 const NewsSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-md mb-10">
-    <h2 className="text-2xl font-bold text-red-700 mb-4">Noticias</h2>
-    <p className="text-gray-700">No te pierdas las últimas novedades del laboratorio y eventos próximos.</p>
-    <ul className="list-disc list-inside text-gray-700">
+  <section className="p-6 bg-black bg-opacity-60 rounded-lg shadow-lg mb-10 backdrop-blur-md">
+    <h2 className="text-2xl font-bold text-white mb-4">Noticias</h2>
+    <p className="text-gray-300">No te pierdas las últimas novedades del laboratorio y eventos próximos.</p>
+    <ul className="list-disc list-inside text-gray-300">
       <li>Evento sobre Bioingeniería el 20 de octubre.</li>
       <li>Publicación de nuevo artículo en la revista científica el 15 de noviembre.</li>
       {/* Agrega más noticias según sea necesario */}
@@ -81,15 +110,21 @@ const Home: FC = memo(() => {
   return (
     <Page description={description} title={title}>
       <Header />
-      <main
-        className="max-w-7xl mx-auto p-4 bg-cover bg-center min-h-screen"
-        style={{ backgroundImage: "url('/images/header-background.webp')" }} // Cambia la ruta según sea necesario
-      >
-        <MissionSection />
-        <ResearchSection />
-        <TeamSection />
-        <PublicationsSection />
-        <NewsSection />
+      <main className="bg-white min-h-screen flex flex-col items-center">
+        <div className="bg-white bg-opacity-90 rounded-lg p-6 shadow-lg mb-10 mt-16">
+          <h1 className="text-4xl font-bold text-center text-blue-700">Bienvenidos al Laboratorio de Bioingeniería</h1>
+          <p className="text-gray-600 text-center mt-4">
+            Innovando en el campo de la biomedicina y la biotecnología.
+          </p>
+        </div>
+        <div className="flex flex-col items-center justify-center w-full pt-20">
+          <MissionSection />
+          <ToolsSection />
+          <ProgramsSection />
+          <TeamSection />
+          <PublicationsSection />
+          <NewsSection />
+        </div>
       </main>
       <Footer />
     </Page>
@@ -97,5 +132,3 @@ const Home: FC = memo(() => {
 });
 
 export default Home;
-
-
