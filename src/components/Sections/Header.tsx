@@ -1,6 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Bars3BottomRightIcon } from '@heroicons/react/24/outline';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'; // Importa el icono de lupa
+import { Bars3BottomRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
@@ -30,8 +29,16 @@ const Header: FC = memo(() => {
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // Aquí puedes añadir la lógica de búsqueda
-    console.log('Buscar:', searchQuery);
+    const matchingSection = navSections.find(section => 
+      section.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (matchingSection) {
+      const sectionElement = document.querySelector(`#${matchingSection}`);
+      sectionElement?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.log('Sección no encontrada');
+    }
   };
 
   return (
@@ -68,8 +75,8 @@ const DesktopNav: FC<{
             />
           ))}
         </div>
-        {/* Barra de búsqueda */}
-        <form onSubmit={handleSearchSubmit} className="flex items-center">
+        {/* Barra de búsqueda con margen agregado */}
+        <form onSubmit={handleSearchSubmit} className="flex items-center ml-4 mt-1"> {/* ml-4 y mt-4 para espaciado */}
           <input
             type="text"
             value={searchQuery}
