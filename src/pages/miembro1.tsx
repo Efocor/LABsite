@@ -26,7 +26,7 @@ const CarolProfile: FC = memo(() => {
         />
 
         {/* Tarjeta de Carol con estilo futurista y más información */}
-        <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105 hover:shadow-blue-500/50">
+        <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
           
           {/* Botón de volver en la esquina superior derecha */}
           <button 
@@ -56,20 +56,20 @@ const CarolProfile: FC = memo(() => {
           </p>
           
           {/* Información sobre la carrera de Carol */}
-          <p className="text-gray-600 text-center text-sm mb-4">
+          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
             Carol se desempeñó como investigadora postdoctoral en la Universidad de O'Higgins, ubicada en Rancagua, en estrecha colaboración con el Centro Nacional de Investigación Científica (CNRS) de Francia y el Centro de Investigação em Biodiversidade e Recursos Genéticos (CIBIO) de Portugal. Durante este periodo, lideró la generación del genoma de referencia de <i>Silene latifolia</i>, enfocándose en el ensamblaje y anotación del cromosoma Y, el cual es uno de los más grandes conocidos en el ámbito de las especies vegetales, alcanzando 550 megabases, y representa un modelo de estudio fundamental para la comprensión de la evolución de los cromosomas sexuales.
           </p>
-          <p className="text-gray-600 text-center text-sm mb-4">
+          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
             En Chile, ha participado en proyectos de gran relevancia a nivel nacional, como la secuenciación de diversas especies del Desierto de Atacama y la primera secuenciación y anotación de las variantes genéticas en la población mapuche nativa chilena (Huilliche).
           </p>
-          <p className="text-gray-600 text-center text-sm mb-4">
+          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
             Su principal motivación ha sido comprender la biología desde una perspectiva genómica y en la interpretación de datos ómicos, con un enfoque particular en especies no modelo.
           </p>
-          <p className="text-gray-600 text-center text-sm mb-4">
+          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
             Actualmente, su línea de investigación se centra en el desarrollo de algoritmos para predecir redes de interacción entre miARNs y ARNm en especies no modelo, especialmente en plantas nativas, con el objetivo de entender cómo estas evolucionan en la determinación del sexo y cómo se adaptan a su entorno.
           </p>
-          <p className="text-gray-600 text-center text-sm mb-4">
-            Carol lleva a cabo investigaciones en el área de Biología Computacional y Biotecnología en el Instituto de Ciencias de la Ingeniería.
+          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
+            Carol lleva a cabo investigaciones en el área de Biología Computacional y Biotecnología en el Instituto de Ciencias de la Ingeniería en la Universidad de O'Higgins en Rancagua.
           </p>
 
           {/* Sección de habilidades */}
