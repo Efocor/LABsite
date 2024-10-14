@@ -25,11 +25,11 @@ const AboutUs: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Acerca de Nosotros</h1>
+            <h1 className="text-4xl font-bold text-center text-green-800 mb-8">Acerca de Nosotros</h1>
 
             {/* Descripción General */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Laboratorio de Innovación y Desarrollo Científico</h2>
+              <h2 className="text-3xl font-bold text-green-600 mb-4">Laboratorio de Innovación y Desarrollo Científico</h2>
               <p className="text-gray-700 mb-4">
                 En nuestro laboratorio, nos comprometemos a explorar y expandir los límites del conocimiento. Con un equipo diverso de científicos e ingenieros, nuestra misión es abordar desafíos complejos a través de la investigación interdisciplinaria. Cada día, nos esforzamos por fomentar un ambiente donde la creatividad y la innovación florezcan, llevando a cabo proyectos que pueden transformar el paisaje científico y tecnológico.
               </p>
@@ -40,7 +40,7 @@ const AboutUs: FC = memo(() => {
 
             {/* Información básica */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Información Adicional</h2>
+              <h2 className="text-3xl font-bold text-green-600 mb-4">Información Adicional</h2>
               <p className="text-gray-700 mb-2"><strong>Nacionalidad:</strong> Chilena</p>
               <p className="text-gray-700 mb-2"><strong>Intereses:</strong> Genómica, Reino Plantae, Cáncer, Software, Inteligencia Artificial, Innovación Tecnológica</p>
               <p className="text-gray-700 mb-2"><strong>Centro de Estudio:</strong> Universidad de O'Higgins</p>
@@ -52,7 +52,7 @@ const AboutUs: FC = memo(() => {
 
             {/* Áreas de Investigación */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Áreas de Investigación</h2>
+              <h2 className="text-3xl font-bold text-green-600 mb-4">Áreas de Investigación</h2>
               <p className="text-gray-700 mb-4">
                 Nuestros proyectos se centran en varias áreas de vanguardia, incluyendo inteligencia artificial, biotecnología y nanotecnología. Cada área es un campo fértil para la innovación, y buscamos continuamente formas de aplicar nuestras investigaciones a problemas prácticos que afectan a la sociedad.
               </p>
@@ -63,7 +63,7 @@ const AboutUs: FC = memo(() => {
 
             {/* Compromiso y Futuro */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Compromiso y Futuro</h2>
+              <h2 className="text-3xl font-bold text-green-600 mb-4">Compromiso y Futuro</h2>
               <p className="text-gray-700 mb-4">
                 Nuestra dedicación a la educación y la investigación es inquebrantable. A través de programas de formación, buscamos inspirar a la próxima generación de científicos a explorar, descubrir y crear. Estamos convencidos de que el futuro de la ciencia depende de la capacidad de los jóvenes para pensar críticamente y abordar problemas complejos con creatividad.
               </p>
@@ -80,4 +80,3 @@ const AboutUs: FC = memo(() => {
 });
 
 export default AboutUs;
-
