@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { FC, memo } from 'react';
+import { FC, memo, useState } from 'react';
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
 import Image from 'next/image';
@@ -8,27 +8,121 @@ import testimonialImage from '../images/header-background.webp'; // Asegúrate d
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
 
-const NewsDetail: FC<{ date: string; title: string; content: string }> = ({ date, title, content }) => (
-  <article className="relative p-6 bg-white bg-opacity-90 shadow-lg rounded-lg mb-8">
-    <button 
-      onClick={() => window.history.back()} 
-      className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-    >
-      Volver
-    </button>
-    <h2 className="text-3xl font-bold text-blue-700 mb-2">{title}</h2>
-    <p className="text-sm text-gray-500">{date}</p>
-    <p className="text-lg text-gray-700 mt-4 mb-4">{content}</p>
-  </article>
-);
+// Componente para mostrar detalles del proyecto
+const ProjectDetail: FC<{
+  date: string;
+  title: string;
+  content: string;
+  percentage: number;
+  tools: string[];
+  logs: string[];
+}> = ({ date, title, content, percentage, tools, logs }) => {
+  const [isOpen, setIsOpen] = useState(false); // Estado para mostrar/ocultar detalles
 
-const Proyecto: FC = memo(() => {
   return (
-    <Page title="Supercomputación para innovación en Salud Regional" description="Proyecto financiado por el Gobierno Regional, que busca implementar tecnología HPC avanzada en la Región de O’Higgins, para formar y capacitar estudiantes y profesionales en HPC.">
+    <article
+      className="relative p-6 bg-white shadow-lg rounded-lg mb-6 border border-gray-300 transition-transform duration-300 hover:scale-105 cursor-pointer"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <h2 className="text-xl font-bold text-blue-600 mb-2">{title}</h2>
+      <p className="text-sm text-gray-500">{date}</p>
+      {isOpen && (
+        <div className="mt-4 text-gray-700">
+          <p className="text-lg mb-2">{content}</p>
+          <div className="mt-4">
+            <div className="flex items-center justify-between mb-2">
+              <span>Progreso:</span>
+              <span className="font-semibold">{percentage}%</span>
+            </div>
+            <div className="bg-gray-300 rounded-full h-2">
+              <div
+                className="bg-green-600 h-2 rounded-full"
+                style={{ width: `${percentage}%` }}
+              />
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3 className="font-bold text-blue-600">Herramientas:</h3>
+            <ul className="list-disc ml-5">
+              {tools.map((tool, index) => (
+                <li key={index} className="text-gray-600">{tool}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-4">
+            <h3 className="font-bold text-blue-600">Bitácora:</h3>
+            <ul className="list-disc ml-5">
+              {logs.map((log, index) => (
+                <li key={index} className="text-gray-600">{log}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </article>
+  );
+};
+
+// Componente principal del proyecto
+const Proyecto: FC = memo(() => {
+  // Datos de ejemplo de los proyectos
+  const projectData = [
+    {
+      date: '15 de octubre de 2024',
+      title: 'Supercomputación para Innovación en Salud Regional',
+      content: `El proyecto financiado por el Gobierno Regional tiene como objetivo implementar tecnología de supercomputación (HPC) avanzada en la Región de O’Higgins. Esta iniciativa busca transformar el paisaje de la salud regional a través de la creación de un entorno de aprendizaje y formación para estudiantes y profesionales en el uso de tecnologías de HPC.`,
+      percentage: 70,
+      tools: ['Python', 'R', 'CUDA', 'TensorFlow'],
+      logs: ['Inicio del proyecto', 'Primera reunión con stakeholders', 'Desarrollo de la plataforma inicial', 'Implementación de módulos de capacitación'],
+    },
+    {
+      date: '10 de octubre de 2024',
+      title: 'Análisis Predictivo de Datos de Salud',
+      content: `Desarrollo de modelos predictivos para el análisis de datos de salud, utilizando técnicas avanzadas de Machine Learning para optimizar la atención médica.`,
+      percentage: 50,
+      tools: ['Python', 'Scikit-learn', 'Pandas'],
+      logs: ['Recolección de datos', 'Entrenamiento del modelo', 'Validación de resultados'],
+    },
+    {
+      date: '05 de octubre de 2024',
+      title: 'Plataforma de Telemedicina Avanzada',
+      content: `Implementación de una plataforma de telemedicina que facilita consultas a distancia entre médicos y pacientes, integrando inteligencia artificial para diagnósticos.`,
+      percentage: 30,
+      tools: ['React', 'Node.js', 'MongoDB'],
+      logs: ['Diseño de la UI', 'Integración de API', 'Pruebas de usuario'],
+    },
+    {
+      date: '20 de septiembre de 2024',
+      title: 'Sistema de Gestión de Datos Clínicos',
+      content: `Desarrollo de un sistema que permite la gestión eficiente de datos clínicos para mejorar la atención al paciente y optimizar procesos en el hospital.`,
+      percentage: 80,
+      tools: ['Java', 'Spring Boot', 'MySQL'],
+      logs: ['Definición de requerimientos', 'Implementación de la base de datos', 'Despliegue en producción'],
+    },
+    {
+      date: '12 de octubre de 2024',
+      title: 'Proyecto de Genómica Personalizada',
+      content: `Desarrollo de herramientas para el análisis y la interpretación de datos genómicos con el fin de ofrecer tratamientos personalizados a los pacientes.`,
+      percentage: 45,
+      tools: ['BioPython', 'Jupyter Notebook', 'Nextflow'],
+      logs: ['Configuración del entorno', 'Análisis de muestras', 'Presentación de resultados preliminares'],
+    },
+    {
+      date: '01 de octubre de 2024',
+      title: 'Optimización de Procesos en Laboratorios Clínicos',
+      content: `Implementación de métodos de optimización para reducir tiempos de espera y mejorar la precisión en los diagnósticos en laboratorios clínicos.`,
+      percentage: 60,
+      tools: ['Minitab', 'Excel', 'R'],
+      logs: ['Análisis de procesos actuales', 'Desarrollo de propuestas de mejora', 'Implementación de cambios'],
+    },
+  ];
+
+  return (
+    <Page title="Proyectos de Innovación en Bioinformática" description="Explora nuestros proyectos de innovación en bioinformática y tecnología avanzada.">
       <Header />
-      <main className="bg-gray-100 min-h-screen flex flex-col items-center">
+      <main className="bg-gray-900 min-h-screen flex flex-col items-center">
         {/* Contenedor principal con fondo de imagen */}
-        <div className="relative min-h-screen w-full flex justify-center items-center">
+        <div className="relative w-full flex justify-center items-center">
           {/* Imagen de fondo optimizada con Next.js */}
           <Image
             alt="Background image"
@@ -37,19 +131,28 @@ const Proyecto: FC = memo(() => {
             priority
             src={testimonialImage}
           />
-          <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Supercomputación para innovación en Salud Regional</h1>
+          <div className="z-10 max-w-screen-lg px-4 lg:px-0 py-8">
+            <h1 className="text-4xl font-bold text-center text-blue-400 mb-8">Proyectos de Innovación en Bioinformática</h1>
 
-            <section className="space-y-8">
-              {/* Detalle del proyecto */}
-              <NewsDetail
-                date="15 de octubre de 2024"
-                title="Proyectos.. Supercomputación para innovación en Salud Regional: HPC-UOH y HRLBO Juntos hacia la Medicina de Precisión"
-                content={`El proyecto financiado por el Gobierno Regional tiene como objetivo implementar tecnología de supercomputación (HPC) avanzada en la Región de O’Higgins. Esta iniciativa busca transformar el paisaje de la salud regional a través de la creación de un entorno de aprendizaje y formación para estudiantes y profesionales en el uso de tecnologías de HPC. Al integrar la computación de alto rendimiento en la investigación médica y el análisis de datos clínicos, se espera que el proyecto potencie la capacidad de los investigadores locales para desarrollar soluciones innovadoras en medicina de precisión, mejorando así la calidad de vida de la población.
+            {/* Cuadro de introducción */}
+            <div className="mb-8 p-4 bg-blue-200 rounded-lg shadow-lg">
+              <h2 className="text-2xl font-semibold text-blue-600">Bienvenido a nuestros Proyectos</h2>
+              <p className="text-gray-700">Aquí encontrarás una selección de nuestros proyectos más innovadores en el campo de la bioinformática, diseñados para mejorar la salud y la calidad de vida en nuestra comunidad. Haz clic en cada proyecto para obtener más detalles.</p>
+            </div>
 
-                La colaboración entre la Universidad de O’Higgins (HPC-UOH) y el Hospital Regional de Libertador Bernardo O'Higgins (HRLBO) es fundamental para el éxito de esta iniciativa. Juntos, desarrollarán programas de capacitación y formación que equipen a estudiantes y profesionales con las habilidades necesarias para utilizar tecnologías de HPC en la investigación médica. Este enfoque interdisciplinario no solo fortalecerá la infraestructura científica de la región, sino que también fomentará una cultura de innovación y colaboración en el ámbito de la salud. Además, se espera que esta inversión en tecnología genere oportunidades laborales para los jóvenes talentos de la región y contribuya al desarrollo sostenible de la comunidad.
-                `}
-              />
+            {/* Sección de proyectos */}
+            <section className="flex flex-col gap-6">
+              {projectData.map((project, index) => (
+                <ProjectDetail
+                  key={index}
+                  date={project.date}
+                  title={project.title}
+                  content={project.content}
+                  percentage={project.percentage}
+                  tools={project.tools}
+                  logs={project.logs}
+                />
+              ))}
             </section>
           </div>
         </div>

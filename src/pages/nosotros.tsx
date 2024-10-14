@@ -3,30 +3,16 @@ import { FC, memo } from 'react';
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
 import Image from 'next/image';
-import testimonialImage from '../images/header-background.webp'; // Asegúrate de que esta imagen esté disponible
+import testimonialImage from '../images/header-background.webp';
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
 
-const NewsDetail: FC<{ date: string; title: string; content: string }> = ({ date, title, content }) => (
-  <article className="relative p-6 bg-white bg-opacity-90 shadow-lg rounded-lg mb-8">
-    <button 
-      onClick={() => window.history.back()} 
-      className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-    >
-      Volver
-    </button>
-    <h2 className="text-3xl font-bold text-blue-700 mb-2">{title}</h2>
-    <p className="text-sm text-gray-500">{date}</p>
-    <p className="text-lg text-gray-700 mt-4 mb-4">{content}</p>
-  </article>
-);
-
-const Proyecto: FC = memo(() => {
+const AboutUs: FC = memo(() => {
   return (
-    <Page title="Supercomputación para innovación en Salud Regional" description="Proyecto financiado por el Gobierno Regional, que busca implementar tecnología HPC avanzada en la Región de O’Higgins, para formar y capacitar estudiantes y profesionales en HPC.">
+    <Page title="Sobre Nosotros" description="Conoce más sobre nuestro equipo y misión.">
       <Header />
-      <main className="bg-gray-100 min-h-screen flex flex-col items-center">
+      <main className="bg-gray-20 min-h-screen flex flex-col items-center">
         {/* Contenedor principal con fondo de imagen */}
         <div className="relative min-h-screen w-full flex justify-center items-center">
           {/* Imagen de fondo optimizada con Next.js */}
@@ -38,19 +24,40 @@ const Proyecto: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Supercomputación para innovación en Salud Regional</h1>
+            <h1 className="text-5xl font-bold text-center text-blue-900 mb-12">Acerca de Nosotros</h1>
 
-            <section className="space-y-8">
-              {/* Detalle del proyecto */}
-              <NewsDetail
-                date="15 de octubre de 2024"
-                title="nosotros.. Supercomputación para innovación en Salud Regional: HPC-UOH y HRLBO Juntos hacia la Medicina de Precisión"
-                content={`El proyecto financiado por el Gobierno Regional tiene como objetivo implementar tecnología de supercomputación (HPC) avanzada en la Región de O’Higgins. Esta iniciativa busca transformar el paisaje de la salud regional a través de la creación de un entorno de aprendizaje y formación para estudiantes y profesionales en el uso de tecnologías de HPC. Al integrar la computación de alto rendimiento en la investigación médica y el análisis de datos clínicos, se espera que el proyecto potencie la capacidad de los investigadores locales para desarrollar soluciones innovadoras en medicina de precisión, mejorando así la calidad de vida de la población.
+            {/* Descripción General */}
+            <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
+              <h2 className="text-4xl font-semibold text-blue-700 mb-6">Laboratorio de Innovación y Desarrollo Científico</h2>
+              <p className="text-gray-700 text-lg mb-4">
+                El Laboratorio de Innovación y Desarrollo Científico se especializa en explorar nuevas fronteras tecnológicas y científicas, abordando desafíos complejos con un enfoque interdisciplinario. Nuestra misión es impulsar el progreso científico y tecnológico mediante la investigación de vanguardia y la formación de futuros líderes en ciencia.
+              </p>
+            </div>
 
-                La colaboración entre la Universidad de O’Higgins (HPC-UOH) y el Hospital Regional de Libertador Bernardo O'Higgins (HRLBO) es fundamental para el éxito de esta iniciativa. Juntos, desarrollarán programas de capacitación y formación que equipen a estudiantes y profesionales con las habilidades necesarias para utilizar tecnologías de HPC en la investigación médica. Este enfoque interdisciplinario no solo fortalecerá la infraestructura científica de la región, sino que también fomentará una cultura de innovación y colaboración en el ámbito de la salud. Además, se espera que esta inversión en tecnología genere oportunidades laborales para los jóvenes talentos de la región y contribuya al desarrollo sostenible de la comunidad.
-                `}
-              />
-            </section>
+              {/* Información básica */}
+              <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
+              <h2 className="text-4xl font-semibold text-blue-700 mb-6">Información Adicional</h2>
+              <p className="text-gray-700 text-lg mb-4"><strong>Nacionalidad:</strong> Chilena</p>
+              <p className="text-gray-700 text-lg mb-4"><strong>Intereses:</strong> Genómica, Reino Plantae, Cáncer, Software</p>
+              <p className="text-gray-700 text-lg mb-4"><strong>Centro de Estudio:</strong> Universidad de O'Higgins</p>
+              <p className="text-gray-700 text-lg mb-4"><strong>Integrantes:</strong> 10</p>
+            </div>
+
+            {/* Áreas de Investigación */}
+            <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
+              <h2 className="text-4xl font-semibold text-blue-700 mb-6">Áreas de Investigación</h2>
+              <p className="text-gray-700 text-lg mb-4">
+                Nos enfocamos en diversas áreas, incluyendo inteligencia artificial, biotecnología, y nanotecnología. A través de proyectos innovadores y colaboraciones con universidades y empresas, buscamos desarrollar soluciones que puedan transformar industrias y mejorar la calidad de vida.
+              </p>
+            </div>
+
+            {/* Compromiso y Futuro */}
+            <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
+              <h2 className="text-4xl font-semibold text-blue-700 mb-6">Compromiso y Futuro</h2>
+              <p className="text-gray-700 text-lg mb-4">
+                Además de nuestra labor investigativa, nos dedicamos a la educación, ofreciendo programas que forman a jóvenes científicos. Nuestro compromiso es con la transferencia de conocimiento y tecnología que tenga un impacto positivo en la sociedad. Con una mirada al futuro, estamos enfocados en expandir nuestras capacidades y continuar liderando la innovación científica.
+              </p>
+            </div>
           </div>
         </div>
       </main>
@@ -59,4 +66,4 @@ const Proyecto: FC = memo(() => {
   );
 });
 
-export default Proyecto;
+export default AboutUs;
