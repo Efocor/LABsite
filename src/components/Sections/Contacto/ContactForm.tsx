@@ -1,4 +1,5 @@
 import { FC, memo, useCallback, useMemo, useState } from 'react';
+import emailjs from 'emailjs-com'; // Importamos EmailJS
 
 interface FormData {
   name: string;
@@ -21,13 +22,13 @@ const ContactForm: FC = memo(() => {
   );
 
   const [data, setData] = useState<FormData>(defaultData);
+  const [loading, setLoading] = useState(false); // Para mostrar un indicador de carga
+  const [messageSent, setMessageSent] = useState(false); // Para confirmar envío
 
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
       const { name, value } = event.target;
-
       const fieldData: Partial<FormData> = { [name]: value };
-
       setData((prevData) => ({ ...prevData, ...fieldData }));
     },
     [],
@@ -41,23 +42,43 @@ const ContactForm: FC = memo(() => {
     setData((prevData) => ({ ...prevData, termsAccepted: !prevData.termsAccepted }));
   };
 
-  const handleSendMessage = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      console.log('Data to send: ', data);
-    },
-    [data],
-  );
-
   const handleClearForm = () => {
     setData(defaultData);
   };
 
-  const inputClasses =
-    'bg-neutral-200 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-800 text-sm'; // Agregado border-black
+  const handleSendMessage = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setLoading(true); // Indicamos que comienza la carga
 
-  const buttonClasses =
-    'px-4 py-2 rounded-md border border-black'; // Estilo de los botones con borde negro
+      const templateParams = {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        reason: data.reason,
+      };
+
+      try {
+        // Enviamos el email a través de EmailJS
+        await emailjs.send(
+          'service_oa316ab', // Reemplaza con tu Service ID
+          'template_cqplcip', // Reemplaza con tu Template ID
+          templateParams,
+          '4_kxnlqH3THc4ehvx', // Reemplaza con tu Public Key
+        );
+        setMessageSent(true); // Confirmamos el envío
+        handleClearForm(); // Limpiamos el formulario después de enviar
+      } catch (error) {
+        console.error('Error sending email:', error);
+      } finally {
+        setLoading(false); // Finalizamos el indicador de carga
+      }
+    },
+    [data],
+  );
+
+  const inputClasses =
+    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
 
   return (
     <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
@@ -92,34 +113,34 @@ const ContactForm: FC = memo(() => {
       />
 
       <div className="mt-2">
-        <p className="text-lg font-semibold text-black">Motivo de contacto</p>
-        <p className="text-sm text-neutral-600 mt-1">Seleccione una opción que describa el motivo de su contacto</p>
+        <p className="text-lg font-semibold text-white">Motivo de contacto</p>
+        <p className="text-sm text-neutral-400 mt-1">Seleccione una opción que describa el motivo de su contacto</p>
 
         <div className="flex justify-between mt-2">
           <button
             type="button"
-            className={`${buttonClasses} ${data.reason === 'Consulta' ? 'bg-orange-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
+            className={`px-4 py-2 rounded-md ${data.reason === 'Consulta' ? 'bg-orange-500 text-white' : 'bg-neutral-700 text-neutral-300'}`}
             onClick={() => handleReasonChange('Consulta')}
           >
             Consulta
           </button>
           <button
             type="button"
-            className={`${buttonClasses} ${data.reason === 'Colaboración' ? 'bg-orange-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
+            className={`px-4 py-2 rounded-md ${data.reason === 'Colaboración' ? 'bg-orange-500 text-white' : 'bg-neutral-700 text-neutral-300'}`}
             onClick={() => handleReasonChange('Colaboración')}
           >
             Colaboración
           </button>
           <button
             type="button"
-            className={`${buttonClasses} ${data.reason === 'Solicitud de información' ? 'bg-orange-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
+            className={`px-4 py-2 rounded-md ${data.reason === 'Solicitud de información' ? 'bg-orange-500 text-white' : 'bg-neutral-700 text-neutral-300'}`}
             onClick={() => handleReasonChange('Solicitud de información')}
           >
             Solicitud de información
           </button>
         </div>
 
-        <p className="text-lg font-semibold text-black mt-4">Términos de uso</p>
+        <p className="text-lg font-semibold text-white mt-4">Términos de uso</p>
         <div className="flex items-center mt-2">
           <input
             type="checkbox"
@@ -128,7 +149,7 @@ const ContactForm: FC = memo(() => {
             onChange={handleTermsChange}
             className="mr-2 h-4 w-4 rounded border-neutral-400 text-orange-600 focus:ring-orange-600"
           />
-          <label className="text-sm text-black">
+          <label className="text-sm text-neutral-400">
             He leído los <a href="/terminos" className="text-orange-500 underline">términos de uso</a> que se encuentran en este sitio web
           </label>
         </div>
@@ -146,11 +167,13 @@ const ContactForm: FC = memo(() => {
           aria-label="Enviar formulario"
           className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
           type="submit"
-          disabled={!data.termsAccepted}
+          disabled={!data.termsAccepted || loading} // Deshabilitar mientras está cargando
         >
-          Enviar Mensaje
+          {loading ? 'Enviando...' : 'Enviar Mensaje'}
         </button>
       </div>
+
+      {messageSent && <p className="text-green-500 mt-4">¡Mensaje enviado con éxito!</p>}
     </form>
   );
 });
