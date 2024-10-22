@@ -95,7 +95,7 @@ const ContactForm: FC = memo(() => {
   );
 
   const inputClasses =
-    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
+    'bg-white-700 border-2 focus:border-1 focus:outline-none focus:ring-2 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
 
   return (
     <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
@@ -130,27 +130,27 @@ const ContactForm: FC = memo(() => {
       />
 
       <div className="mt-2">
-        <p className="text-lg font-semibold text-white">Motivo de contacto</p>
+        <p className="text-lg font-semibold text-grey">Motivo de contacto</p>
         <p className="text-sm text-neutral-400 mt-1">Seleccione una opción que describa el motivo de su contacto</p>
 
         <div className="flex justify-between mt-2">
           <button
             type="button"
-            className={`px-4 py-2 rounded-md ${data.reason === 'Consulta' ? 'bg-orange-500 text-white' : 'bg-neutral-700 text-neutral-300'}`}
+            className={`px-4 py-2 rounded-md ${data.reason === 'Consulta' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
             onClick={() => handleReasonChange('Consulta')}
           >
             Consulta
           </button>
           <button
             type="button"
-            className={`px-4 py-2 rounded-md ${data.reason === 'Colaboración' ? 'bg-orange-500 text-white' : 'bg-neutral-700 text-neutral-300'}`}
+            className={`px-4 py-2 rounded-md ${data.reason === 'Colaboración' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
             onClick={() => handleReasonChange('Colaboración')}
           >
             Colaboración
           </button>
           <button
             type="button"
-            className={`px-4 py-2 rounded-md ${data.reason === 'Solicitud de información' ? 'bg-orange-500 text-white' : 'bg-neutral-700 text-neutral-300'}`}
+            className={`px-4 py-2 rounded-md ${data.reason === 'Solicitud de información' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
             onClick={() => handleReasonChange('Solicitud de información')}
           >
             Solicitud de información
