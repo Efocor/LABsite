@@ -53,7 +53,7 @@ const ContactForm: FC = memo(() => {
 
       const templateParams = {
         from_name: data.name, // El nombre del remitente (quien llena el formulario)
-        to_name: 'Tu Nombre', // El destinatario (tu nombre o el de tu organización)
+        to_name: 'Carol', // El destinatario (tu nombre o el de tu organización)
         message: data.message, // El mensaje del formulario
         reply_to: data.email, // El correo electrónico del remitente
         reason: data.reason, // El motivo de contacto
@@ -157,7 +157,7 @@ const ContactForm: FC = memo(() => {
           </button>
         </div>
 
-        <p className="text-lg font-semibold text-white mt-4">Términos de uso</p>
+        <p className="text-lg font-semibold text-grey mt-4">Términos de uso</p>
         <div className="flex items-center mt-2">
           <input
             type="checkbox"
@@ -176,13 +176,13 @@ const ContactForm: FC = memo(() => {
         <button
           type="button"
           onClick={handleClearForm}
-          className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
+          className="w-max rounded-full border-2 border-green-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
         >
           Limpiar
         </button>
         <button
           aria-label="Enviar formulario"
-          className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
+          className="w-max rounded-full border-2 border-green-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
           type="submit"
           disabled={!data.termsAccepted || loading} // Deshabilitar mientras está cargando
         >
@@ -197,4 +197,3 @@ const ContactForm: FC = memo(() => {
 
 ContactForm.displayName = 'ContactForm';
 export default ContactForm;
-

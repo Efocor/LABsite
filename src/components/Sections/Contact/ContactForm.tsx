@@ -52,18 +52,35 @@ const ContactForm: FC = memo(() => {
       setLoading(true); // Indicamos que comienza la carga
 
       const templateParams = {
-        name: data.name,
-        email: data.email,
-        message: data.message,
-        reason: data.reason,
+        from_name: data.name, // El nombre del remitente (quien llena el formulario)
+        to_name: 'Carol', // El destinatario (tu nombre o el de tu organización)
+        message: data.message, // El mensaje del formulario
+        reply_to: data.email, // El correo electrónico del remitente
+        reason: data.reason, // El motivo de contacto
       };
 
+      // Seleccionamos el template basado en el motivo de contacto
+      let templateId = '';
+      switch (data.reason) {
+        case 'Consulta':
+          templateId = 'template_cqplcip'; // ID de plantilla para "Consulta"
+          break;
+        case 'Colaboración':
+          templateId = 'template_b9nqxhk'; // ID de plantilla para "Colaboración"
+          break;
+        case 'Solicitud de información':
+          templateId = 'template_solicitud_info'; // ID de plantilla para "Solicitud de información"
+          break;
+        default:
+          templateId = 'template_cqplcip'; // Fallback a la plantilla por defecto
+      }
+
       try {
-        // Enviamos el email a través de EmailJS
+        // Enviamos el email a través de EmailJS con la plantilla seleccionada
         await emailjs.send(
           'service_oa316ab', // Reemplaza con tu Service ID
-          'template_cqplcip', // Reemplaza con tu Template ID
-          templateParams,
+          templateId, // Usamos el template dinámico basado en la razón
+          templateParams, // Parámetros del formulario
           '4_kxnlqH3THc4ehvx', // Reemplaza con tu Public Key
         );
         setMessageSent(true); // Confirmamos el envío
