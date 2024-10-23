@@ -28,10 +28,12 @@ const Resume: FC = memo(() => {
             </div>
           </div>
           
-          {/* Botón "Ver más" */}
-          <button className="mt-4 px-3 py-2 bg-green-800 text-white rounded hover:bg-green-600 transition duration-200">
+          <div className="flex justify-center mt-4">
+           {/* Botón "Ver más" */}
+            <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200">
             Ver más
-          </button>
+             </button>
+          </div>
         </ResumeSection>
 
         <ResumeSection title="Trabajos">
