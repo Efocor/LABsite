@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Bars3BottomRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Bars3BottomRightIcon, ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
@@ -13,8 +13,8 @@ const Header: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
   const [searchQuery, setSearchQuery] = useState(''); // Estado para la búsqueda
   const navSections = useMemo(
-    () => [SectionId.Hero, SectionId.Noticias, SectionId.Portfolio, SectionId.About, SectionId.Miembros, SectionId.Resume, SectionId.Software, SectionId.Contact],
-    [],
+    () => [SectionId.Hero, SectionId.About, SectionId.Portfolio, SectionId.Noticias, SectionId.Software, SectionId.Contact],
+    [], // Se han eliminado Miembros e Investigación de esta lista
   );
 
   const intersectionHandler = useCallback((section: SectionId | null) => {
@@ -66,13 +66,22 @@ const DesktopNav: FC<{
       <nav className="flex justify-center items-center">
         <div className="flex gap-x-8">
           {navSections.map(section => (
-            <NavItem
-              activeClass={activeClass}
-              current={section === currentSection}
-              inactiveClass={inactiveClass}
-              key={section}
-              section={section}
-            />
+            section === 'Nosotros' ? (
+              <DropdownNavItem
+                activeClass={activeClass}
+                inactiveClass={inactiveClass}
+                currentSection={currentSection}
+                key={section}
+              />
+            ) : (
+              <NavItem
+                activeClass={activeClass}
+                current={section === currentSection}
+                inactiveClass={inactiveClass}
+                key={section}
+                section={section}
+              />
+            )
           ))}
         </div>
         {/* Barra de búsqueda con margen agregado */}
@@ -88,6 +97,39 @@ const DesktopNav: FC<{
         </form>
       </nav>
     </header>
+  );
+});
+
+const DropdownNavItem: FC<{ activeClass: string; inactiveClass: string; currentSection: string | null }> = memo(({ activeClass, inactiveClass, currentSection }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
+  const isActive = currentSection === 'Nosotros';
+
+  return (
+    <div className="relative">
+      <button
+        onClick={toggleDropdown}
+        className={classNames(isActive ? activeClass : inactiveClass, 'flex items-center')}
+      >
+        Nosotros
+        <ChevronDownIcon className="w-5 h-5 ml-1" />
+      </button>
+      {isOpen && (
+        <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
+          <Link href="/nosotros" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            Nosotros
+          </Link>
+          <Link href="/miembros" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            Miembros
+          </Link>
+          <Link href="/investigacion" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+            Investigación
+          </Link>
+        </div>
+      )}
+    </div>
   );
 });
 
@@ -179,17 +221,16 @@ const NavItem: FC<{
   inactiveClass: string;
   onClick?: () => void;
 }> = memo(({ section, current, inactiveClass, activeClass, onClick }) => {
-  const isSoftwareSection = section === 'Software'; // Verifica si es la sección Software
-  const isNewsSection = section === 'Noticias'; // Verifica si es la sección Noticias
-  const isMembersSection = section === 'Miembros'; // Verifica si es la sección Miembros
-  const isContactSection = section === 'Contacto'; // Verifica si es la sección Contacto
-  const isProyectosSection = section === 'Proyectos'; // Verifica si es la sección Contacto
-  const isNosotrosSection = section === 'Nosotros'; // Verifica si es la sección Contacto
-  const isInvestigacionSection = section === 'Investigación'; // Verifica si es la sección Contacto
+  const isSoftwareSection = section === 'Software'; 
+  const isNewsSection = section === 'Noticias'; 
+  const isContactSection = section === 'Contacto'; 
+  const isProyectosSection = section === 'Proyectos'; 
+  const isNosotrosSection = section === 'Nosotros'; 
+
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
-      href={isSoftwareSection ? '/software' : isNewsSection ? '/noticias' : isMembersSection ? '/miembros' : isContactSection ? '/contacto' : isProyectosSection ? '/proyectos' : isInvestigacionSection ? '/investigacion' : isNosotrosSection ? '/nosotros' :`/#${section}`} // Redirige a /software o /noticias según la sección
+      href={isSoftwareSection ? '/software' : isNewsSection ? '/noticias' : isContactSection ? '/contacto' : isProyectosSection ? '/proyectos' : isNosotrosSection ? '/nosotros' : `/#${section}`}
       key={section}
       onClick={onClick}>
       {section}

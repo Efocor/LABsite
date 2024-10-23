@@ -15,7 +15,6 @@ const CarolProfile: FC = memo(() => {
     <Page title="Perfil de Carol Moraga" description="Conoce más sobre Carol Moraga, Ingeniera en Bioinformática.">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
-
         {/* Imagen de fondo futurista */}
         <Image
           alt="Background image"
@@ -91,67 +90,43 @@ const CarolProfile: FC = memo(() => {
             </ul>
           </div>
 
-          {/* Sección de investigaciones destacadas */}
-          <div className="w-full mb-6">
-            <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Investigaciones Destacadas</h4>
-            <ul className="text-gray-700 text-lg list-disc list-inside">
-              <li>
-                <strong>Development of new algorithms to advance on the discovery of microRNAs</strong> 
-                <br />
-                <em>Thesis, Nov 2020</em>
-                <br />
-                Carol Moraga Quinteros
-                <br />
-                <br />
-                MicroRNAs (miRNAs) are small non-coding RNAs that are key players in the regulation of gene expression. miRNAs are involved in a wide range of biological processes including cell cycle, differentiation, apoptosis, and disease. In the last decade, with the increasing accessibility of high-throughput sequencing technologies, sRNAs-seq experiments have...
-                <br />
-                <a href="https://www.researchgate.net/publication/349096038_Development_of_new_algorithms_to_advance_on_the_discovery_of_microRNAs" className="text-blue-600 hover:underline">Ver más</a>
-              </li>
-              <li>
-                <strong>Shotgun proteomics of peach fruit reveals major metabolic pathways associated to ripening</strong> 
-                <br />
-                <em>Preprint, Aug 2020</em>
-                <br />
-                Ricardo Nilo Poyanco, Carol Moraga Quinteros, Gianfranco Benedetto, Andréa Miyasaka Almeida
-                <br />
-                <br />
-                Background Fruit ripening in <i>Prunus persica</i> melting varieties involves several physiological changes that have a direct impact on the fruit organoleptic quality and storage potential. By studying the proteomic differences between the mesocarp of mature and ripe fruit, it would be possible to highlight critical molecular processes involved in the fruit...
-                <br />
-                <a href="https://www.researchgate.net/publication/344541877_Shotgun_proteomics_of_peach_fruit_reveals_major_metabolic_pathways_associated_to_ripening" className="text-blue-600 hover:underline">Ver más</a>
-              </li>
-              <li>
-                <strong>BrumiR: A toolkit for de novo discovery of microRNAs from sRNA-seq data</strong> 
-                <br />
-                <em>Preprint, Aug 2020</em>
-                <br />
-                Carol Moraga Quinteros, Evelyn Sanchez, Mariana Galvao Ferrarini, Marie-France Sagot
-                <br />
-                <br />
-                MicroRNAs (miRNAs) are small non-coding RNAs that are key players in the regulation of gene expression. In the last decade, with the increasing accessibility of high-throughput sequencing technologies, different methods have been developed to identify miRNAs, most of which rely on pre-existing reference genomes. However, when a reference genome is...
-                <br />
-                <a href="https://www.researchgate.net/publication/343528122_BrumiR_A_toolkit_for_de_novo_discovery_of_microRNAs_from_sRNA-seq_data" className="text-blue-600 hover:underline">Ver más</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Enlaces a redes sociales */}
-          <div className="w-full mb-6 flex justify-center space-x-4">
-            <a
-              href="https://www.linkedin.com/in/carol-moraga"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/carolmoraga"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-white bg-gray-800 rounded hover:bg-gray-700 transition duration-300"
-            >
-              GitHub
-            </a>
+          {/* Enlaces a redes sociales y publicaciones */}
+          <div className="w-full mb-6 flex flex-col items-center">
+            <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Conoce más sobre sus investigaciones, artículos y otros!</h4>
+            <div className="flex justify-center space-x-4 mb-4">
+              <a
+                href="https://www.linkedin.com/in/carol-moraga"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/carolmoraga"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-white bg-gray-800 rounded hover:bg-gray-700 transition duration-300"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://scholar.google.com/citations?hl=es&user=V9nSX74AAAAJ&view_op=list_works&sortby=pubdate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 transition duration-300"
+              >
+                Google Scholar
+              </a>
+              <a
+                href="https://www.researchgate.net/profile/Carol-Moraga-Quinteros"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700 transition duration-300"
+              >
+                ResearchGate
+              </a>
+            </div>
           </div>
         </div>
       </main>
