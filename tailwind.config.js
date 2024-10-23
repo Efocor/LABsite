@@ -31,6 +31,9 @@ module.exports = {
       screens: {
         touch: {raw: 'only screen and (pointer: coarse)'},
       },
+      fontFamily: {  // Aquí es donde añades la nueva fuente
+        montserrat: ['Montserrat', 'sans-serif'], // Define la nueva fuente aquí
+      },
     },
   },
   // eslint-disable-next-line no-undef

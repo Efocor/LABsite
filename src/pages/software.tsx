@@ -19,6 +19,10 @@ const SoftwareSection: FC = () => (
     <p className="text-gray-700 mb-4">
       Nuestro software está optimizado para ejecutarse en clústeres de computación de alto rendimiento (HPC), aprovechando al máximo los recursos de computación de alto rendimiento para permitir un análisis rápido de conjuntos de datos genómicos a gran escala.
     </p>
+
+    {/* Llama al nuevo componente aquí */}
+    <SoftwareItems /> {/* Este es el componente que muestra las imágenes y enlaces del software */}
+
     <h3 className="text-xl font-bold text-gray-800 mb-2">Herramientas de Software</h3>
     <h4 className="text-lg font-semibold text-gray-700 mb-1">Ensamblaje del Genoma</h4>
     <ul className="list-disc list-inside text-gray-700 mb-4">
