@@ -5,6 +5,7 @@ import Footer from '../components/Sections/Footer';
 import { homePageMeta } from '../data/data';
 import Image from 'next/image';
 import testimonialImage from '../images/header-background.webp';
+import SoftwareItems from './SoftwareItems'; // Importa tu nuevo componente
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
