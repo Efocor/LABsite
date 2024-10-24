@@ -1,11 +1,11 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Bars3BottomRightIcon, ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import {Dialog, Transition} from '@headlessui/react';
+import {Bars3BottomRightIcon, ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
-import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
+import {FC, Fragment, memo, useCallback, useMemo, useState} from 'react';
 
-import { SectionId } from '../../data/data';
-import { useNavObserver } from '../../hooks/useNavObserver';
+import {SectionId} from '../../data/data';
+import {useNavObserver} from '../../hooks/useNavObserver';
 
 export const headerID = 'headerNav';
 
@@ -13,7 +13,14 @@ const Header: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
   const [searchQuery, setSearchQuery] = useState(''); // Estado para la búsqueda
   const navSections = useMemo(
-    () => [SectionId.Hero, SectionId.About, SectionId.Portfolio, SectionId.Noticias, SectionId.Software, SectionId.Contact],
+    () => [
+      SectionId.Hero,
+      SectionId.About,
+      SectionId.Portfolio,
+      SectionId.Noticias,
+      SectionId.Software,
+      SectionId.Contact,
+    ],
     [], // Se han eliminado Miembros e Investigación de esta lista
   );
 
@@ -29,13 +36,11 @@ const Header: FC = memo(() => {
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const matchingSection = navSections.find(section => 
-      section.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const matchingSection = navSections.find(section => section.toLowerCase().includes(searchQuery.toLowerCase()));
 
     if (matchingSection) {
       const sectionElement = document.querySelector(`#${matchingSection}`);
-      sectionElement?.scrollIntoView({ behavior: 'smooth' });
+      sectionElement?.scrollIntoView({behavior: 'smooth'});
     } else {
       console.log('Sección no encontrada');
     }
@@ -43,8 +48,20 @@ const Header: FC = memo(() => {
 
   return (
     <>
-      <MobileNav currentSection={currentSection} navSections={navSections} searchQuery={searchQuery} handleSearch={handleSearch} handleSearchSubmit={handleSearchSubmit} />
-      <DesktopNav currentSection={currentSection} navSections={navSections} searchQuery={searchQuery} handleSearch={handleSearch} handleSearchSubmit={handleSearchSubmit} />
+      <MobileNav
+        currentSection={currentSection}
+        handleSearch={handleSearch}
+        handleSearchSubmit={handleSearchSubmit}
+        navSections={navSections}
+        searchQuery={searchQuery}
+      />
+      <DesktopNav
+        currentSection={currentSection}
+        handleSearch={handleSearch}
+        handleSearchSubmit={handleSearchSubmit}
+        navSections={navSections}
+        searchQuery={searchQuery}
+      />
     </>
   );
 });
@@ -55,7 +72,7 @@ const DesktopNav: FC<{
   searchQuery: string;
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSearchSubmit: (event: React.FormEvent) => void;
-}> = memo(({ navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit }) => {
+}> = memo(({navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit}) => {
   const baseClass =
     '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:hover:text-orange-500 text-neutral-100';
   const activeClass = classNames(baseClass, 'text-orange-500');
@@ -65,12 +82,12 @@ const DesktopNav: FC<{
     <header className="fixed top-0 z-50 hidden w-full bg-neutral-900/40 p-4 backdrop-blur sm:block" id={headerID}>
       <nav className="flex justify-center items-center">
         <div className="flex gap-x-8">
-          {navSections.map(section => (
+          {navSections.map(section =>
             section === 'Nosotros' ? (
               <DropdownNavItem
                 activeClass={activeClass}
-                inactiveClass={inactiveClass}
                 currentSection={currentSection}
+                inactiveClass={inactiveClass}
                 key={section}
               />
             ) : (
@@ -81,17 +98,17 @@ const DesktopNav: FC<{
                 key={section}
                 section={section}
               />
-            )
-          ))}
+            ),
+          )}
         </div>
         {/* Barra de búsqueda con margen agregado */}
-        <form onSubmit={handleSearchSubmit} className="flex items-center ml-4 mt-1 relative">
+        <form className="flex items-center ml-4 mt-1 relative" onSubmit={handleSearchSubmit}>
           <input
+            className="p-2 pl-10 pr-10 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            onChange={handleSearch}
+            placeholder="Buscar..."
             type="text"
             value={searchQuery}
-            onChange={handleSearch}
-            className="p-2 pl-10 pr-10 rounded-md bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            placeholder="Buscar..."
           />
           <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
         </form>
@@ -100,38 +117,39 @@ const DesktopNav: FC<{
   );
 });
 
-const DropdownNavItem: FC<{ activeClass: string; inactiveClass: string; currentSection: string | null }> = memo(({ activeClass, inactiveClass, currentSection }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const DropdownNavItem: FC<{activeClass: string; inactiveClass: string; currentSection: string | null}> = memo(
+  ({activeClass, inactiveClass, currentSection}) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+    const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const isActive = currentSection === 'Nosotros';
+    const isActive = currentSection === 'Nosotros';
 
-  return (
-    <div className="relative">
-      <button
-        onClick={toggleDropdown}
-        className={classNames(isActive ? activeClass : inactiveClass, 'flex items-center')}
-      >
-        Nosotros
-        <ChevronDownIcon className="w-5 h-5 ml-1" />
-      </button>
-      {isOpen && (
-        <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
-          <Link href="/nosotros" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-            Nosotros
-          </Link>
-          <Link href="/miembros" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-            Miembros
-          </Link>
-          <Link href="/investigacion" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-            Investigación
-          </Link>
-        </div>
-      )}
-    </div>
-  );
-});
+    return (
+      <div className="relative">
+        <button
+          className={classNames(isActive ? activeClass : inactiveClass, 'flex items-center')}
+          onClick={toggleDropdown}>
+          Nosotros
+          <ChevronDownIcon className="w-5 h-5 ml-1" />
+        </button>
+        {isOpen && (
+          <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
+            <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/nosotros">
+              Nosotros
+            </Link>
+            <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/miembros">
+              Miembros
+            </Link>
+            <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/investigacion">
+              Investigación
+            </Link>
+          </div>
+        )}
+      </div>
+    );
+  },
+);
 
 const MobileNav: FC<{
   navSections: SectionId[];
@@ -139,7 +157,7 @@ const MobileNav: FC<{
   searchQuery: string;
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSearchSubmit: (event: React.FormEvent) => void;
-}> = memo(({ navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit }) => {
+}> = memo(({navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleOpen = useCallback(() => {
@@ -193,15 +211,15 @@ const MobileNav: FC<{
                   />
                 ))}
                 {/* Barra de búsqueda en el menú móvil */}
-                <form onSubmit={handleSearchSubmit} className="flex items-center mt-4">
+                <form className="flex items-center mt-4" onSubmit={handleSearchSubmit}>
                   <input
-                    type="text"
-                    value={searchQuery}
+                    className="p-2 rounded-l-md border border-gray-400"
                     onChange={handleSearch}
                     placeholder="Buscar..."
-                    className="p-2 rounded-l-md border border-gray-400"
+                    type="text"
+                    value={searchQuery}
                   />
-                  <button type="submit" className="p-2 bg-blue-500 text-white rounded-r-md">
+                  <button className="p-2 bg-blue-500 text-white rounded-r-md" type="submit">
                     Buscar
                   </button>
                 </form>
@@ -220,17 +238,29 @@ const NavItem: FC<{
   activeClass: string;
   inactiveClass: string;
   onClick?: () => void;
-}> = memo(({ section, current, inactiveClass, activeClass, onClick }) => {
-  const isSoftwareSection = section === 'Software'; 
-  const isNewsSection = section === 'Noticias'; 
-  const isContactSection = section === 'Contacto'; 
-  const isProyectosSection = section === 'Proyectos'; 
-  const isNosotrosSection = section === 'Nosotros'; 
+}> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
+  const isSoftwareSection = section === 'Software';
+  const isNewsSection = section === 'Noticias';
+  const isContactSection = section === 'Contacto';
+  const isProyectosSection = section === 'Proyectos';
+  const isNosotrosSection = section === 'Nosotros';
 
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
-      href={isSoftwareSection ? '/software' : isNewsSection ? '/noticias' : isContactSection ? '/contacto' : isProyectosSection ? '/proyectos' : isNosotrosSection ? '/nosotros' : `/#${section}`}
+      href={
+        isSoftwareSection
+          ? '/software'
+          : isNewsSection
+            ? '/noticias'
+            : isContactSection
+              ? '/contacto'
+              : isProyectosSection
+                ? '/proyectos'
+                : isNosotrosSection
+                  ? '/nosotros'
+                  : `/#${section}`
+      }
       key={section}
       onClick={onClick}>
       {section}

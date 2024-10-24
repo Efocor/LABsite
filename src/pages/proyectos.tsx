@@ -1,12 +1,13 @@
 import dynamic from 'next/dynamic';
-import { FC, memo, useState } from 'react';
+import Image from 'next/image';
+import {FC, memo, useState} from 'react';
+
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import Image from 'next/image';
 import testimonialImage from '../images/header-background.webp'; // Asegúrate de que esta imagen esté disponible
 
 // Importación dinámica del Header
-const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
+const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
 // Componente para mostrar detalles del proyecto
 const ProjectDetail: FC<{
@@ -16,14 +17,13 @@ const ProjectDetail: FC<{
   percentage: number;
   tools: string[];
   logs: string[];
-}> = ({ date, title, content, percentage, tools, logs }) => {
+}> = ({date, title, content, percentage, tools, logs}) => {
   const [isOpen, setIsOpen] = useState(false); // Estado para mostrar/ocultar detalles
 
   return (
     <article
       className="relative p-6 bg-white shadow-lg rounded-lg mb-6 border border-gray-300 transition-transform duration-300 hover:scale-105 cursor-pointer"
-      onClick={() => setIsOpen(!isOpen)}
-    >
+      onClick={() => setIsOpen(!isOpen)}>
       <h2 className="text-xl font-bold text-blue-600 mb-2">{title}</h2>
       <p className="text-sm text-gray-500">{date}</p>
       {isOpen && (
@@ -35,17 +35,16 @@ const ProjectDetail: FC<{
               <span className="font-semibold">{percentage}%</span>
             </div>
             <div className="bg-gray-300 rounded-full h-2">
-              <div
-                className="bg-green-600 h-2 rounded-full"
-                style={{ width: `${percentage}%` }}
-              />
+              <div className="bg-green-600 h-2 rounded-full" style={{width: `${percentage}%`}} />
             </div>
           </div>
           <div className="mt-4">
             <h3 className="font-bold text-blue-600">Herramientas:</h3>
             <ul className="list-disc ml-5">
               {tools.map((tool, index) => (
-                <li key={index} className="text-gray-600">{tool}</li>
+                <li className="text-gray-600" key={index}>
+                  {tool}
+                </li>
               ))}
             </ul>
           </div>
@@ -53,7 +52,9 @@ const ProjectDetail: FC<{
             <h3 className="font-bold text-blue-600">Bitácora:</h3>
             <ul className="list-disc ml-5">
               {logs.map((log, index) => (
-                <li key={index} className="text-gray-600">{log}</li>
+                <li className="text-gray-600" key={index}>
+                  {log}
+                </li>
               ))}
             </ul>
           </div>
@@ -73,7 +74,12 @@ const Proyecto: FC = memo(() => {
       content: `El proyecto financiado por el Gobierno Regional tiene como objetivo implementar tecnología de supercomputación (HPC) avanzada en la Región de O’Higgins. Esta iniciativa busca transformar el paisaje de la salud regional a través de la creación de un entorno de aprendizaje y formación para estudiantes y profesionales en el uso de tecnologías de HPC.`,
       percentage: 70,
       tools: ['Python', 'R', 'CUDA', 'TensorFlow'],
-      logs: ['Inicio del proyecto', 'Primera reunión con stakeholders', 'Desarrollo de la plataforma inicial', 'Implementación de módulos de capacitación'],
+      logs: [
+        'Inicio del proyecto',
+        'Primera reunión con stakeholders',
+        'Desarrollo de la plataforma inicial',
+        'Implementación de módulos de capacitación',
+      ],
     },
     {
       date: '10 de octubre de 2024',
@@ -118,7 +124,9 @@ const Proyecto: FC = memo(() => {
   ];
 
   return (
-    <Page title="Proyectos de Innovación en Bioinformática" description="Explora nuestros proyectos de innovación en bioinformática y tecnología avanzada.">
+    <Page
+      description="Explora nuestros proyectos de innovación en bioinformática y tecnología avanzada."
+      title="Proyectos de Innovación en Bioinformática">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center">
         {/* Contenedor principal con fondo de imagen */}
@@ -132,25 +140,31 @@ const Proyecto: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0 py-8">
-            <h1 className="text-4xl font-bold text-center text-blue-400 mb-8">Proyectos de Innovación en Bioinformática</h1>
+            <h1 className="text-4xl font-bold text-center text-blue-400 mb-8">
+              Proyectos de Innovación en Bioinformática
+            </h1>
 
             {/* Cuadro de introducción */}
             <div className="mb-8 p-4 bg-blue-200 rounded-lg shadow-lg">
               <h2 className="text-2xl font-semibold text-blue-600">Bienvenido a nuestros Proyectos</h2>
-              <p className="text-gray-700">Aquí encontrarás una selección de nuestros proyectos más innovadores en el campo de la bioinformática, diseñados para mejorar la salud y la calidad de vida en nuestra comunidad. Haz clic en cada proyecto para obtener más detalles.</p>
+              <p className="text-gray-700">
+                Aquí encontrarás una selección de nuestros proyectos más innovadores en el campo de la bioinformática,
+                diseñados para mejorar la salud y la calidad de vida en nuestra comunidad. Haz clic en cada proyecto
+                para obtener más detalles.
+              </p>
             </div>
 
             {/* Sección de proyectos */}
             <section className="flex flex-col gap-6">
               {projectData.map((project, index) => (
                 <ProjectDetail
-                  key={index}
-                  date={project.date}
-                  title={project.title}
                   content={project.content}
-                  percentage={project.percentage}
-                  tools={project.tools}
+                  date={project.date}
+                  key={index}
                   logs={project.logs}
+                  percentage={project.percentage}
+                  title={project.title}
+                  tools={project.tools}
                 />
               ))}
             </section>

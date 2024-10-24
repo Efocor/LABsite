@@ -1,21 +1,23 @@
 import dynamic from 'next/dynamic';
-import { FC, memo } from 'react';
+import Image from 'next/image';
+import {FC, memo} from 'react';
+
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import Image from 'next/image';
-import backgroundImage from '../images/header-background.webp'; // Imagen de fondo
 import juanImage from '../images/bill-gates.jpg';
+import backgroundImage from '../images/header-background.webp'; // Imagen de fondo
 
 // Importación dinámica del Header
-const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
+const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
 // Componente de perfil para Juan con más información y diseño futurista
 const JuanProfile: FC = memo(() => {
   return (
-    <Page title="Perfil de Juan Pérez" description="Conoce más sobre Juan Pérez, Dr. en Bioinformática y Desarrollo de Software Genómico.">
+    <Page
+      description="Conoce más sobre Juan Pérez, Dr. en Bioinformática y Desarrollo de Software Genómico."
+      title="Perfil de Juan Pérez">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
-
         {/* Imagen de fondo futurista */}
         <Image
           alt="Background image"
@@ -27,18 +29,16 @@ const JuanProfile: FC = memo(() => {
 
         {/* Tarjeta de Juan con estilo futurista y más información */}
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
-          
           {/* Botón de volver en la esquina superior derecha */}
-          <button 
-            onClick={() => window.history.back()} 
+          <button
             className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-          >
+            onClick={() => window.history.back()}>
             Volver
           </button>
 
           {/* Imagen de Juan */}
           <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-blue-600 shadow-lg">
-            <Image src={juanImage} alt="Juan Pérez" className="object-cover w-full h-full" />
+            <Image alt="Juan Pérez" className="object-cover w-full h-full" src={juanImage} />
           </div>
 
           {/* Información general de Juan */}
@@ -51,16 +51,21 @@ const JuanProfile: FC = memo(() => {
           <p className="text-gray-700 text-center text-lg mb-4">
             <strong>Localización:</strong> Santiago, Chile
           </p>
-          
+
           {/* Información sobre la carrera de Juan */}
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-            Juan Pérez es un reconocido bioinformático con un Doctorado en Bioinformática de la Universidad de Ciencias de la Vida. Su investigación se centra en el desarrollo de software para la interpretación de datos genómicos. Ha contribuido a múltiples proyectos en el ámbito de la genómica personalizada y ha publicado más de 25 artículos en revistas científicas de alto impacto.
+            Juan Pérez es un reconocido bioinformático con un Doctorado en Bioinformática de la Universidad de Ciencias
+            de la Vida. Su investigación se centra en el desarrollo de software para la interpretación de datos
+            genómicos. Ha contribuido a múltiples proyectos en el ámbito de la genómica personalizada y ha publicado más
+            de 25 artículos en revistas científicas de alto impacto.
           </p>
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-            Actualmente, el Dr. Pérez está trabajando en algoritmos para el análisis de datos de secuenciación de nueva generación (NGS) con el fin de mejorar la detección temprana de enfermedades hereditarias.
+            Actualmente, el Dr. Pérez está trabajando en algoritmos para el análisis de datos de secuenciación de nueva
+            generación (NGS) con el fin de mejorar la detección temprana de enfermedades hereditarias.
           </p>
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-            Además, es miembro activo del grupo de investigación en Biología Computacional de su universidad, donde colabora en proyectos internacionales.
+            Además, es miembro activo del grupo de investigación en Biología Computacional de su universidad, donde
+            colabora en proyectos internacionales.
           </p>
 
           {/* Sección de habilidades */}
@@ -83,40 +88,49 @@ const JuanProfile: FC = memo(() => {
             <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Publicaciones Destacadas</h4>
             <ul className="text-gray-700 text-lg list-disc list-inside">
               <li>
-                <strong>Advancements in Genomic Data Analysis for Personalized Medicine</strong> 
+                <strong>Advancements in Genomic Data Analysis for Personalized Medicine</strong>
                 <br />
                 <em>REVISTA Journal of Bioinformatics, 2023</em>
                 <br />
                 Juan Pérez, Lise Mangiante, Nicolás Alcala
                 <br />
-                <a href="http://dx.doi.org/10.1000/jbi.2023.0001" className="text-blue-600 hover:underline">Ver más</a>
+                <a className="text-blue-600 hover:underline" href="http://dx.doi.org/10.1000/jbi.2023.0001">
+                  Ver más
+                </a>
               </li>
               <li>
-                <strong>Machine Learning Applications in Genomic Research</strong> 
+                <strong>Machine Learning Applications in Genomic Research</strong>
                 <br />
                 <em>REVISTA Nature Biotechnology, 2023</em>
                 <br />
                 Juan Pérez, Lise Mangiante, Alexandra Sexton-Oates
                 <br />
-                <a href="http://dx.doi.org/10.1000/nb.2023.0002" className="text-blue-600 hover:underline">Ver más</a>
+                <a className="text-blue-600 hover:underline" href="http://dx.doi.org/10.1000/nb.2023.0002">
+                  Ver más
+                </a>
               </li>
               <li>
-                <strong>Innovations in NGS Data Processing for Rare Disease Diagnosis</strong> 
+                <strong>Innovations in NGS Data Processing for Rare Disease Diagnosis</strong>
                 <br />
                 <em>REVISTA Genomics, 2023</em>
                 <br />
                 Juan Pérez, Lise Mangiante
                 <br />
-                <a href="http://dx.doi.org/10.1000/gen.2023.0003" className="text-blue-600 hover:underline">Ver más</a>
+                <a className="text-blue-600 hover:underline" href="http://dx.doi.org/10.1000/gen.2023.0003">
+                  Ver más
+                </a>
               </li>
               <li>
-                <strong>Understanding Genetic Variations in Cancer Genomics</strong> 
+                <strong>Understanding Genetic Variations in Cancer Genomics</strong>
                 <br />
                 <em>REVISTA Bioinformatics Reviews, 2022</em>
                 <br />
                 Juan Pérez, [... ]
                 <br />
-                <a href="#" className="text-blue-600 hover:underline">Ver más</a> {/* Enlace temporal */}
+                <a className="text-blue-600 hover:underline" href="#">
+                  Ver más
+                </a>{' '}
+                {/* Enlace temporal */}
               </li>
             </ul>
           </div>
@@ -124,19 +138,17 @@ const JuanProfile: FC = memo(() => {
           {/* Enlaces a redes sociales */}
           <div className="w-full mb-6 flex justify-center space-x-4">
             <a
-              href="https://www.linkedin.com/in/juan-perez"
-              target="_blank"
-              rel="noopener noreferrer"
               className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
-            >
+              href="https://www.linkedin.com/in/juan-perez"
+              rel="noopener noreferrer"
+              target="_blank">
               LinkedIn
             </a>
             <a
-              href="https://github.com/juanperez"
-              target="_blank"
-              rel="noopener noreferrer"
               className="px-4 py-2 text-white bg-gray-800 rounded hover:bg-gray-700 transition duration-300"
-            >
+              href="https://github.com/juanperez"
+              rel="noopener noreferrer"
+              target="_blank">
               GitHub
             </a>
           </div>

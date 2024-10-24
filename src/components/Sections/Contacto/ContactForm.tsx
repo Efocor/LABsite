@@ -1,5 +1,6 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react';
 import emailjs from 'emailjs-com'; // Importamos EmailJS
+import Link from 'next/link';
+import {FC, memo, useCallback, useMemo, useState} from 'react';
 
 interface FormData {
   name: string;
@@ -27,19 +28,19 @@ const ContactForm: FC = memo(() => {
 
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const { name, value } = event.target;
-      const fieldData: Partial<FormData> = { [name]: value };
-      setData((prevData) => ({ ...prevData, ...fieldData }));
+      const {name, value} = event.target;
+      const fieldData: Partial<FormData> = {[name]: value};
+      setData(prevData => ({...prevData, ...fieldData}));
     },
     [],
   );
 
   const handleReasonChange = (reason: string) => {
-    setData((prevData) => ({ ...prevData, reason }));
+    setData(prevData => ({...prevData, reason}));
   };
 
   const handleTermsChange = () => {
-    setData((prevData) => ({ ...prevData, termsAccepted: !prevData.termsAccepted }));
+    setData(prevData => ({...prevData, termsAccepted: !prevData.termsAccepted}));
   };
 
   const handleClearForm = () => {
@@ -135,24 +136,27 @@ const ContactForm: FC = memo(() => {
 
         <div className="flex justify-between mt-2">
           <button
-            type="button"
-            className={`px-4 py-2 rounded-md ${data.reason === 'Consulta' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
+            className={`px-4 py-2 rounded-md ${
+              data.reason === 'Consulta' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'
+            }`}
             onClick={() => handleReasonChange('Consulta')}
-          >
+            type="button">
             Consulta
           </button>
           <button
-            type="button"
-            className={`px-4 py-2 rounded-md ${data.reason === 'Colaboración' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
+            className={`px-4 py-2 rounded-md ${
+              data.reason === 'Colaboración' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'
+            }`}
             onClick={() => handleReasonChange('Colaboración')}
-          >
+            type="button">
             Colaboración
           </button>
           <button
-            type="button"
-            className={`px-4 py-2 rounded-md ${data.reason === 'Solicitud de información' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'}`}
+            className={`px-4 py-2 rounded-md ${
+              data.reason === 'Solicitud de información' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'
+            }`}
             onClick={() => handleReasonChange('Solicitud de información')}
-          >
+            type="button">
             Solicitud de información
           </button>
         </div>
@@ -160,32 +164,34 @@ const ContactForm: FC = memo(() => {
         <p className="text-lg font-semibold text-grey mt-4">Términos de uso</p>
         <div className="flex items-center mt-2">
           <input
-            type="checkbox"
-            name="termsAccepted"
             checked={data.termsAccepted}
-            onChange={handleTermsChange}
             className="mr-2 h-4 w-4 rounded border-neutral-400 text-orange-600 focus:ring-orange-600"
+            name="termsAccepted"
+            onChange={handleTermsChange}
+            type="checkbox"
           />
           <label className="text-sm text-neutral-400">
-            He leído los <a href="/terminos" className="text-orange-500 underline">términos de uso</a> que se encuentran en este sitio web
+            He leído los{' '}
+            <Link href="/terminos">
+              <a className="text-orange-500 underline">términos de uso</a>
+            </Link>{' '}
+            que se encuentran en este sitio web
           </label>
         </div>
       </div>
 
       <div className="flex space-x-4 mt-2">
         <button
-          type="button"
-          onClick={handleClearForm}
           className="w-max rounded-full border-2 border-green-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
-        >
+          onClick={handleClearForm}
+          type="button">
           Limpiar
         </button>
         <button
           aria-label="Enviar formulario"
           className="w-max rounded-full border-2 border-green-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
-          type="submit"
           disabled={!data.termsAccepted || loading} // Deshabilitar mientras está cargando
-        >
+          type="submit">
           {loading ? 'Enviando...' : 'Enviar Mensaje'}
         </button>
       </div>

@@ -1,17 +1,18 @@
 import dynamic from 'next/dynamic';
-import { FC, memo } from 'react';
+import Image from 'next/image';
+import {FC, memo} from 'react';
+
 import Page from '../components/Layout/Page';
 import Contact from '../components/Sections/Contacto';
 import Footer from '../components/Sections/Footer';
-import { homePageMeta } from '../data/data';
-import Image from 'next/image';
+import {homePageMeta} from '../data/data';
 import testimonialImage from '../images/header-background.webp';
 
 // eslint-disable-next-line react-memo/require-memo
-const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
+const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
 const Home: FC = memo(() => {
-  const { title, description } = homePageMeta;
+  const {title, description} = homePageMeta;
   return (
     <Page description={description} title={title}>
       <Header />
@@ -26,7 +27,7 @@ const Home: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <Contact />  {/* Mostrar la sección de contacto */}
+            <Contact /> {/* Mostrar la sección de contacto */}
           </div>
         </div>
       </main>

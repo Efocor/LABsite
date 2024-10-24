@@ -1,19 +1,19 @@
 import dynamic from 'next/dynamic';
-import { FC, memo } from 'react';
+import Image from 'next/image';
+import {FC, memo} from 'react';
+
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import Image from 'next/image';
 import testimonialImage from '../images/header-background.webp';
 
 // Importación dinámica del Header
-const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
+const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
-const NewsDetail: FC<{ date: string; title: string; content: string }> = ({ date, title, content }) => (
+const NewsDetail: FC<{date: string; title: string; content: string}> = ({date, title, content}) => (
   <article className="relative p-6 bg-white bg-opacity-90 shadow-lg rounded-lg mb-8">
-    <button 
-      onClick={() => window.history.back()} 
+    <button
       className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-    >
+      onClick={() => window.history.back()}>
       Volver
     </button>
     <h2 className="text-3xl font-bold text-blue-700 mb-2">{title}</h2>
@@ -24,7 +24,7 @@ const NewsDetail: FC<{ date: string; title: string; content: string }> = ({ date
 
 const Noticias: FC = memo(() => {
   return (
-    <Page title="Noticias" description="Últimas noticias sobre avances en bioinformática e investigación científica.">
+    <Page description="Últimas noticias sobre avances en bioinformática e investigación científica." title="Noticias">
       <Header />
       <main className="bg-gray-100 min-h-screen flex flex-col items-center">
         {/* Contenedor principal con fondo de imagen */}
@@ -43,8 +43,6 @@ const Noticias: FC = memo(() => {
             <section className="space-y-8">
               {/* Noticia única */}
               <NewsDetail
-                date="31 de agosto de 2024"
-                title="Avances en Optimización de Redes en el Centro de Innovación Tecnológica"
                 content={`
                   En una reunión clave celebrada el 31 de agosto de 2024, el equipo del Centro de Innovación Tecnológica (CIT) presentó los últimos avances en su ambicioso proyecto de optimización de redes. La sesión, que reunió a destacados investigadores, ingenieros y gestores de proyecto, marcó un hito en la evolución de la red tecnológica de la institución. Durante la jornada, los miembros del equipo compartieron los resultados preliminares de las recientes pruebas y experimentos, revelando mejoras significativas en varios aspectos cruciales de la optimización de redes.
 
@@ -56,6 +54,8 @@ const Noticias: FC = memo(() => {
 
                   En conclusión, los avances presentados en esta reunión marcan un paso significativo hacia el futuro de la optimización de redes en el CIT. Los investigadores se comprometieron a seguir investigando soluciones creativas para garantizar la viabilidad de estas técnicas en entornos comerciales y académicos. Este proyecto no solo promete mejorar la eficiencia de la red, sino que también establece un modelo a seguir para futuras iniciativas de investigación en el ámbito tecnológico.
                 `}
+                date="31 de agosto de 2024"
+                title="Avances en Optimización de Redes en el Centro de Innovación Tecnológica"
               />
             </section>
           </div>

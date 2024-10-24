@@ -1,19 +1,19 @@
 import dynamic from 'next/dynamic';
-import { FC, memo } from 'react';
+import Image from 'next/image';
+import {FC, memo} from 'react';
+
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import Image from 'next/image';
 import testimonialImage from '../images/header-background.webp'; // Asegúrate de que esta imagen esté disponible
 
 // Importación dinámica del Header
-const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
+const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
-const NewsDetail: FC<{ date: string; title: string; content: string }> = ({ date, title, content }) => (
+const NewsDetail: FC<{date: string; title: string; content: string}> = ({date, title, content}) => (
   <article className="relative p-6 bg-white bg-opacity-90 shadow-lg rounded-lg mb-8">
-    <button 
-      onClick={() => window.history.back()} 
+    <button
       className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-    >
+      onClick={() => window.history.back()}>
       Volver
     </button>
     <h2 className="text-3xl font-bold text-blue-700 mb-2">{title}</h2>
@@ -24,7 +24,7 @@ const NewsDetail: FC<{ date: string; title: string; content: string }> = ({ date
 
 const Noticias: FC = memo(() => {
   return (
-    <Page title="Noticias" description="Últimas noticias sobre avances en bioinformática e investigación científica.">
+    <Page description="Últimas noticias sobre avances en bioinformática e investigación científica." title="Noticias">
       <Header />
       <main className="bg-gray-100 min-h-screen flex flex-col items-center">
         {/* Contenedor principal con fondo de imagen */}
@@ -43,8 +43,6 @@ const Noticias: FC = memo(() => {
             <section className="space-y-8">
               {/* Noticia única */}
               <NewsDetail
-                date="15 de septiembre de 2024"
-                title="Nueva Plataforma de Secuenciación Genómica para Plantas"
                 content={`
                   Un equipo de bioinformáticos del Instituto de Biotecnología ha lanzado una nueva plataforma de secuenciación de ADN diseñada específicamente para plantas. Esta herramienta avanzada promete acelerar el descubrimiento de genes que controlan características agrícolas importantes, como la resistencia a las plagas y la adaptación a condiciones climáticas extremas.
 
@@ -60,6 +58,8 @@ const Noticias: FC = memo(() => {
 
                   Los investigadores del Instituto de Biotecnología planean llevar a cabo una serie de talleres y seminarios para capacitar a otros científicos y profesionales en el uso de esta plataforma. A medida que el mundo enfrenta desafíos ambientales cada vez mayores, la investigación en biotecnología se vuelve aún más crucial. La nueva plataforma de secuenciación genómica para plantas podría ser una pieza clave en la búsqueda de soluciones que permitan una agricultura más resiliente y adaptativa.
                 `}
+                date="15 de septiembre de 2024"
+                title="Nueva Plataforma de Secuenciación Genómica para Plantas"
               />
             </section>
           </div>
