@@ -1,16 +1,30 @@
 backend:
   name: git-gateway
-  branch: main  # Cambia "main" si usas otra rama principal
+  branch: master
 
-media_folder: "static/images/uploads"  # Carpeta donde se guardarán los archivos subidos
-public_folder: "/images/uploads"       # Ruta pública para esos archivos
+media_folder: static/img
+public_folder: /img
 
 collections:
-  - name: "posts"             # Nombre de la colección
-    label: "Posts"            # Etiqueta que se verá en la UI de Decap CMS
-    folder: "content/posts"   # Carpeta donde se guardarán los posts
+  - name: "blog"
+    label: "Blog"
+    label_singular: "Post"
+    folder: "src/pages/blog"
     create: true
-    slug: "{{slug}}"          # Usado para generar URLs
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post.template"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "src/pages/products"
+    create: true
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page.template"}
+      - {label: "Name", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Ingredients", name: "ingredients", widget: "list"}
