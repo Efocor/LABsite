@@ -22,7 +22,8 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   reactStrictMode: true,
   swcMinify: true,
-  trailingSlash: false,
+  trailingSlash: true,
+  staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
       {
