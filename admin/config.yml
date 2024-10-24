@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main  # Asegúrate de usar la rama correcta de tu repositorio
+
+media_folder: "public/images/uploads" # Donde se guardan las imágenes
+public_folder: "/images/uploads" # Ruta pública para las imágenes
+
+collections:
+  - name: "news"
+    label: "Noticias"
+    folder: "content/noticias"  # Carpeta donde se guardarán las noticias en formato markdown
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Resumen", name: "summary", widget: "text" }
+      - { label: "Contenido", name: "content", widget: "markdown" }
+      - { label: "Link", name: "link", widget: "string" }
