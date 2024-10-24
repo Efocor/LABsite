@@ -1,19 +1,16 @@
 backend:
   name: git-gateway
-  branch: main  # Asegúrate de usar la rama correcta de tu repositorio
+  branch: main  # Cambia "main" si usas otra rama principal
 
-media_folder: "public/images/uploads" # Donde se guardan las imágenes
-public_folder: "/images/uploads" # Ruta pública para las imágenes
+media_folder: "static/images/uploads"  # Carpeta donde se guardarán los archivos subidos
+public_folder: "/images/uploads"       # Ruta pública para esos archivos
 
 collections:
-  - name: "news"
-    label: "Noticias"
-    folder: "content/noticias"  # Carpeta donde se guardarán las noticias en formato markdown
+  - name: "posts"             # Nombre de la colección
+    label: "Posts"            # Etiqueta que se verá en la UI de Decap CMS
+    folder: "content/posts"   # Carpeta donde se guardarán los posts
     create: true
-    slug: "{{slug}}"
+    slug: "{{slug}}"          # Usado para generar URLs
     fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Fecha", name: "date", widget: "datetime" }
-      - { label: "Resumen", name: "summary", widget: "text" }
-      - { label: "Contenido", name: "content", widget: "markdown" }
-      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
