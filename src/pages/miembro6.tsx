@@ -5,17 +5,17 @@ import {FC, memo} from 'react';
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
 import backgroundImage from '../images/header-background.webp'; // Imagen de fondo
-import DavidImage from '../images/David-Salas.png'; // Imagen de David
+import FelipeImage from '../images/FELIPE GOMEZ.jpg'; // Imagen de Felipe
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
 
-const DavidProfile: FC = memo(() => {
+const FelipeProfile: FC = memo(() => {
   return (
     <Page
-      description="Conoce más sobre David Salas, Ingeniero Civil Matemático de la Universidad de Chile"
-      title="Perfil de David Salas">
+      description="Conoce más sobre Felipe Gómez, Ingeniero Civil en Computación, Universidad O´Higgins"
+      title="Perfil de Felipe Gómez">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
         {/* Imagen de fondo futurista */}
@@ -38,32 +38,28 @@ const DavidProfile: FC = memo(() => {
 
           {/* Imagen de Laura */}
           <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-blue-600 shadow-lg">
-            <Image alt="David Salas" className="object-cover w-full h-full" src={DavidImage} />
+            <Image alt="Felipe Gómez" className="object-cover w-full h-full" src={FelipeImage} />
           </div>
 
           {/* Información general de Laura */}
           <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
-            David Salas
+            Felipe Gómez
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">
-          Ingeniero Civil Matemático, Universidad de Chile
+          Ingeniero Civil en Computación, Universidad O´Higgins
           </p>
           <p className="text-gray-700 text-center text-lg mb-4">
             <strong>Localización:</strong> Rancagua, Chile
           </p>
 
-          {/* Información sobre la carrera de Laura */}
+          {/* Información sobre la carrera de Felipe*/}
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-          Grado Académico: Matemáticas y Modelamiento, Université de Montpellier, Francia
+          Ingeniero Civil en Computación titulado con distinción máxima por la Universidad de O'Higgins, especializado en machine learning y análisis de datos. Ha participado de manera periódica en el AGENs-Lab desde 2022, 
+          primero como Asistente de Investigación y actualmente como Ingeniero de Proyecto. 
           </p>
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-          David Salas realizó sus estudios de pregrado en la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile. 
-          Posteriormente, hizo sus estudios doctorales en la Universidad de Montpellier (Francia) 
-          bajo la dirección de Lionel Thibault.
-          </p>
-          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-          Su tesis doctoral trató de diferentes problemáticas de geometría en espacios de dimensión infinita. Realizó dos años de post-doctorado en el laboratorio PROMES de la Universidad de Perpignan (Francia), donde realizó investigaciones relacionadas con teoría de juegos, energías renovables y uso eficiente de recursos naturales. 
-          Cuenta con varias publicaciones ISI en diversas áreas de la matemática, tanto teóricas como aplicadas.
+          Ha participado  en proyectos de ciencia computacional y como expositor en el Festival de la Ciencia 2023 y el Congreso Futuro 2024. Su línea de trabajo es la bioinformática,
+           y utilizar herramientas de machine learning y programación para extraer valor de grandes volúmenes de datos relacionados a la genómica y el desarrollo de soluciones innovadoras.
           </p>
 
 
@@ -71,10 +67,10 @@ const DavidProfile: FC = memo(() => {
           <div className="w-full mb-6">
             <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Habilidades</h4>
             <ul className="grid grid-cols-2 gap-4 text-gray-800 text-center">
-              <li>🔬 Habilidad 1</li>
-              <li>💻 Habilidad 2</li>
-              <li>📊 Habilidad 3</li>
-              <li>⚙️ Habilidad 4 o Conocimiento</li>
+              <li>🔬 Machine Learning</li>
+              <li>💻 Genómica</li>
+              <li>📊 Soluciones Innovadoras</li>
+              <li>⚙️ Habilidad 4 </li>
             </ul>
           </div>
 
@@ -85,15 +81,14 @@ const DavidProfile: FC = memo(() => {
               Conoce más sobre sus investigaciones, artículos y otros!
             </h4>
             <div className="flex justify-center space-x-4 mb-4">
-              
-        
-              <a
-                className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 transition duration-300"
-                href="https://scholar.google.com/citations?hl=es&user=KqC93U0AAAAJ"
+            <a
+                className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
+                href=""
                 rel="noopener noreferrer"
                 target="_blank">
-                Google Scholar
+                LinkedIn
               </a>
+        
             </div>
           </div>
         </div>
@@ -103,4 +98,4 @@ const DavidProfile: FC = memo(() => {
   );
 });
 
-export default DavidProfile;
+export default FelipeProfile;

@@ -8,9 +8,13 @@ import Footer from '../components/Sections/Footer';
 import bill from '../images/bill-gates.jpg';
 import carol1 from '../images/Carol-Moraga-1.png';
 import testimonialImage from '../images/header-background.webp';
-import laura1 from '../images/Laura.jpg';
+import david1 from '../images/David-Salas.png';
+import nairo1 from '../images/nairo-torres.jpg';
 import alex1 from '../images/Perfil_Alex_Genova.jpg';
-
+import felipe1 from '../images/FELIPE GOMEZ.jpg';
+import ana1 from '../images/ana-maria-rusque.jpg';
+import susan1 from '../images/susan-calfunao.jpg';
+import jona1 from '../images/jonathan-canan.jpg';
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
@@ -67,11 +71,42 @@ const Miembros: FC = memo(() => {
                   photo={alex1}
                 />
                 <MemberProfile
-                  description="Especialista en genómica y biología molecular."
+                  description="Ingeniero Civil Matemático"
                   link="/miembro3" // Cambia esto al enlace correspondiente
-                  name="Dra. Laura Cheng"
-                  photo={laura1}
+                  name="David Salas"
+                  photo={david1}
                 />
+                <MemberProfile
+                  description="Físico de la Universidad del Valle"
+                  link="/miembro5" // Cambia esto al enlace correspondiente
+                  name="Nairo Torres"
+                  photo={nairo1}
+                />
+                <MemberProfile
+                  description="Ingeniero Civil en Computación"
+                  link="/miembro6" // Cambia esto al enlace correspondiente
+                  name="Felipe Gómez"
+                  photo={felipe1}
+                />
+                <MemberProfile
+                  description="Ingeniera Civil Industrial Universidad de Concepción"
+                  link="/miembro7" // Cambia esto al enlace correspondiente
+                  name="Ana María Rusque"
+                  photo={ana1}
+                />
+                <MemberProfile
+                  description="Tecnóloga Médica Morfofisiopatología y Citodiagnóstico"
+                  link="/miembro8" // Cambia esto al enlace correspondiente
+                  name="Susan Calfunao"
+                  photo={susan1}
+                />
+                <MemberProfile
+                  description="Ingeniero en Bioinformática"
+                  link="/miembro9" // Cambia esto al enlace correspondiente
+                  name="Jonathan Canan"
+                  photo={jona1}
+                />
+
               </div>
             </div>
 

@@ -5,17 +5,17 @@ import {FC, memo} from 'react';
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
 import backgroundImage from '../images/header-background.webp'; // Imagen de fondo
-import DavidImage from '../images/David-Salas.png'; // Imagen de David
+import JonaImage from '../images/jonathan-canan.jpg'; // Imagen de Jonathan
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
 
-const DavidProfile: FC = memo(() => {
+const JonathanProfile: FC = memo(() => {
   return (
     <Page
-      description="Conoce más sobre David Salas, Ingeniero Civil Matemático de la Universidad de Chile"
-      title="Perfil de David Salas">
+      description="Conoce más sobre Jonathan Canan, Ingeniero en Bioinformática"
+      title="Perfil de Jonathan Canan">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
         {/* Imagen de fondo futurista */}
@@ -38,33 +38,26 @@ const DavidProfile: FC = memo(() => {
 
           {/* Imagen de Laura */}
           <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-blue-600 shadow-lg">
-            <Image alt="David Salas" className="object-cover w-full h-full" src={DavidImage} />
+            <Image alt="Jonathan Canan" className="object-cover w-full h-full" src={JonaImage} />
           </div>
 
           {/* Información general de Laura */}
           <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
-            David Salas
+          Jonathan Canan
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">
-          Ingeniero Civil Matemático, Universidad de Chile
+          Ingeniero en Bioinformática
           </p>
           <p className="text-gray-700 text-center text-lg mb-4">
             <strong>Localización:</strong> Rancagua, Chile
           </p>
 
-          {/* Información sobre la carrera de Laura */}
+          {/* Información sobre la carrera de Susan */}
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-          Grado Académico: Matemáticas y Modelamiento, Université de Montpellier, Francia
+          Ingeniero en Bioinformática con sólida formación en informática, biología, matemáticas y estadísticas, especializado en el análisis masivo de datos, así como en el área de administración de clúster HPC,
+           instalación de software y hardware, configuración de redes y soporte técnico, asegurando el uso eficiente de recursos tecnológicos.
           </p>
-          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-          David Salas realizó sus estudios de pregrado en la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile. 
-          Posteriormente, hizo sus estudios doctorales en la Universidad de Montpellier (Francia) 
-          bajo la dirección de Lionel Thibault.
-          </p>
-          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
-          Su tesis doctoral trató de diferentes problemáticas de geometría en espacios de dimensión infinita. Realizó dos años de post-doctorado en el laboratorio PROMES de la Universidad de Perpignan (Francia), donde realizó investigaciones relacionadas con teoría de juegos, energías renovables y uso eficiente de recursos naturales. 
-          Cuenta con varias publicaciones ISI en diversas áreas de la matemática, tanto teóricas como aplicadas.
-          </p>
+
 
 
           {/* Sección de habilidades */}
@@ -74,7 +67,7 @@ const DavidProfile: FC = memo(() => {
               <li>🔬 Habilidad 1</li>
               <li>💻 Habilidad 2</li>
               <li>📊 Habilidad 3</li>
-              <li>⚙️ Habilidad 4 o Conocimiento</li>
+              <li>⚙️ Habilidad 4</li>
             </ul>
           </div>
 
@@ -85,15 +78,14 @@ const DavidProfile: FC = memo(() => {
               Conoce más sobre sus investigaciones, artículos y otros!
             </h4>
             <div className="flex justify-center space-x-4 mb-4">
-              
-        
-              <a
-                className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 transition duration-300"
-                href="https://scholar.google.com/citations?hl=es&user=KqC93U0AAAAJ"
+            <a
+                className="https://www.linkedin.com/in/susan-calfunao-caro-367a3173/"
+                href=""
                 rel="noopener noreferrer"
                 target="_blank">
-                Google Scholar
+                LinkedIn
               </a>
+        
             </div>
           </div>
         </div>
@@ -103,4 +95,4 @@ const DavidProfile: FC = memo(() => {
   );
 });
 
-export default DavidProfile;
+export default JonathanProfile;

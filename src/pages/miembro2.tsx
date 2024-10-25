@@ -55,6 +55,10 @@ const AlexProfile: FC = memo(() => {
 
           {/* Información sobre la carrera de Alex */}
           <p className="text-gray-600 text-center text-sm mb-4 text-justify">
+          Grado Académico: Doctor en Ingeniería de Sistemas Complejos, Universidad Adolfo Ibáñez
+
+          </p>
+          <p className="text-gray-600 text-center text-sm mb-4 text-justify">
             Alex Di Genova es Ingeniero en Bioinformática de la Universidad de Talca y Doctor en Ingeniería de Sistemas
             Complejos de la Universidad Adolfo Ibáñez. Su línea de investigación se centra en el desarrollo de nuevos
             algoritmos para el análisis de datos genómicos. Ha publicado más de 30 artículos científicos en revistas ISI
@@ -85,80 +89,36 @@ const AlexProfile: FC = memo(() => {
             </ul>
           </div>
 
-          {/* Sección de publicaciones destacadas */}
-          <div className="w-full mb-6">
-            <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Publicaciones Destacadas</h4>
-            <ul className="text-gray-700 text-lg list-disc list-inside">
-              <li>
-                <strong>
-                  Multiomic analysis of malignant pleural mesothelioma identifies molecular axes and specialized tumor
-                  profiles driving intertumor heterogeneity
-                </strong>
-                <br />
-                <em>REVISTA Nature Genetics, 2023</em>
-                <br />
-                Alex Di Genova, Lise Mangiante, Nicolas Alcala, Alexandra Sexton-Oates, Matthieu Foll
-                <br />
-                <a className="text-blue-600 hover:underline" href="http://dx.doi.org/10.1038/s41588-023-01321-1">
-                  Ver más
-                </a>
-              </li>
-              <li>
-                <strong>A molecular phenotypic map of malignant pleural mesothelioma</strong>
-                <br />
-                <em>REVISTA GigaScience, 2023</em>
-                <br />
-                Alex Di Genova, Lise Mangiante, Alexandra Sexton-Oates, Catherine Voegele, Lynnette Fernandez-Cuesta
-                <br />
-                <a className="text-blue-600 hover:underline" href="http://dx.doi.org/10.1093/gigascience/giac128">
-                  Ver más
-                </a>
-              </li>
-              <li>
-                <strong>Editorial: Applications of biological networks in biomedicine</strong>
-                <br />
-                <em>REVISTA Frontiers in Molecular Biosciences, 2023</em>
-                <br />
-                Vinicius Maracaja-Coutinho, Alex Di Genova, Anne Siegel, Mauricio Latorre
-                <br />
-                <a className="text-blue-600 hover:underline" href="http://dx.doi.org/10.3389/fmolb.2022.1005183">
-                  Ver más
-                </a>
-              </li>
-              <li>
-                <strong>
-                  Genome sequencing and transcriptomic analysis of the Andean killifish Orestias ascotanensis reveals
-                  adaptation to high-altitude aquatic life
-                </strong>
-                <br />
-                <em>REVISTA Genomics, 2022</em>
-                <br />
-                Alex Di Genova, [...]
-                <br />
-                <a className="text-blue-600 hover:underline" href="#">
-                  Ver más
-                </a>{' '}
-                {/* Enlace temporal */}
-              </li>
-            </ul>
-          </div>
-
+        
           {/* Enlaces a redes sociales */}
-          <div className="w-full mb-6 flex justify-center space-x-4">
-            <a
-              className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
-              href="https://www.linkedin.com/in/alex-digenova"
-              rel="noopener noreferrer"
-              target="_blank">
-              LinkedIn
-            </a>
-            <a
-              className="px-4 py-2 text-white bg-gray-800 rounded hover:bg-gray-700 transition duration-300"
-              href="https://github.com/alexdigenova"
-              rel="noopener noreferrer"
-              target="_blank">
-              GitHub
-            </a>
+          <div className="w-full mb-6 flex flex-col items-center">
+            <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">
+              Conoce más sobre sus investigaciones, artículos y otros!
+            </h4>
+            <div className="flex justify-center space-x-4 mb-4">
+              <a
+                className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition duration-300"
+                href="https://www.linkedin.com/in/alex-digenova"
+                rel="noopener noreferrer"
+                target="_blank">
+                LinkedIn
+              </a>
+              <a
+                className="px-4 py-2 text-white bg-gray-800 rounded hover:bg-gray-700 transition duration-300"
+                href="https://github.com/alexdigenova"
+                rel="noopener noreferrer"
+                target="_blank">
+                GitHub
+              </a>
+              <a
+                className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 transition duration-300"
+                href="https://scholar.google.com/citations?hl=es&user=KtBttDgAAAAJ"
+                rel="noopener noreferrer"
+                target="_blank">
+                Google Scholar
+              </a>
+
+            </div>
           </div>
         </div>
       </main>
