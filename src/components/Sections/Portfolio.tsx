@@ -11,6 +11,7 @@ import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 
 const Portfolio: FC = memo(() => {
+  const router = useRouter(); // Define el hook aquí
   return (
     <Section className="bg-white" sectionId={SectionId.Portfolio}>
       <div className="flex flex-col gap-y-8">
@@ -33,6 +34,13 @@ const Portfolio: FC = memo(() => {
           })}
         </div>
       </div>
+      <div className="flex justify-center mt-4">
+       {/* Botón "Ver más" */}
+       <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-10 py-3 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200"
+       onClick={() => router.push('/proyectos')}>
+        Ver más
+       </button>
+       </div>
     </Section>
   );
 });
