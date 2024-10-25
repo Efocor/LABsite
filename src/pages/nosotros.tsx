@@ -26,11 +26,11 @@ const AboutUs: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-green-800 mb-8">Acerca de Nosotros</h1>
+          <h1 className="text-5xl font-bold text-center text-white-900 mb-12">Acerca de Nosotros</h1>
 
             {/* Descripción General */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-green-600 mb-4">
+              <h2 className="text-3xl font-bold text-blue-600 mb-4">
                 Laboratorio de Innovación y Desarrollo Científico
               </h2>
               <p className="text-gray-700 mb-4">
@@ -50,7 +50,7 @@ const AboutUs: FC = memo(() => {
 
             {/* Información básica */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-green-600 mb-4">Información Adicional</h2>
+              <h2 className="text-3xl font-bold text-blue-600 mb-4">Información Adicional</h2>
               <p className="text-gray-700 mb-2">
                 <strong>Nacionalidad:</strong> Chilena
               </p>
@@ -73,7 +73,7 @@ const AboutUs: FC = memo(() => {
 
             {/* Áreas de Investigación */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-green-600 mb-4">Áreas de Investigación</h2>
+              <h2 className="text-3xl font-bold text-blue-600 mb-4">Áreas de Investigación</h2>
               <p className="text-gray-700 mb-4">
                 Nuestros proyectos se centran en varias áreas de vanguardia, incluyendo inteligencia artificial,
                 biotecnología y nanotecnología. Cada área es un campo fértil para la innovación, y buscamos
@@ -90,7 +90,7 @@ const AboutUs: FC = memo(() => {
 
             {/* Compromiso y Futuro */}
             <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-green-600 mb-4">Compromiso y Futuro</h2>
+              <h2 className="text-3xl font-bold text-blue-600 mb-4">Compromiso y Futuro</h2>
               <p className="text-gray-700 mb-4">
                 Nuestra dedicación a la educación y la investigación es inquebrantable. A través de programas de
                 formación, buscamos inspirar a la próxima generación de científicos a explorar, descubrir y crear.
