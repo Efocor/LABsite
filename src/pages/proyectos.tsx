@@ -4,7 +4,7 @@ import {FC, memo, useState} from 'react';
 
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import testimonialImage from '../images/header-background.webp'; // Asegúrate de que esta imagen esté disponible
+import testimonialImage from '../images/header-background.webp';
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
@@ -18,7 +18,7 @@ const ProjectDetail: FC<{
   tools: string[];
   logs: string[];
 }> = ({date, title, content, percentage, tools, logs}) => {
-  const [isOpen, setIsOpen] = useState(false); // Estado para mostrar/ocultar detalles
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <article
@@ -64,9 +64,53 @@ const ProjectDetail: FC<{
   );
 };
 
-// Componente principal del proyecto
+// Componente de Paginación
+const Pagination: FC<{
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}> = ({totalPages, currentPage, onPageChange}) => {
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
+  return (
+    <div className="flex justify-center items-center mt-8 space-x-4">
+      <button
+        onClick={handlePrev}
+        disabled={currentPage === 1}
+        className={`px-4 py-2 bg-blue-500 text-white rounded ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}>
+        Anterior
+      </button>
+      <span className="bg-green-700 text-white font-bold text-sm rounded-md p-3 shadow-md flex items-center justify-center border border-green-700 transition duration-300 hover:bg-green-700 hover:shadow-lg">
+        <span className="mr-1">Página</span>
+        <span className="text-sm">{currentPage}</span>
+        <span className="mx-1">de</span>
+        <span className="text-sm">{totalPages}</span>
+      </span>
+      <button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        className={`px-4 py-2 bg-blue-500 text-white rounded ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}>
+        Siguiente
+      </button>
+    </div>
+  );
+};
+
+// Componente principal del proyecto con paginación
 const Proyecto: FC = memo(() => {
-  // Datos de ejemplo de los proyectos
+  const projectsPerPage = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+
   const projectData = [
     {
       date: '15 de octubre de 2024',
@@ -123,15 +167,18 @@ const Proyecto: FC = memo(() => {
     },
   ];
 
+  // Cálculo del índice de proyectos para cada página
+  const totalPages = Math.ceil(projectData.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const selectedProjects = projectData.slice(startIndex, startIndex + projectsPerPage);
+
   return (
     <Page
       description="Explora nuestros proyectos de innovación en bioinformática y tecnología avanzada."
       title="Proyectos de Innovación en Bioinformática">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center">
-        {/* Contenedor principal con fondo de imagen */}
         <div className="relative w-full flex justify-center items-center">
-          {/* Imagen de fondo optimizada con Next.js */}
           <Image
             alt="Background image"
             className="absolute z-0 h-full w-full object-cover"
@@ -143,31 +190,23 @@ const Proyecto: FC = memo(() => {
             <h1 className="text-4xl font-bold text-center text-blue-400 mb-8">
               Proyectos de Innovación en Bioinformática
             </h1>
-
-            {/* Cuadro de introducción */}
             <div className="mb-8 p-4 bg-blue-200 rounded-lg shadow-lg">
               <h2 className="text-2xl font-semibold text-blue-600">Bienvenido a nuestros Proyectos</h2>
               <p className="text-gray-700">
-                Aquí encontrarás una selección de nuestros proyectos más innovadores en el campo de la bioinformática,
-                diseñados para mejorar la salud y la calidad de vida en nuestra comunidad. Haz clic en cada proyecto
-                para obtener más detalles.
+                Aquí encontrarás una selección de nuestros proyectos más recientes enfocados en la investigación,
+                desarrollo y la aplicación de soluciones innovadoras en el campo de la bioinformática y la tecnología
+                avanzada. Te recomendamos visitar las otras secciones para poder ver más detalles sobre miembros u otros temas
+                relacionados a los proyectos aquí presentados.
               </p>
             </div>
-
-            {/* Sección de proyectos */}
-            <section className="flex flex-col gap-6">
-              {projectData.map((project, index) => (
-                <ProjectDetail
-                  content={project.content}
-                  date={project.date}
-                  key={index}
-                  logs={project.logs}
-                  percentage={project.percentage}
-                  title={project.title}
-                  tools={project.tools}
-                />
+            {/* Mostrar los proyectos */}
+            <section>
+              {selectedProjects.map((project, index) => (
+                <ProjectDetail key={index} {...project} />
               ))}
             </section>
+            {/* Componente de paginación */}
+            <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={setCurrentPage} />
           </div>
         </div>
       </main>
