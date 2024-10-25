@@ -14,7 +14,8 @@ const Portfolio: FC = memo(() => {
   return (
     <Section className="bg-white" sectionId={SectionId.Portfolio}>
       <div className="flex flex-col gap-y-8">
-        <h2 className="self-center text-xl font-bold text-black">Proyectos</h2>
+        <h2 className="self-center text-4xl font-bold text-black">Proyectos</h2>
+        <p className="self-center text-1xl text-black">Aquí encontrarás una selección de nuestros proyectos más innovadores en el campo de la bioinformática, diseñados para mejorar la salud y la calidad de vida en nuestra comunidad. Haz clic en cada proyecto para obtener más detalles.</p>
         <div className="w-full flex flex-wrap justify-center gap-6">
           {portfolioItems.map((item, index) => {
             const {title, image} = item;
