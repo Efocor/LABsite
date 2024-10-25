@@ -1,4 +1,5 @@
 import {FC, memo} from 'react';
+import Link from 'next/link';
 
 import {education, experience, SectionId, skills} from '../../../data/data';
 import Section from '../../Layout/Section';
@@ -30,6 +31,7 @@ const Resume: FC = memo(() => {
 
           <div className="flex justify-center mt-4">
             {/* Botón "Ver más" */}
+          <Link href="/investigacion1"></Link>
             <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200">
               Ver más
             </button>

@@ -16,7 +16,7 @@ const researchData = [
     title: 'Modelado de redes de Señalización',
     description: 'Explora cómo las señales internas y externas son procesadas para activar respuestas específicas, como la defensa contra patógenos.',
     date: 'Abril 2023',
-    link: '/research/signal-network-modeling',
+    link: '/investigacion1',
   },
   {
     title: 'Investigación en Genómica de Cáncer',
