@@ -177,7 +177,7 @@ const ContactForm: FC = memo(() => {
             <Link href="/terminos" className="text-orange-500 underline">
             términos de uso
             </Link>
-             que se encuentran en este sitio web
+            {' '}que se encuentran en este sitio web
           </label>
         </div>
       </div>
