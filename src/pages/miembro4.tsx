@@ -75,7 +75,7 @@ const JuanProfile: FC = memo(() => {
               <li>🔬 Desarrollo de software genómico</li>
               <li>💻 Análisis de datos NGS</li>
               <li>📊 Bioinformática</li>
-              <li>⚙️ Programación en Python y R</li>
+              <li>⚙️ Programación en Python, C y R</li>
               <li>🧬 Genómica y Biología Computacional</li>
               <li>📈 Visualización de datos</li>
               <li>🔍 Investigación en biotecnología</li>
