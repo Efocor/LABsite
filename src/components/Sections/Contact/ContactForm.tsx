@@ -175,9 +175,9 @@ const ContactForm: FC = memo(() => {
           <label className="text-sm text-neutral-400">
             He leído los{' '}
             <Link href="/terminos" className="text-orange-500 underline">
-            términos de uso 
+            términos de uso
             </Link>
-            que se encuentran en este sitio web
+             que se encuentran en este sitio web
           </label>
         </div>
       </div>
