@@ -79,14 +79,14 @@ const SoftwareSection: FC = () => (
     </ul>
     {/* Botón de descarga para Wengan */}
     <br />
-    <h4 className="text-lg font-semibold text-gray-700 mb-1">Sección de descargas</h4>
+    <h4 className="text-lg font-semibold text-gray-700 mb-1 text-[24px]">Sección de descargas</h4>
     <div className="mt-6">
       <a
-        className="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
-        href="https://google.com" // Reemplaza con la URL de descarga real
+        className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300  text-[24px]"
+        href="https://github.com/camoragaq/BrumiR" // Reemplaza con la URL de descarga real
         rel="noopener noreferrer"
         target="_blank">
-        Descargar Wengan
+        Visitar BrumiR
       </a>
     </div>
   </section>

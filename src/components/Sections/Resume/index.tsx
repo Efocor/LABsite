@@ -1,6 +1,6 @@
 import {FC, memo} from 'react';
-import Link from 'next/link';
-
+//import Link from 'next/link';
+import {useRouter} from 'next/router'; // Importa useRouter
 import {education, experience, SectionId, skills} from '../../../data/data';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
@@ -8,6 +8,7 @@ import {SkillGroup} from './Skills';
 import TimelineItem from './TimelineItem';
 
 const Resume: FC = memo(() => {
+  const router = useRouter(); // Define el hook aquí
   return (
     <Section className="bg-neutral-100" sectionId={SectionId.Resume}>
       <div className="flex flex-col divide-y-2 divide-neutral-300">
@@ -31,9 +32,9 @@ const Resume: FC = memo(() => {
 
           <div className="flex justify-center mt-4">
             {/* Botón "Ver más" */}
-          <Link href="/investigacion1"></Link>
-            <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200">
-              Ver más
+            <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-10 py-3 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200"
+            onClick={() => router.push('/investigacion1')}>
+            Ver más
             </button>
           </div>
         </ResumeSection>
@@ -59,8 +60,9 @@ const Resume: FC = memo(() => {
           {/* Contenedor para centrar el botón */}
           <div className="flex justify-center mt-4">
             {/* Botón "Ver más" */}
-            <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200">
-              Ver más
+            <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-10 py-3 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200"
+            onClick={() => router.push('/investigacion2')}>
+            Ver más
             </button>
           </div>
         </ResumeSection>
