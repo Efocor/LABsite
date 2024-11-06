@@ -239,7 +239,7 @@ const NavItem: FC<{
   inactiveClass: string;
   onClick?: () => void;
 }> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
-  const isSoftwareSection = section === 'Software';
+  const isSoftwareSection = section === 'Infraestructura';
   const isNewsSection = section === 'Noticias';
   const isContactSection = section === 'Contacto';
   const isProyectosSection = section === 'Proyectos';
@@ -250,7 +250,7 @@ const NavItem: FC<{
       className={classNames(current ? activeClass : inactiveClass)}
       href={
         isSoftwareSection
-          ? '/software'
+          ? '/infraestructura'
           : isNewsSection
             ? '/noticias'
             : isContactSection

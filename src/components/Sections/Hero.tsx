@@ -5,7 +5,14 @@ import {FC, memo} from 'react';
 
 import {heroData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
-import Socials from '../Socials';
+import Socials from '../Socials';    
+//import React from "react";
+//import ReactDOM from 'react-dom/client';
+//import App from "./App.jsx";
+
+//const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
+//root.render(<App />);
+
 
 const Hero: FC = memo(() => {
   const {imageSrc, name, description, actions} = heroData;

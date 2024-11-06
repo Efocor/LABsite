@@ -62,7 +62,7 @@ export const SectionId = {
   Resume: 'Investigación',
   Skills: 'skills',
   Stats: 'stats',
-  Software: 'Software',
+  Software: 'Infraestructura',
   Noticias: 'Noticias',
   Testimonials: 'Noticia',
 } as const;
@@ -136,7 +136,7 @@ export const aboutData: About = {
  */
 export const skills: SkillGroup[] = [
   {
-    name: 'Software',
+    name: 'Infraestructura',
     skills: [
       {
         name: 'Wengan',
