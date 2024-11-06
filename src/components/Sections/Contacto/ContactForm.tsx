@@ -136,28 +136,28 @@ const ContactForm: FC = memo(() => {
 
         <div className="flex justify-between mt-2">
           <button
-            className={`px-4 py-2 rounded-md ${
+            className={`px-4 py-2 text-xs rounded-md ${
               data.reason === 'Consulta' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'
             }`}
             onClick={() => handleReasonChange('Consulta')}
             type="button">
-            Consulta
+            Colaboración/Consulta
           </button>
           <button
-            className={`px-4 py-2 rounded-md ${
+            className={`w-32 px-4 py-2 text-xs rounded-md ${
               data.reason === 'Colaboración' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'
             }`}
             onClick={() => handleReasonChange('Colaboración')}
             type="button">
-            Colaboración
+            Laboratorio de secuenciación
           </button>
           <button
-            className={`px-4 py-2 rounded-md ${
+            className={`w-32 px-4 py-2 text-xs rounded-md ${
               data.reason === 'Solicitud de información' ? 'bg-green-500 text-white' : 'bg-neutral-300 text-neutral-800'
             }`}
             onClick={() => handleReasonChange('Solicitud de información')}
             type="button">
-            Solicitud de información
+            Laboratorio de supercomputo
           </button>
         </div>
 

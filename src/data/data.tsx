@@ -382,8 +382,8 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Instagram,
-      text: '@la_uoh',
-      href: 'https://www.instagram.com/la_uoh/',
+      text: '@biocompu_uoh',
+      href: 'https://www.instagram.com/biocompu_uoh/',
     },
     {
       type: ContactType.Github,
@@ -400,6 +400,6 @@ export const socialLinks: Social[] = [
   {label: 'Github', Icon: GithubIcon, href: 'https://github.com/camoragaq'},
   {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://www.uoh.cl/investigacion/academico/carol-moraga/'},
   {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/camoragaq/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/la_uoh/'},
+  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/biocompu_uoh/'},
   {label: 'Twitter', Icon: TwitterIcon, href: 'https://x.com/ici_uoh'},
 ];
