@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: static/img          # Carpeta donde se guardan las imágenes en el repositorio
-public_folder: /img               # Ruta pública para acceder a las imágenes
+public_folder: static/img            # Ruta pública para acceder a las imágenes
 
 collections:
   - name: "blog"
