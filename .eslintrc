@@ -22,6 +22,7 @@
     // The next two rules should be errors. But for now we"ll leave them as warnings since this will take a while
     "react-memo/require-usememo": "off",
     "react-memo/require-memo": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react-hooks/rules-of-hooks": "off",
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
