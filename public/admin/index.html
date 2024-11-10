@@ -12,20 +12,34 @@
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
     <script>
-      // Configuración del Netlify Identity Widget
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/';
-            });
+      // Inicializar Netlify Identity y manejar el token de confirmación
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.netlifyIdentity) {
+          // Manejar token de confirmación
+          const urlParams = new URLSearchParams(window.location.search);
+          const token = urlParams.get('token');
+          if (token) {
+            netlifyIdentity.confirm(token)
+              .then(() => {
+                console.log('Token confirmado. Usuario registrado.');
+                document.location.href = '/admin/';
+              })
+              .catch(err => {
+                console.error('Error al confirmar token:', err);
+              });
           }
-        });
-      }
 
-      // Inicializar Netlify Identity cuando se cargue la página
-      document.addEventListener('DOMContentLoaded', function() {
-        netlifyIdentity.init();
+          // Inicializar el widget
+          netlifyIdentity.on('init', user => {
+            if (!user) {
+              netlifyIdentity.on('login', () => {
+                document.location.href = '/admin/';
+              });
+            }
+          });
+
+          netlifyIdentity.init();
+        }
       });
     </script>
   </body>
