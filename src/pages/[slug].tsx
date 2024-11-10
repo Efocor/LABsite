@@ -75,11 +75,14 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
+  // Asegúrate de convertir la fecha a una cadena
+  const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
+
   return {
     props: {
       post: {
         title: data.title,
-        date: data.date,
+        date: postDate,
         body: content,
         featuredImage: data.featuredImage || '/default-image.jpg',
       },
