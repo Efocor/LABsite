@@ -60,7 +60,7 @@ export async function getStaticPaths() {
   const filenames = fs.readdirSync(postsDirectory);
 
   const paths = filenames.map((filename) => ({
-    params: { slug2: filename.replace(/\.md$/, '') }, // Aquí mantenemos 'slug2'
+    params: { revo: filename.replace(/\.md$/, '') }, // Cambié 'slug2' a 'revo'
   }));
 
   return {
@@ -69,9 +69,9 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: { params: { slug2: string } }) {  // Aquí también usamos 'slug2'
-  const { slug2 } = params;
-  const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug2}.md`);
+export async function getStaticProps({ params }: { params: { revo: string } }) {  // Cambié 'slug2' a 'revo'
+  const { revo } = params;
+  const filePath = path.join(process.cwd(), 'src/pages/miembros', `${revo}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
