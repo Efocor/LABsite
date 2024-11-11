@@ -2,8 +2,13 @@ backend:
   name: git-gateway
   branch: main
 
+<<<<<<< HEAD
 media_folder: /images          # Carpeta donde se guardan las imágenes en el repositorio
 public_folder: /images              # Ruta pública para acceder a las imágenes
+=======
+media_folder: static/img          # Carpeta donde se guardan las imágenes en el repositorio
+public_folder: static/img            # Ruta pública para acceder a las imágenes
+>>>>>>> 8c5c8a9e48211abf0cea84389b5e669bbddfbd68
 
 collections:
   - name: "blog"
