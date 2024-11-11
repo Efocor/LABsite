@@ -14,7 +14,7 @@ const NewsArticle: FC<{date: string; title: string; summary: string; content: st
   title,
   summary,
   content,
-  link,
+  link
 }) => (
   <article className="p-6 bg-white bg-opacity-90 shadow-lg rounded-lg mb-8 transition-transform transform hover:scale-105">
     <h2 className="text-3xl font-bold text-blue-700 mb-2">
@@ -24,7 +24,7 @@ const NewsArticle: FC<{date: string; title: string; summary: string; content: st
     </h2>
     <p className="text-sm text-gray-500">{date}</p>
     <p className="text-lg text-gray-700 mt-4 mb-4">{summary}</p>
-    <p className="text-gray-600">{content}</p>
+    <p className="text-gray-600">{content}</p> 
     <a className="inline-block mt-4 px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded transition" href={link}>
       Ver más
     </a>
@@ -52,20 +52,33 @@ const Noticias: FC = memo(() => {
             <section className="space-y-8">
               {/* Noticia 1 */}
               <NewsArticle
-                content={`
-                  En una reunión clave celebrada ayer, el equipo del Centro de Innovación Tecnológica (CIT) presentó los últimos avances en su ambicioso proyecto de optimización de redes. 
-                  La sesión, que reunió a destacados investigadores, ingenieros y gestores de proyecto, marcó un hito en la evolución de la red tecnológica de la institución. 
-                  Durante la jornada, los miembros del equipo compartieron los resultados preliminares de las recientes pruebas y experimentos, revelando mejoras significativas en varios 
-                  aspectos cruciales de la optimización de redes.
-                  
-                  Una de las innovaciones más importantes es un nuevo algoritmo de optimización que ha reducido significativamente los tiempos de respuesta de las redes, lo que podría revolucionar 
-                  la gestión de redes a gran escala. Además, el equipo se comprometió a seguir investigando soluciones creativas para garantizar la viabilidad de estas técnicas en entornos comerciales.
-                `}
-                date="31 de agosto de 2024"
-                link="/noticiaej1"
-                summary="El CIT presentó nuevos avances en la optimización de redes, con innovaciones que prometen revolucionar la eficiencia en la transmisión de datos."
-                title="Avances en Optimización de Redes en el Centro de Innovación Tecnológica"
-              />
+      content={`
+        En una reunión clave celebrada ayer, el equipo del Centro de Innovación Tecnológica (CIT) presentó los últimos avances en su ambicioso proyecto de optimización de redes. 
+        La sesión, que reunió a destacados investigadores, ingenieros y gestores de proyecto, marcó un hito en la evolución de la red tecnológica de la institución. 
+        Durante la jornada, los miembros del equipo compartieron los resultados preliminares de las recientes pruebas y experimentos, revelando mejoras significativas en varios 
+        aspectos cruciales de la optimización de redes.
+        
+        Una de las innovaciones más importantes es un nuevo algoritmo de optimización que ha reducido significativamente los tiempos de respuesta de las redes, lo que podría revolucionar 
+        la gestión de redes a gran escala. Además, el equipo se comprometió a seguir investigando soluciones creativas para garantizar la viabilidad de estas técnicas en entornos comerciales.
+      `}
+      date="31 de agosto de 2024"
+      link="/noticiaej1"
+      summary="El CIT presentó nuevos avances en la optimización de redes, con innovaciones que prometen revolucionar la eficiencia en la transmisión de datos."
+      title="Avances en Optimización de Redes en el Centro de Innovación Tecnológica"
+      
+    />
+    {/* Contenedor de Imágenes para Noticia 1 */}
+    <div className="flex justify-between">
+      <div className="w-1/3 h-40 bg-gray-200 mr-2 flex items-center justify-center">
+        <img src="imagen1.jpg" alt="Descripción de la imagen 1" className="object-cover w-full h-full" />
+      </div>
+      <div className="w-1/3 h-40 bg-gray-200 mr-2 flex items-center justify-center">
+        <img src="imagen2.jpg" alt="Descripción de la imagen 2" className="object-cover w-full h-full" />
+      </div>
+      <div className="w-1/3 h-40 bg-gray-200 flex items-center justify-center">
+        <img src="imagen3.jpg" alt="Descripción de la imagen 3" className="object-cover w-full h-full" />
+      </div>
+    </div>
 
               {/* Noticia 2 */}
               <NewsArticle
