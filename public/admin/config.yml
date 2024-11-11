@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: static/img          # Carpeta donde se guardan las imágenes en el repositorio
-public_folder: /img               # Ruta pública para acceder a las imágenes
+media_folder: /images          # Carpeta donde se guardan las imágenes en el repositorio
+public_folder: /images              # Ruta pública para acceder a las imágenes
 
 collections:
   - name: "blog"
@@ -33,11 +33,11 @@ collections:
 
   - name: "miembros"
     label: "Miembros"
-    label_singular: "Post"
+    label_singular: "Post Miembro"
     folder: "src/pages/miembros"
     create: true
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post.template"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "miembros-post.template"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "featuredImage", widget: "image"} # Imagen destacada para el post
