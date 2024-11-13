@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: src/images          # Carpeta donde se guardan las imágenes en el repositorio
-public_folder: src/images              # Ruta pública para acceder a las imágenes
+media_folder: "public/images"
+public_folder: "/images"
 
 collections:
   - name: "blog"
@@ -36,6 +36,7 @@ collections:
     label_singular: "Miembro"
     folder: "src/pages/miembros"
     create: true
+    slug: "{{name | slugify | truncate(10, true, '')}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "miembros-page.template"}
       - {label: "Name", name: "name", widget: "string"}
