@@ -30,8 +30,7 @@ collections:
       - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}} # Galería de imágenes
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Ingredients", name: "ingredients", widget: "list"}
-
-
+# comentario
   - name: "miembros"
     label: "Miembros"
     label_singular: "Miembro"
