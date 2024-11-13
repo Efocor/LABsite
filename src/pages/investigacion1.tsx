@@ -52,6 +52,17 @@ const SignalingNetworkModelingDetail: FC = () => (
       solo amplía nuestra comprensión de la biología celular, sino que también sienta las bases para innovaciones en la
       medicina y la biotecnología.
     </p>
+    <p className="text-2xl font-semibold text-green-600 mb-4">
+  Financiamiento de la investigación
+</p>
+<p className="text-lg text-gray-700 text-justify mb-4">
+  Esta investigación ha sido financiada mediante la colaboración de múltiples proyectos liderados por el laboratorio, los cuales han sido respaldados tanto por fondos gubernamentales como por asociaciones con entidades privadas. Estos fondos han permitido el desarrollo de innovadoras herramientas y tecnologías, desde etapas tempranas de investigación hasta su aplicación práctica en el campo de la medicina y la bioinformática. <br/><br/>
+  
+  Entre los principales organismos de financiamiento se encuentran el Gobierno Regional, que apoya los esfuerzos para mejorar la salud pública y la medicina de precisión en la Región de O’Higgins, y otras instituciones de investigación que promueven la innovación en salud. La combinación de estos recursos ha sido fundamental para avanzar en proyectos ambiciosos y a largo plazo, garantizando el acceso a equipamiento de última generación, formación especializada para el equipo de investigación y el establecimiento de redes colaborativas internacionales. <br/><br/>
+  
+  Gracias a este financiamiento, el laboratorio ha logrado consolidarse como un referente en el desarrollo de soluciones tecnológicas para la salud, comprometido con un enfoque ético y responsable que busca maximizar el impacto positivo de sus investigaciones en la comunidad local y en el sector médico en general.
+</p>
+
   </article>
 );
 

@@ -58,12 +58,28 @@ const Research: FC = memo(() => {
             {/* Cuadro para la descripción general */}
             <div className="bg-white bg-opacity-90 shadow-lg rounded-lg p-8 mb-10">
               <h1 className="text-5xl font-bold text-center text-blue-900 mb-4">Investigaciones en Bioinformática</h1>
-              <p className="text-lg text-gray-700 text-center">
+              <p className="text-lg text-gray-700 text-justify mb-4">
                 En nuestro laboratorio de bioinformática, nos dedicamos a avanzar en la ciencia a través de investigaciones
                 innovadoras. Empleamos técnicas de análisis de datos, modelado computacional y secuenciación de alta
                 capacidad para abordar preguntas complejas en biología y medicina. Nuestros proyectos abarcan desde la
                 genómica hasta el análisis de microbiomas, siempre buscando comprender mejor los procesos biológicos y
                 desarrollar soluciones efectivas.
+              </p>
+              <p className="text-3xl font-semibold text-blue-600 mb-4">
+              ¿Qué es la Medicina Genómica?
+              </p>
+              <p className="text-2xl font-semibold text-black-600 mb-4">
+              El Futuro de la Salud
+              </p>
+              <p className="text-lg text-gray-700  text-justify mb-4">
+              La medicina genómica utiliza la información genética para personalizar el diagnóstico y tratamiento de enfermedades. 
+              Gracias a los avances en la secuenciación del ADN, es posible identificar mutaciones específicas que guían tratamientos 
+              más eficaces, como en el caso de enfermedades raras y cáncer.
+              El uso de HPC es fundamental para manejar los enormes volúmenes de datos que genera la secuenciación genómica. 
+              Este proyecto está comprometido con el desarrollo responsable de la medicina de precisión, abordando tanto los desafíos
+               éticos como los técnicos para garantizar una implementación efectiva en la Región de O’Higgins.
+              Este contenido combina la visión técnica y científica del proyecto, con un enfoque accesible para el público general, 
+              destacando el impacto positivo en la región y la importancia de la supercomputación en la medicina personalizada.
               </p>
             </div>
 
