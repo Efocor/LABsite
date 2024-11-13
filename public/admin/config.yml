@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: src/images          # Carpeta donde se guardan las imágenes en el repositorio
-public_folder: src/images              # Ruta pública para acceder a las imágenes
+media_folder: "public/images"
+public_folder: "/images"
 
 collections:
   - name: "blog"
@@ -31,26 +31,28 @@ collections:
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Ingredients", name: "ingredients", widget: "list"}
 
+collections:
   - name: "miembros"
     label: "Miembros"
     label_singular: "Miembro"
     folder: "src/pages/miembros"
     create: true
-    slug: "{{name | slugify | truncate(10, true, '')}}"
+    slug: "{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "miembros-page.template"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Photo", name: "photo", widget: "image"} # Imagen del miembro
-      - {label: "Link", name: "link", widget: "string"}  # Enlace a la página del miembro
-      - {label: "Profile Information", name: "profileInfo", widget: "markdown"} # Información detallada del perfil
+      - {label: "Photo", name: "photo", widget: "image"}
+      - {label: "Link", name: "link", widget: "string"}
+      - {label: "Profile Information", name: "profileInfo", widget: "markdown"}
       - label: "Skills"
         name: "skills"
         widget: "list"
-        field: {label: "Skill", name: "skill", widget: "string"} # Lista de habilidades
+        field: {label: "Skill", name: "skill", widget: "string"}
       - label: "Social Links"
         name: "socialLinks"
         widget: "list"
         fields:
           - {label: "Platform", name: "platform", widget: "string"}
           - {label: "URL", name: "url", widget: "string"}
+
