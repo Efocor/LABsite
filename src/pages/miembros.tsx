@@ -10,7 +10,7 @@ import carol1 from '../images/Carol-Moraga-1.jpg';
 import testimonialImage from '../images/header-background.webp';
 import david1 from '../images/David-Salas.jpg';
 import nairo1 from '../images/nairo-torres.jpg';
-import alex1 from '../images/Perfil_Alex_Genova.jpg';
+import alex1 from '../images/perfil_alex_genova.jpg';
 import felipe1 from '../images/FELIPE GOMEZ.jpg';
 import ana1 from '../images/ana-maria-rusque.jpg';
 import susan1 from '../images/susan-calfunao.jpg';
