@@ -1,11 +1,11 @@
-import {Dialog, Transition} from '@headlessui/react';
-import {Bars3BottomRightIcon, ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/24/outline';
+import { Dialog, Transition } from '@headlessui/react';
+import { Bars3BottomRightIcon, ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
-import {FC, Fragment, memo, useCallback, useMemo, useState} from 'react';
+import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
 
-import {SectionId} from '../../data/data';
-import {useNavObserver} from '../../hooks/useNavObserver';
+import { SectionId } from '../../data/data';
+import { useNavObserver } from '../../hooks/useNavObserver';
 
 export const headerID = 'headerNav';
 
@@ -21,7 +21,7 @@ const Header: FC = memo(() => {
       SectionId.Software,
       SectionId.Contact,
     ],
-    [], // Se han eliminado Miembros e Investigación de esta lista
+    [],
   );
 
   const intersectionHandler = useCallback((section: SectionId | null) => {
@@ -40,7 +40,7 @@ const Header: FC = memo(() => {
 
     if (matchingSection) {
       const sectionElement = document.querySelector(`#${matchingSection}`);
-      sectionElement?.scrollIntoView({behavior: 'smooth'});
+      sectionElement?.scrollIntoView({ behavior: 'smooth' });
     } else {
       console.log('Sección no encontrada');
     }
@@ -72,7 +72,7 @@ const DesktopNav: FC<{
   searchQuery: string;
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSearchSubmit: (event: React.FormEvent) => void;
-}> = memo(({navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit}) => {
+}> = memo(({ navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit }) => {
   const baseClass =
     '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:hover:text-orange-500 text-neutral-100';
   const activeClass = classNames(baseClass, 'text-orange-500');
@@ -85,6 +85,13 @@ const DesktopNav: FC<{
           {navSections.map(section =>
             section === 'Nosotros' ? (
               <DropdownNavItem
+                activeClass={activeClass}
+                currentSection={currentSection}
+                inactiveClass={inactiveClass}
+                key={section}
+              />
+            ) : section === 'Infraestructura' ? (
+              <InfraestructuraDropdownNavItem
                 activeClass={activeClass}
                 currentSection={currentSection}
                 inactiveClass={inactiveClass}
@@ -117,8 +124,8 @@ const DesktopNav: FC<{
   );
 });
 
-const DropdownNavItem: FC<{activeClass: string; inactiveClass: string; currentSection: string | null}> = memo(
-  ({activeClass, inactiveClass, currentSection}) => {
+const DropdownNavItem: FC<{ activeClass: string; inactiveClass: string; currentSection: string | null }> = memo(
+  ({ activeClass, inactiveClass, currentSection }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => setIsOpen(!isOpen);
@@ -126,7 +133,7 @@ const DropdownNavItem: FC<{activeClass: string; inactiveClass: string; currentSe
     const isActive = currentSection === 'Nosotros';
 
     return (
-      <div className="relative">
+      <div className="relative flex-shrink-0">
         <button
           className={classNames(isActive ? activeClass : inactiveClass, 'flex items-center')}
           onClick={toggleDropdown}>
@@ -151,13 +158,46 @@ const DropdownNavItem: FC<{activeClass: string; inactiveClass: string; currentSe
   },
 );
 
+const InfraestructuraDropdownNavItem: FC<{ activeClass: string; inactiveClass: string; currentSection: string | null }> =
+  memo(({ activeClass, inactiveClass, currentSection }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => setIsOpen(!isOpen);
+
+    const isActive = currentSection === 'Infraestructura';
+
+    return (
+      <div className="relative flex-shrink-0">
+        <button
+          className={classNames(isActive ? activeClass : inactiveClass, 'flex items-center')}
+          onClick={toggleDropdown}>
+          Infraestructura
+          <ChevronDownIcon className="w-5 h-5 ml-1" />
+        </button>
+        {isOpen && (
+          <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
+            <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/infraestructura">
+              Infraestructura
+            </Link>
+            <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/lab_secuenciacion">
+              Lab. Secuenciación
+            </Link>
+            <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/lab_super_computo">
+              Lab. Super Computo
+            </Link>
+          </div>
+        )}
+      </div>
+    );
+  });
+
 const MobileNav: FC<{
   navSections: SectionId[];
   currentSection: SectionId | null;
   searchQuery: string;
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSearchSubmit: (event: React.FormEvent) => void;
-}> = memo(({navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit}) => {
+}> = memo(({ navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleOpen = useCallback(() => {
@@ -238,7 +278,7 @@ const NavItem: FC<{
   activeClass: string;
   inactiveClass: string;
   onClick?: () => void;
-}> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
+}> = memo(({ section, current, inactiveClass, activeClass, onClick }) => {
   const isSoftwareSection = section === 'Infraestructura';
   const isNewsSection = section === 'Noticias';
   const isContactSection = section === 'Contacto';
@@ -252,14 +292,14 @@ const NavItem: FC<{
         isSoftwareSection
           ? '/infraestructura'
           : isNewsSection
-            ? '/noticias'
-            : isContactSection
-              ? '/contacto'
-              : isProyectosSection
-                ? '/proyectos'
-                : isNosotrosSection
-                  ? '/nosotros'
-                  : `/#${section}`
+          ? '/noticias'
+          : isContactSection
+          ? '/contacto'
+          : isProyectosSection
+          ? '/proyectos'
+          : isNosotrosSection
+          ? '/nosotros'
+          : `/#${section}`
       }
       key={section}
       onClick={onClick}>
