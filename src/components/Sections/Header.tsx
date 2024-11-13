@@ -34,17 +34,39 @@ const Header: FC = memo(() => {
     setSearchQuery(event.target.value); // Actualiza el estado con la entrada del usuario
   };
 
-  const handleSearchSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    const matchingSection = navSections.find(section => section.toLowerCase().includes(searchQuery.toLowerCase()));
+  const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+const [matchingElements, setMatchingElements] = useState<Element[]>([]);
 
-    if (matchingSection) {
-      const sectionElement = document.querySelector(`#${matchingSection}`);
-      sectionElement?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      console.log('Sección no encontrada');
-    }
-  };
+const handleSearchSubmit = (event: React.FormEvent) => {
+  event.preventDefault();
+
+  const searchQueryLower = searchQuery.toLowerCase();
+
+  // Realizar nueva búsqueda si el término cambió o si es la primera búsqueda
+  if (matchingElements.length === 0 || currentMatchIndex === 0) {
+    const allContentElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, a');
+    const foundElements = Array.from(allContentElements).filter(element =>
+      element.textContent?.toLowerCase().includes(searchQueryLower)
+    );
+
+    setMatchingElements(foundElements);
+    setCurrentMatchIndex(0);
+  }
+
+  if (matchingElements.length > 0) {
+    const elementToHighlight = matchingElements[currentMatchIndex];
+    
+    // Scroll con margen superior para que el texto encontrado esté centrado
+    elementToHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    console.log('Contenido encontrado:', elementToHighlight.textContent);
+
+    // Avanza al siguiente índice y vuelve al inicio si llegamos al final
+    setCurrentMatchIndex((currentMatchIndex + 1) % matchingElements.length);
+  } else {
+    console.log('Contenido no encontrado');
+  }
+};
 
   return (
     <>
