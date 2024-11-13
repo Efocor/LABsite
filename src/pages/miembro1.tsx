@@ -4,7 +4,7 @@ import {FC, memo} from 'react';
 
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import carol1 from '../images/Carol-Moraga-1.png'; // Imagen de Carol
+import carol1 from '../images/Carol-Moraga-1.jpg'; // Imagen de Carol
 import backgroundImage from '../images/header-background.webp'; // Imagen de fondo
 
 // Importación dinámica del Header

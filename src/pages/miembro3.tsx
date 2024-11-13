@@ -5,7 +5,7 @@ import {FC, memo} from 'react';
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
 import backgroundImage from '../images/header-background.webp'; // Imagen de fondo
-import DavidImage from '../images/David-Salas.png'; // Imagen de David
+import DavidImage from '../images/David-Salas.jpg'; // Imagen de David
 
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});

@@ -13,7 +13,9 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 import TwitterIcon from '../components/Icon/TwitterIcon';
-import heroImage from '../images/header-backgroundfix.webp';
+import heroImage1 from '../images/header-backgroundfix.webp';
+import heroImage2 from '../images/Imagen_inicio_2.jpg';
+import heroImage3 from '../images/Imagen_inicio_3.jpg';
 import testimonialImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
@@ -72,8 +74,8 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
 /**
  * Hero section
  */
-export const heroData: Hero = {
-  imageSrc: heroImage,
+export const heroData: Hero = { 
+  imageSrc: [heroImage1, heroImage2, heroImage3],  // Arreglo de imágenes
   name: `Estudios de Ciencia e Investigación`,
   description: (
     <>
@@ -82,22 +84,13 @@ export const heroData: Hero = {
         <strong className="text-stone-100">forma de pensar</strong>, que nos impulsa a{' '}
         <strong className="text-stone-100">cuestionar, explorar y descubrir</strong> lo que aún no conocemos.
       </p>
-      {/*
-      <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
-        plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
-        <strong className="text-stone-100">Vancouver Island</strong>.
-      </p>
-      */}
     </>
   ),
   actions: [
     {
-      // href: '/assets/resume.pdf',
       href: `#${SectionId.About}`,
       text: 'Nosotros',
       primary: true,
-      // Icon: ArrowDownTrayIcon,
     },
     {
       href: `#${SectionId.Contact}`,
