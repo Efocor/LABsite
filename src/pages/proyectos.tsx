@@ -9,6 +9,12 @@ import testimonialImage from '../images/header-background.webp';
 // Importación dinámica del Header
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
+// Define el tipo de los miembros
+interface Member {
+  name: string;
+  image: string;
+}
+
 // Componente para mostrar detalles del proyecto
 const ProjectDetail: FC<{
   date: string;
@@ -17,7 +23,8 @@ const ProjectDetail: FC<{
   percentage: number;
   tools: string[];
   logs: string[];
-}> = ({date, title, content, percentage, tools, logs}) => {
+  members: Member[];
+}> = ({date, title, content, percentage, tools, logs, members}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -58,11 +65,31 @@ const ProjectDetail: FC<{
               ))}
             </ul>
           </div>
+          <div className="mt-4">
+  <h3 className="font-bold text-blue-600 mb-4">Miembros:</h3>
+  <div className="flex space-x-4">
+    {members.map((member, index) => (
+      <div className="flex items-center" key={index}>
+        <Image
+          src={member.image}
+          alt={member.name}
+          width={50}  // Tamaño de la imagen
+          height={50} // Tamaño de la imagen
+          className="rounded-full" // Hace la imagen circular
+        />
+        <span className="ml-2 text-gray-600">{member.name}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+          
         </div>
       )}
     </article>
   );
 };
+
 
 // Componente de Paginación
 const Pagination: FC<{
@@ -124,6 +151,12 @@ const Proyecto: FC = memo(() => {
         'Desarrollo de la plataforma inicial',
         'Implementación de módulos de capacitación',
       ],
+      members: [
+        { name: 'Ana María Rusque', image: '/images/ana-maria-rusque.jpg' },
+        { name: 'Juan Pérez', image: '/images/bill-gates.jpg' },
+        { name: 'David Salas', image: '/images/David-Salas.jpg' },
+      ],
+
     },
     {
       date: '10 de octubre de 2024',
@@ -132,6 +165,9 @@ const Proyecto: FC = memo(() => {
       percentage: 50,
       tools: ['Python', 'Scikit-learn', 'Pandas'],
       logs: ['Recolección de datos', 'Entrenamiento del modelo', 'Validación de resultados'],
+      members : [
+        { name: 'Felipe Gómez', image: '/images/FELIPE GOMEZ.jpg' },
+      ],
     },
     {
       date: '05 de octubre de 2024',
@@ -140,6 +176,10 @@ const Proyecto: FC = memo(() => {
       percentage: 30,
       tools: ['React', 'Node.js', 'MongoDB'],
       logs: ['Diseño de la UI', 'Integración de API', 'Pruebas de usuario'],
+      members : [
+        { name: 'Carol Moraga', image: '/images/Carol-Moraga-1.jpg' },
+        { name: 'Susan Calfunao', image: '/images/susan-calfunao.jpg' },
+      ],
     },
     {
       date: '20 de septiembre de 2024',
@@ -148,6 +188,9 @@ const Proyecto: FC = memo(() => {
       percentage: 80,
       tools: ['Java', 'Spring Boot', 'MySQL'],
       logs: ['Definición de requerimientos', 'Implementación de la base de datos', 'Despliegue en producción'],
+      members : [
+        { name: 'Alex Di Genova', image: '/images/perfil_alex_genova.jpg' },
+      ],
     },
     {
       date: '12 de octubre de 2024',
@@ -156,6 +199,10 @@ const Proyecto: FC = memo(() => {
       percentage: 45,
       tools: ['BioPython', 'Jupyter Notebook', 'Nextflow'],
       logs: ['Configuración del entorno', 'Análisis de muestras', 'Presentación de resultados preliminares'],
+      members : [
+        { name: 'Juan Pérez', image: '/images/bill-gates.jpg' },
+        { name: 'Carol Moraga', image: '/images/Carol-Moraga-1.jpg' },
+      ],
     },
     {
       date: '01 de octubre de 2024',
@@ -164,6 +211,10 @@ const Proyecto: FC = memo(() => {
       percentage: 60,
       tools: ['Minitab', 'Excel', 'R'],
       logs: ['Análisis de procesos actuales', 'Desarrollo de propuestas de mejora', 'Implementación de cambios'],
+      members : [
+        { name: 'Dr. Juan Pérez', image: '/images/bill-gates.jpg' },
+        { name: 'Felipe Gómez', image: '/images/FELIPE GOMEZ.jpg' },
+      ],
     },
   ];
 
