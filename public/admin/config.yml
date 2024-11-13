@@ -30,14 +30,14 @@ collections:
       - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}} # Galería de imágenes
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Ingredients", name: "ingredients", widget: "list"}
-# comentario
+
   - name: "miembros"
     label: "Miembros"
     label_singular: "Miembro"
     folder: "src/pages/miembros"
     create: true
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "miembro.template"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "miembros-page.template"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Photo", name: "photo", widget: "image"} # Imagen del miembro
