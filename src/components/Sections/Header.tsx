@@ -162,8 +162,9 @@ const DropdownNavItem: FC<{ activeClass: string; inactiveClass: string; currentS
           Nosotros
           <ChevronDownIcon className="w-5 h-5 ml-1" />
         </button>
+        {/* Hacer visible el dropdown en móviles */}
         {isOpen && (
-          <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
+          <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10 sm:block">
             <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/nosotros">
               Nosotros
             </Link>
@@ -196,8 +197,9 @@ const InfraestructuraDropdownNavItem: FC<{ activeClass: string; inactiveClass: s
           Infraestructura
           <ChevronDownIcon className="w-5 h-5 ml-1" />
         </button>
+        {/* Hacer visible el dropdown en móviles */}
         {isOpen && (
-          <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
+          <div className="absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10 sm:block">
             <Link className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/infraestructura">
               Infraestructura
             </Link>
@@ -213,86 +215,153 @@ const InfraestructuraDropdownNavItem: FC<{ activeClass: string; inactiveClass: s
     );
   });
 
-const MobileNav: FC<{
-  navSections: SectionId[];
-  currentSection: SectionId | null;
-  searchQuery: string;
-  handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSearchSubmit: (event: React.FormEvent) => void;
-}> = memo(({ navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const toggleOpen = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
-
-  const baseClass =
-    'p-2 rounded-md first-letter:uppercase transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500';
-  const activeClass = classNames(baseClass, 'bg-neutral-900 text-white font-bold');
-  const inactiveClass = classNames(baseClass, 'text-neutral-200 font-medium');
-
-  return (
-    <>
-      <button
-        aria-label="Menu Button"
-        className="fixed right-2 top-2 z-40 rounded-md bg-orange-500 p-2 ring-offset-gray-800/80 hover:bg-orange-400 focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 sm:hidden"
-        onClick={toggleOpen}>
-        <Bars3BottomRightIcon className="h-8 w-8 text-white" />
-        <span className="sr-only">Open sidebar</span>
-      </button>
-      <Transition.Root as={Fragment} show={isOpen}>
-        <Dialog as="div" className="fixed inset-0 z-40 flex sm:hidden" onClose={toggleOpen}>
-          <Transition.Child
-            as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0">
-            <Dialog.Overlay className="fixed inset-0 bg-stone-900 bg-opacity-75" />
-          </Transition.Child>
-          <Transition.Child
-            as={Fragment}
-            enter="transition ease-in-out duration-300 transform"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-300 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full">
-            <div className="relative w-4/5 bg-stone-800">
-              <nav className="mt-5 flex flex-col gap-y-2 px-2">
-                {navSections.map(section => (
-                  <NavItem
-                    activeClass={activeClass}
-                    current={section === currentSection}
-                    inactiveClass={inactiveClass}
-                    key={section}
-                    onClick={toggleOpen}
-                    section={section}
-                  />
-                ))}
-                {/* Barra de búsqueda en el menú móvil */}
-                <form className="flex items-center mt-4" onSubmit={handleSearchSubmit}>
-                  <input
-                    className="p-2 rounded-l-md border border-gray-400"
-                    onChange={handleSearch}
-                    placeholder="Buscar..."
-                    type="text"
-                    value={searchQuery}
-                  />
-                  <button className="p-2 bg-blue-500 text-white rounded-r-md" type="submit">
-                    Buscar
-                  </button>
-                </form>
-              </nav>
-            </div>
-          </Transition.Child>
-        </Dialog>
-      </Transition.Root>
-    </>
-  );
-});
+  const MobileNav: FC<{
+    navSections: SectionId[];
+    currentSection: SectionId | null;
+    searchQuery: string;
+    handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSearchSubmit: (event: React.FormEvent) => void;
+  }> = memo(({ navSections, currentSection, searchQuery, handleSearch, handleSearchSubmit }) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null); // Controla qué dropdown está abierto
+  
+    const toggleOpen = useCallback(() => {
+      setIsOpen(!isOpen);
+    }, [isOpen]);
+  
+    const handleDropdownToggle = (section: string) => {
+      // Alterna entre abrir y cerrar el dropdown para la sección
+      setOpenDropdown(openDropdown === section ? null : section);
+    };
+  
+    const baseClass =
+      'p-2 rounded-md first-letter:uppercase transition-colors duration-300 focus:outline-none focus-visible:ring-0'; // Eliminar focus:ring
+    const activeClass = classNames(baseClass, 'bg-neutral-900 text-white font-bold');
+    const inactiveClass = classNames(baseClass, 'text-white font-medium'); // Asegúrate de que las letras sean blancas por defecto
+  
+    return (
+      <>
+        <button
+          aria-label="Menu Button"
+          className="fixed right-2 top-2 z-40 rounded-md bg-orange-500 p-2 ring-offset-gray-800/80 hover:bg-orange-400 focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 sm:hidden"
+          onClick={toggleOpen}>
+          <Bars3BottomRightIcon className="h-8 w-8 text-white" />
+          <span className="sr-only">Open sidebar</span>
+        </button>
+        <Transition.Root as={Fragment} show={isOpen}>
+          <Dialog as="div" className="fixed inset-0 z-40 flex sm:hidden" onClose={toggleOpen}>
+            <Transition.Child
+              as={Fragment}
+              enter="transition-opacity ease-linear duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-linear duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0">
+              <Dialog.Overlay className="fixed inset-0 bg-stone-900 bg-opacity-75" />
+            </Transition.Child>
+            <Transition.Child
+              as={Fragment}
+              enter="transition ease-in-out duration-300 transform"
+              enterFrom="-translate-x-full"
+              enterTo="translate-x-0"
+              leave="transition ease-in-out duration-300 transform"
+              leaveFrom="translate-x-0"
+              leaveTo="-translate-x-full">
+              <div className="relative w-4/5 bg-stone-800">
+                <nav className="mt-5 flex flex-col gap-y-4 px-2">
+                  {navSections.map(section => (
+                    <div key={section}>
+                      {/* Si la sección es "Nosotros" o "Infraestructura", se maneja como un dropdown */}
+                      {section === 'Nosotros' || section === 'Infraestructura' ? (
+                        <div>
+                          <button
+                            className={classNames(
+                              currentSection === section ? activeClass : inactiveClass,
+                              'flex items-center'
+                            )}
+                            onClick={() => handleDropdownToggle(section)}>
+                            {section}
+                            <ChevronDownIcon className="w-4 h-4 ml-1" />
+                          </button>
+                          {/* Muestra las subsecciones si el dropdown está abierto */}
+                          {openDropdown === section && (
+                            <div className="pl-4 mt-1">
+                              {section === 'Nosotros' && (
+                                <div>
+                                  <Link
+                                    className="block px-4 py-2 text-white hover:bg-gray-700"
+                                    href="/nosotros">
+                                    Nosotros
+                                  </Link>
+                                  <Link
+                                    className="block px-4 py-2 text-white hover:bg-gray-700"
+                                    href="/miembros">
+                                    Miembros
+                                  </Link>
+                                  <Link
+                                    className="block px-4 py-2 text-white hover:bg-gray-700"
+                                    href="/investigacion">
+                                    Investigación
+                                  </Link>
+                                </div>
+                              )}
+                              {section === 'Infraestructura' && (
+                                <div>
+                                  <Link
+                                    className="block px-4 py-2 text-white hover:bg-gray-700"
+                                    href="/infraestructura">
+                                    Infraestructura
+                                  </Link>
+                                  <Link
+                                    className="block px-4 py-2 text-white hover:bg-gray-700"
+                                    href="/lab_secuenciacion">
+                                    Lab Secuenciación
+                                  </Link>
+                                  <Link
+                                    className="block px-4 py-2 text-white hover:bg-gray-700"
+                                    href="/lab_super_computo">
+                                    Lab. Super Computo
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <NavItem
+                          activeClass={activeClass}
+                          current={section === currentSection}
+                          inactiveClass={inactiveClass}
+                          key={section}
+                          onClick={toggleOpen}
+                          section={section}
+                        />
+                      )}
+                    </div>
+                  ))}
+                  {/* Barra de búsqueda en el menú móvil */}
+                  <form className="flex items-center mt-4" onSubmit={handleSearchSubmit}>
+                    <input
+                      className="p-2 rounded-l-md border border-gray-400"
+                      onChange={handleSearch}
+                      placeholder="Buscar..."
+                      type="text"
+                      value={searchQuery}
+                    />
+                    <button className="p-2 bg-blue-500 text-white rounded-r-md" type="submit">
+                      Buscar
+                    </button>
+                  </form>
+                </nav>
+              </div>
+            </Transition.Child>
+          </Dialog>
+        </Transition.Root>
+      </>
+    );
+  });
 
 const NavItem: FC<{
   section: string;
