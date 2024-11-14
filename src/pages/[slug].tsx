@@ -84,7 +84,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         title: data.title,
         date: postDate,
         body: content,
-        featuredImage: data.featuredImage || '/default-image.jpg',
+        featuredImage: "540.webp"
       },
     },
   };
