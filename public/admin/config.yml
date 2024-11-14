@@ -31,7 +31,6 @@ collections:
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Ingredients", name: "ingredients", widget: "list"}
 
-collections:
   - name: "miembros"
     label: "Miembros"
     label_singular: "Miembro"
