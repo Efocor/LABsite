@@ -11,12 +11,14 @@ collections:
     label_singular: "Post"
     folder: "src/pages/blog"
     create: true
+    slug: "{{fields.shortTitle}}" # Usar un título corto como slug
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post.template"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Short Title", name: "shortTitle", widget: "string"} # Título corto para el slug
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "featuredImage", widget: "image"} # Imagen destacada para el post
+      - {label: "Featured Image", name: "featuredImage", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
+
 
   - name: "products"
     label: "Products"
