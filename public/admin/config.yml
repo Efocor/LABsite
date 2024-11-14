@@ -19,6 +19,14 @@ collections:
       - {label: "Featured Image", name: "featuredImage", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
 
+      # Aquí agregamos el campo de galería para las imágenes
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        field:
+          label: "Image"
+          name: "image"
+          widget: "image"
 
   - name: "products"
     label: "Products"

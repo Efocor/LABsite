@@ -11,7 +11,7 @@ import matter from 'gray-matter';
 const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
 
 const CMSPage: FC<{ post: any }> = memo(({ post }) => {
-  const { title, date, body, featuredImage } = post;
+  const { title, date, body, featuredImage, gallery } = post;
 
   return (
     <Page description={title} title={title}>
@@ -45,6 +45,24 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
               className="rounded-lg mb-6"
             />
           )}
+
+          {/* Mostrar la galería de imágenes horizontalmente */}
+          {gallery && gallery.length > 0 && (
+            <div className="gallery-container flex justify-center gap-4 mb-8">
+              {gallery.map((photo: any, index: number) => (
+                <div key={index} className="gallery-item">
+                  <Image
+                    src={photo.image}
+                    alt={`Gallery image ${index + 1}`}
+                    width={300}
+                    height={200}
+                    className="rounded-lg shadow-lg object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="text-gray-600 text-sm text-justify leading-relaxed">
             <div dangerouslySetInnerHTML={{ __html: body }} />
           </div>
@@ -91,6 +109,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         date: postDate,
         body: content,
         featuredImage: data.featuredImage || '/images/default-image.jpg',
+        gallery: data.gallery || [], // Asegúrate de que la galería también esté en los datos
       },
     },
   };
