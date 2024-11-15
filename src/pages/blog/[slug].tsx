@@ -7,6 +7,8 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
@@ -120,17 +122,21 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
+  // Procesar el contenido Markdown a HTML
+  const processedContent = await remark().use(html).process(content);
+  const contentHtml = processedContent.toString();
+
   // Asegúrate de convertir la fecha a una cadena si es necesario
   const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
 
   return {
     props: {
       post: {
-        title: data.title || 'Título no disponible', // Fallback por si no existe 'title'
+        title: data.title || 'Título no disponible',
         date: postDate,
-        body: content,
+        body: contentHtml, // Aquí pasamos el HTML procesado
         featuredImage: data.featuredImage || '/images/default-image.jpg',
-        gallery: data.gallery || [], // Asegúrate de que la galería esté definida
+        gallery: data.gallery || [],
       },
     },
   };
