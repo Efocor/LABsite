@@ -67,18 +67,6 @@ const Noticias: FC = memo(() => {
       title="Avances en Optimización de Redes en el Centro de Innovación Tecnológica"
       
     />
-    {/* Contenedor de Imágenes para Noticia 1 */}
-    <div className="flex justify-between">
-      <div className="w-1/3 h-40 bg-gray-200 mr-2 flex items-center justify-center">
-        <img src="imagen1.jpg" alt="Descripción de la imagen 1" className="object-cover w-full h-full" />
-      </div>
-      <div className="w-1/3 h-40 bg-gray-200 mr-2 flex items-center justify-center">
-        <img src="imagen2.jpg" alt="Descripción de la imagen 2" className="object-cover w-full h-full" />
-      </div>
-      <div className="w-1/3 h-40 bg-gray-200 flex items-center justify-center">
-        <img src="imagen3.jpg" alt="Descripción de la imagen 3" className="object-cover w-full h-full" />
-      </div>
-    </div>
 
               {/* Noticia 2 */}
               <NewsArticle
