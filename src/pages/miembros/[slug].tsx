@@ -7,7 +7,8 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import Link from 'next/link'; // Asegúrate de usar Link para las URLs internas
+import Link from 'next/link';
+import ReactMarkdown from 'react-markdown'; // Para renderizar Markdown
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
@@ -28,7 +29,8 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
           <button
             className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            onClick={() => window.history.back()}>
+            onClick={() => window.history.back()}
+          >
             Volver
           </button>
 
@@ -41,9 +43,9 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
             {name}
           </h3>
-          <p className="text-gray-700 text-center text-lg mb-4 italic">
+          <ReactMarkdown className="text-gray-700 text-center text-lg mb-4 italic">
             {description}
-          </p>
+          </ReactMarkdown>
 
           {/* Información del perfil */}
           {profileInfo && (
@@ -95,14 +97,21 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 
           {/* Enlaces sociales */}
           {socialLinks && socialLinks.length > 0 && (
-            <div className="flex gap-6 mb-8">
-              {socialLinks.map((link: { platform: string, url: string }, index: number) => (
-                <Link key={index} href={link.url} passHref>
-                  <a className="text-lg text-blue-600 hover:text-blue-800 transition duration-300">
-                    {link.platform}
-                  </a>
-                </Link>
-              ))}
+            <div className="w-full bg-blue-100 p-4 rounded-lg shadow-md mb-8">
+              <h4 className="text-xl font-semibold text-blue-600 mb-2 text-center">Enlaces Sociales</h4>
+              <div className="flex flex-wrap justify-center gap-4">
+                {socialLinks.map((link: { platform: string, url: string }, index: number) => (
+                  <Link key={index} href={link.url} passHref>
+                    <a
+                      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition duration-300 shadow-lg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.platform}
+                    </a>
+                  </Link>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -131,24 +140,23 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,  // false para que no haya rutas dinámicas no encontradas
+    fallback: false, // false para que no haya rutas dinámicas no encontradas
   };
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
-  
+
   // Verificar si el archivo existe antes de intentar leerlo
   if (!fs.existsSync(filePath)) {
     return {
-      notFound: true,  // Devuelve un 404 si el archivo no existe
+      notFound: true, // Devuelve un 404 si el archivo no existe
     };
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data } = matter(fileContent);
-
 
   return {
     props: {
@@ -156,7 +164,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         name: data.name || 'Sin nombre', // Fallback por si no existe 'name'
         description: data.description || 'Sin descripción',
         photo: data.photo || '/images/default-photo.jpg',
-        link: data.link || '#', 
+        link: data.link || '#',
         profileInfo: data.profileInfo || '',
         skills: data.skills || [], // Asegúrate de que skills esté bien definido
         socialLinks: data.socialLinks || [],
