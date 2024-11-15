@@ -7,21 +7,19 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import Link from 'next/link';
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
 const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
   const {
-    title,
-    shortTitle,
-    image,
-    porcentaje,
-    description,
-    descriptionlinea2,
-    descriptionlinea3,
-    gallery,
-    otros,
+    title = 'Proyecto sin título',
+    image = '/images/default-project.jpg',
+    porcentaje = 0,
+    description = '',
+    descriptionlinea2 = '',
+    descriptionlinea3 = '',
+    gallery = [],
+    otros = [],
   } = project;
 
   return (
@@ -71,7 +69,7 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
           </div>
 
           {/* Galería de imágenes */}
-          {gallery && gallery.length > 0 && (
+          {gallery.length > 0 && (
             <div className="gallery-container flex justify-center gap-4 my-6">
               {gallery.map((photo: any, index: number) => (
                 <div key={index} className="gallery-item">
@@ -88,7 +86,7 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
           )}
 
           {/* Otros datos */}
-          {otros && otros.length > 0 && (
+          {otros.length > 0 && (
             <div className="text-gray-600 mt-6">
               <h4 className="text-xl font-semibold text-blue-600 mb-2">Otros detalles</h4>
               <ul className="list-disc pl-6">
@@ -107,7 +105,7 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
 
 export async function getStaticPaths() {
   const projectsDirectory = path.join(process.cwd(), 'src/pages/proyecto');
-  const filenames = fs.readdirSync(projectsDirectory);
+  const filenames = fs.readdirSync(projectsDirectory).filter((filename) => filename.endsWith('.md'));
 
   const paths = filenames.map((filename) => {
     const filePath = path.join(projectsDirectory, filename);
@@ -158,3 +156,4 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 }
 
 export default ProjectPage;
+
