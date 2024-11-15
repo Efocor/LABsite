@@ -28,10 +28,10 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
           <button
             className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            onClick={() => window.history.back()} >
+            onClick={() => window.history.back()}>
             Volver
           </button>
-          
+
           {/* Imagen de Miembro */}
           <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-blue-600 shadow-lg">
             <Image alt={name} className="object-cover w-full h-full" src={photo} />
@@ -110,7 +110,6 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
               ))}
             </div>
           )}
-
         </div>
       </main>
       <Footer />
