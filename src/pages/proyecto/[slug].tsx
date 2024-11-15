@@ -41,11 +41,6 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
             Volver
           </button>
 
-          {/* Imagen del Proyecto */}
-          <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
-            <Image alt={title} className="object-cover w-full h-full" src={image} />
-          </div>
-
           {/* Información general del proyecto */}
           <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
             {title}
@@ -85,6 +80,11 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
             </div>
           )}
 
+          {/* Imagen del Proyecto */}
+          <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
+            <Image alt={title} className="object-cover w-full h-full" src={image} />
+          </div>
+          
           {/* Otros datos */}
           {otros.length > 0 && (
             <div className="text-gray-600 mt-6">
