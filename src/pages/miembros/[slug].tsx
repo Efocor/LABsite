@@ -49,9 +49,9 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 
           {/* Información del perfil */}
           {profileInfo && (
-            <div className="text-gray-600 text-sm text-justify leading-relaxed mb-6">
+            <div className="text-gray-600 text-sm leading-relaxed mb-6 space-y-4">
               <h4 className="text-xl font-semibold text-blue-600 mb-2">Acerca de {name}</h4>
-              <div dangerouslySetInnerHTML={{ __html: profileInfo }} />
+              <ReactMarkdown>{profileInfo}</ReactMarkdown>
             </div>
           )}
 
@@ -66,7 +66,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             />
           )}
 
-          {/* Mostrar la galería de imágenes horizontalmente */}
+          {/* Galería */}
           {gallery && gallery.length > 0 && (
             <div className="gallery-container flex justify-center gap-4 mb-8">
               {gallery.map((photo: any, index: number) => (
@@ -83,14 +83,27 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             </div>
           )}
 
-          {/* Habilidades del miembro */}
+          {/* Habilidades */}
           {skills && skills.length > 0 && (
             <div className="mb-6">
               <h4 className="text-xl font-semibold text-blue-600 mb-2">Habilidades</h4>
-              <ul className="list-disc pl-6 text-gray-700">
-                {skills.map((skill: string, index: number) => (
-                  <li key={index} className="text-lg">{skill}</li>
-                ))}
+              <ul className="list-none pl-0 text-gray-700 space-y-2">
+                {skills.map(
+                  (skill: { name: string; icon?: string }, index: number) => (
+                    <li key={index} className="flex items-center text-lg">
+                      {skill.icon && (
+                        <Image
+                          src={skill.icon}
+                          alt={skill.name}
+                          width={24}
+                          height={24}
+                          className="mr-2"
+                        />
+                      )}
+                      {skill.name}
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           )}
@@ -130,8 +143,7 @@ export async function getStaticPaths() {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
 
-    // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
-    const slug = data.slug || filename.replace(/\.md$/, ''); // Usar filename como fallback si no existe `slug`
+    const slug = data.slug || filename.replace(/\.md$/, '').toLowerCase();
 
     return {
       params: { slug },
@@ -140,7 +152,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, // false para que no haya rutas dinámicas no encontradas
+    fallback: false,
   };
 }
 
@@ -148,10 +160,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
 
-  // Verificar si el archivo existe antes de intentar leerlo
   if (!fs.existsSync(filePath)) {
     return {
-      notFound: true, // Devuelve un 404 si el archivo no existe
+      notFound: true,
     };
   }
 
@@ -161,12 +172,12 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   return {
     props: {
       post: {
-        name: data.name || 'Sin nombre', // Fallback por si no existe 'name'
+        name: data.name || 'Sin nombre',
         description: data.description || 'Sin descripción',
         photo: data.photo || '/images/default-photo.jpg',
         link: data.link || '#',
         profileInfo: data.profileInfo || '',
-        skills: data.skills || [], // Asegúrate de que skills esté bien definido
+        skills: data.skills || [],
         socialLinks: data.socialLinks || [],
         gallery: data.gallery || [],
         featuredImage: data.featuredImage || '',
