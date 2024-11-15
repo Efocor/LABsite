@@ -115,12 +115,7 @@ export async function getStaticPaths() {
     const { slug } = params;
     const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-  
-    // Convertir la fecha a formato ISO o el formato que necesites
-    const postDate = new Date(data.date).toISOString();
-  
-
+    const { data } = matter(fileContent);
 
   return {
     props: {
