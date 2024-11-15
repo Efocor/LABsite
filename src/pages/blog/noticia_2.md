@@ -4,8 +4,8 @@ shortTitle: Noticia_2
 date: 2024-09-16T00:06:53.165Z
 featuredImage: /images/secuenciación-genomica-plantas.jpg
 gallery:
-  - /images/Imagen_inicio_3.jpg
-  - /images/robotica-como-tecnologia-emergente.webp
+  - image: /images/Imagen_inicio_3.jpg
+  - image: /images/robotica-como-tecnologia-emergente.webp
 ---
 <!--StartFragment-->
 
