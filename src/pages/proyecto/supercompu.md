@@ -14,7 +14,7 @@ description: El proyecto financiado por el Gobierno Regional tiene como objetivo
   través de la creación de un entorno de aprendizaje y formación para
   estudiantes y profesionales en el uso de tecnologías de HPC.
 descriptionlinea3: |-
-  ### **Bitácora: **
+  #### Bitácora: 
 
   Inicio del proyecto 
 
