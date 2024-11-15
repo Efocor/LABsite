@@ -49,6 +49,11 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
           {descriptionlinea2 && <p className="text-gray-700 text-center text-lg">{descriptionlinea2}</p>}
           {descriptionlinea3 && <p className="text-gray-700 text-center text-lg mb-4">{descriptionlinea3}</p>}
 
+          {/* Imagen del Proyecto */}
+          <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
+            <Image alt={title} className="object-cover w-full h-full" src={image} />
+          </div>
+          
           {/* Progreso del proyecto */}
           <div className="w-full mt-4">
             <div className="flex items-center justify-between mb-2">
@@ -80,11 +85,6 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
             </div>
           )}
 
-          {/* Imagen del Proyecto */}
-          <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
-            <Image alt={title} className="object-cover w-full h-full" src={image} />
-          </div>
-          
           {/* Otros datos */}
           {otros.length > 0 && (
             <div className="text-gray-600 mt-6">
