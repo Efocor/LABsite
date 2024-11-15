@@ -75,27 +75,48 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 
 export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
+  
+  // Verifica que el directorio exista
+  if (!fs.existsSync(postsDirectory)) {
+    console.error("Directorio de publicaciones no encontrado:", postsDirectory);
+    return { paths: [], fallback: false };
+  }
+
   const filenames = fs.readdirSync(postsDirectory);
 
   const paths = filenames.map((filename) => {
     const filePath = path.join(postsDirectory, filename);
+
+    // Verifica si el archivo existe
+    if (!fs.existsSync(filePath)) {
+      console.error(`Archivo no encontrado: ${filePath}`);
+      return null; // Retorna null si no se encuentra el archivo
+    }
+
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
 
     return {
-      params: { slug: data.slug || filename.replace(/\.md$/, '') }, // Usa el slug del frontmatter o el nombre del archivo
+      params: { slug: data.slug || filename.replace(/\.md$/, '') }, // Usa el slug o el nombre del archivo
     };
-  });
+  }).filter(Boolean); // Filtra valores null
 
   return {
     paths,
-    fallback: false,
+    fallback: false, // false para que no haya rutas dinámicas no encontradas
   };
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'src/pages/blog', `${slug}.md`);
+
+  // Verifica que el archivo existe
+  if (!fs.existsSync(filePath)) {
+    console.error(`Archivo no encontrado: ${filePath}`);
+    return { notFound: true }; // Si no se encuentra el archivo, retorna notFound
+  }
+
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
@@ -105,11 +126,11 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   return {
     props: {
       post: {
-        title: data.title,
+        title: data.title || 'Título no disponible', // Fallback por si no existe 'title'
         date: postDate,
         body: content,
         featuredImage: data.featuredImage || '/images/default-image.jpg',
-        gallery: data.gallery || [], // Asegúrate de que la galería también esté en los datos
+        gallery: data.gallery || [], // Asegúrate de que la galería esté definida
       },
     },
   };
