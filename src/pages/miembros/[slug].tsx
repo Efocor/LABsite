@@ -88,51 +88,52 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 });
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/miembros');
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const paths = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data } = matter(fileContent);
-
-    // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
-    const slug = data.slug || filename.replace(/\.md$/, '');
-
+    const postsDirectory = path.join(process.cwd(), 'src/pages/miembros');
+    const filenames = fs.readdirSync(postsDirectory);
+  
+    const paths = filenames.map((filename) => {
+      const filePath = path.join(postsDirectory, filename);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const { data } = matter(fileContent);
+  
+      // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
+      const slug = data.slug || filename.replace(/\.md$/, '');
+  
+      return {
+        params: { slug },
+      };
+    });
+  
     return {
-      params: { slug }, // Usar el slug que ya sea extraído del frontmatter o nombre de archivo
+      paths,
+      fallback: false,  // false para que no haya rutas dinámicas no encontradas
     };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-
-  // Convertir la fecha a formato ISO o el formato que necesites
-  const postDate = new Date(data.date).toISOString();
-
-  return {
-    props: {
-      post: {
-        name: data.name,
-        description: data.description,
-        photo: data.photo || '/images/default-photo.jpg',
-        title: data.title,
-        date: postDate,
-        body: content,
-        featuredImage: data.featuredImage || '/images/default-image.jpg',
-        gallery: data.gallery || [],
+  }
+  
+  export async function getStaticProps({ params }: { params: { slug: string } }) {
+    const { slug } = params;
+    const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(fileContent);
+  
+    // Convertir la fecha a formato ISO o el formato que necesites
+    const postDate = new Date(data.date).toISOString();
+  
+    return {
+      props: {
+        post: {
+          name: data.name,
+          description: data.description,
+          photo: data.photo || '/images/default-photo.jpg',
+          title: data.title,
+          date: postDate,
+          body: content,
+          featuredImage: data.featuredImage || '/images/default-image.jpg',
+          gallery: data.gallery || [],
+        },
       },
-    },
-  };
-}
+    };
+  }
+  
 
 export default CMSPage;
