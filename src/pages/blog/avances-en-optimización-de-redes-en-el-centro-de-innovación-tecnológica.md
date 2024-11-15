@@ -2,7 +2,7 @@
 templateKey: blog-post.template
 title: Avances en Optimización de Redes en el Centro de Innovación Tecnológica
 date: 2024-08-31T00:31:00.000Z
-featuredImage: /images/whatsapp-image-2024-09-01-at-17.38.23.jpeg
+featuredImage: /images/robotica-como-tecnologia-emergente.webp
 ---
 <!--StartFragment-->
 
