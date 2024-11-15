@@ -154,6 +154,10 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data } = matter(fileContent);
 
+  // Convertir la fecha a una cadena ISO (o cualquier otro formato adecuado)
+  const date = data.date ? new Date(data.date).toISOString() : '';  // Asegúrate de convertirla
+
+
   return {
     props: {
       post: {
@@ -166,7 +170,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         socialLinks: data.socialLinks || [],
         gallery: data.gallery || [],
         featuredImage: data.featuredImage || '',
-        date: data.date || '',
+        date,  // Aquí usamos la fecha en formato ISO
       },
     },
   };
