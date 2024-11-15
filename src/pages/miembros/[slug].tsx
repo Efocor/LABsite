@@ -88,34 +88,41 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 });
 
 export async function getStaticPaths() {
-    const postsDirectory = path.join(process.cwd(), 'src/pages/miembros');
-    const filenames = fs.readdirSync(postsDirectory);
-  
-    const paths = filenames.map((filename) => {
-      const filePath = path.join(postsDirectory, filename);
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(fileContent);
-  
-      // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
-      const slug = data.slug || filename.replace(/\.md$/, ''); // Usar filename como fallback si no existe `slug`
+  const postsDirectory = path.join(process.cwd(), 'src/pages/miembros');
+  const filenames = fs.readdirSync(postsDirectory);
 
-  
-      return {
-        params: { slug },
-      };
-    });
-  
-    return {
-      paths,
-      fallback: false,  // false para que no haya rutas dinámicas no encontradas
-    };
-  }
-  
-  export async function getStaticProps({ params }: { params: { slug: string } }) {
-    const { slug } = params;
-    const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
+  const paths = filenames.map((filename) => {
+    const filePath = path.join(postsDirectory, filename);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
+
+    // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
+    const slug = data.slug || filename.replace(/\.md$/, ''); // Usar filename como fallback si no existe `slug`
+
+    return {
+      params: { slug },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,  // false para que no haya rutas dinámicas no encontradas
+  };
+}
+
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
+  
+  // Verificar si el archivo existe antes de intentar leerlo
+  if (!fs.existsSync(filePath)) {
+    return {
+      notFound: true,  // Devuelve un 404 si el archivo no existe
+    };
+  }
+
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data } = matter(fileContent);
 
   return {
     props: {
@@ -127,6 +134,7 @@ export async function getStaticPaths() {
         profileInfo: data.profileInfo || '',
         skills: data.skills || [], // Asegúrate de que skills esté bien definido
         socialLinks: data.socialLinks || [],
+        body: data.body || '', // Fallback si no existe body
       },
     },
   };
