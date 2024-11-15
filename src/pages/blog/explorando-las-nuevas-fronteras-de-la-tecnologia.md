@@ -1,11 +1,12 @@
 ---
-title: "Explorando las Nuevas Fronteras de la Tecnología"
-date: "2024-11-14T10:00:00Z"
-slug: "explorando-las-nuevas-fronteras-de-la-tecnologia"
-featuredImage: "/images/540.webp"
+title: Explorando las Nuevas Fronteras de la Tecnología
+date: 2024-11-14T10:00:00Z
+slug: explorando-las-nuevas-fronteras-de-la-tecnologia
+shortTitle: frontera
+featuredImage: /images/testimonial.webp
 gallery:
-  - image: "/images/540.webp"
-  - image: "/images/backy.webp"
+  - image: /images/540.webp
+  - /images/Carol-Moraga-1.jpg
 ---
 
 ## Introducción
