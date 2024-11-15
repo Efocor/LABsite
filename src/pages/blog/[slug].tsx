@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FC, memo } from 'react';
 import Page from '../../components/Layout/Page';
 import Footer from '../../components/Sections/Footer';
-import backgroundImage from '../images/header-background.webp';
+import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
