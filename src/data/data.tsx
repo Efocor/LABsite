@@ -16,6 +16,8 @@ import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage1 from '../images/header-backgroundfix.webp';
 import heroImage2 from '../images/Imagen_inicio_2.jpg';
 import heroImage3 from '../images/Imagen_inicio_3.jpg';
+//import heroImage4 from '../images/MicroARNs-1.jpg';
+//import heroImage5 from '../images/a.jpg';
 import testimonialImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
