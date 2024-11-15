@@ -112,10 +112,8 @@ export async function getStaticPaths() {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
 
-    const slug = data.shortTitle || filename.replace(/\.md$/, '');
-
     return {
-      params: { slug },
+      params: { slug: data.shortTitle || filename.replace(/\.md$/, '') },
     };
   });
 
@@ -127,14 +125,21 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const filePath = path.join(process.cwd(), 'src/pages/proyecto', `${slug}.md`);
+  const projectsDirectory = path.join(process.cwd(), 'src/pages/proyecto');
+  const filenames = fs.readdirSync(projectsDirectory);
 
-  if (!fs.existsSync(filePath)) {
-    return {
-      notFound: true,
-    };
+  const fileName = filenames.find((filename) => {
+    const filePath = path.join(projectsDirectory, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data } = matter(fileContent);
+    return data.shortTitle === slug || filename.replace(/\.md$/, '') === slug;
+  });
+
+  if (!fileName) {
+    return { notFound: true };
   }
 
+  const filePath = path.join(projectsDirectory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data } = matter(fileContent);
 
@@ -156,4 +161,3 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 }
 
 export default ProjectPage;
-
