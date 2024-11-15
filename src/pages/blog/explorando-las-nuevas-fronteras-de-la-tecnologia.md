@@ -6,7 +6,7 @@ shortTitle: frontera
 featuredImage: /images/testimonial.webp
 gallery:
   - image: /images/540.webp
-  - /images/a copy.webp
+  - image: /images/a copy.webp
 ---
 
 ## Introducción
