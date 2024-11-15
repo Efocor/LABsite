@@ -12,7 +12,7 @@ import Link from 'next/link'; // Asegúrate de usar Link para las URLs internas
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
 const CMSPage: FC<{ post: any }> = memo(({ post }) => {
-  const { name, description, photo, profileInfo, skills, socialLinks, gallery, featuredImage, date } = post;
+  const { name, description, photo, profileInfo, skills, socialLinks, gallery, featuredImage } = post;
 
   return (
     <Page description={name} title={name}>
@@ -43,11 +43,6 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">
             {description}
-          </p>
-
-          {/* Información de publicación */}
-          <p className="text-gray-700 text-center text-lg mb-4 italic">
-            Publicado el: {new Date(date).toLocaleDateString()}
           </p>
 
           {/* Información del perfil */}
@@ -154,9 +149,6 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data } = matter(fileContent);
 
-  // Convertir la fecha a una cadena ISO (o cualquier otro formato adecuado)
-  const date = data.date ? new Date(data.date).toISOString() : '';  // Asegúrate de convertirla
-
 
   return {
     props: {
@@ -170,7 +162,6 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         socialLinks: data.socialLinks || [],
         gallery: data.gallery || [],
         featuredImage: data.featuredImage || '',
-        date,  // Aquí usamos la fecha en formato ISO
       },
     },
   };
