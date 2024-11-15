@@ -13,8 +13,15 @@ description: El proyecto financiado por el Gobierno Regional tiene como objetivo
   O’Higgins. Esta iniciativa busca transformar el paisaje de la salud regional a
   través de la creación de un entorno de aprendizaje y formación para
   estudiantes y profesionales en el uso de tecnologías de HPC.
-descriptionlinea3: "Bitácora: Inicio del proyecto Primera reunión con
-  stakeholders Desarrollo de la plataforma inicial Implementación de módulos de
-  capacitación"
+descriptionlinea3: |-
+  ### **Bitácora: **
+
+  Inicio del proyecto 
+
+  Primera reunión con stakeholders 
+
+  Desarrollo de la plataforma inicial 
+
+  Implementación de módulos de capacitación
 gallery: []
 ---
