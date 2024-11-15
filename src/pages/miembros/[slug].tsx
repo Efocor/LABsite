@@ -97,7 +97,8 @@ export async function getStaticPaths() {
       const { data } = matter(fileContent);
   
       // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
-      const slug = data.slug || filename.replace(/\.md$/, '');
+      const slug = data.slug || filename.replace(/\.md$/, ''); // Usar filename como fallback si no existe `slug`
+
   
       return {
         params: { slug },
@@ -119,21 +120,21 @@ export async function getStaticPaths() {
     // Convertir la fecha a formato ISO o el formato que necesites
     const postDate = new Date(data.date).toISOString();
   
-    return {
-      props: {
-        post: {
-          name: data.name,
-          description: data.description,
-          photo: data.photo || '/images/default-photo.jpg',
-          title: data.title,
-          date: postDate,
-          body: content,
-          featuredImage: data.featuredImage || '/images/default-image.jpg',
-          gallery: data.gallery || [],
-        },
+
+
+  return {
+    props: {
+      post: {
+        name: data.name || 'Sin nombre', // Fallback por si no existe 'name'
+        description: data.description || 'Sin descripción',
+        photo: data.photo || '/images/default-photo.jpg',
+        link: data.link || '#', 
+        profileInfo: data.profileInfo || '',
+        skills: data.skills || [], // Asegúrate de que skills esté bien definido
+        socialLinks: data.socialLinks || [],
       },
-    };
-  }
-  
+    },
+  };
+}
 
 export default CMSPage;
