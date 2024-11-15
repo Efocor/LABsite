@@ -1,11 +1,7 @@
 ---
 title: UOH avanza en investigación con microARNs para aplicaciones en salud y
   cambio climático
-shortTitle: El descubrimiento de estas pequeñas moléculas que regulan el
-  comportamiento de las células mereció que los científicos norteamericanos
-  Víctor Ambros y Gary Ruvkun recibieran el Premio Nobel de Medicina,
-  reafirmando la importancia de estos avances en la detección de enfermedades
-  neoplásicas.
+shortTitle: Noticia_3
 date: 2024-10-18T00:13:16.379Z
 featuredImage: /images/profe_carol.jpg
 ---
