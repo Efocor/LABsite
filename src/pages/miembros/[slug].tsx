@@ -1,22 +1,23 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { FC, memo } from 'react';
-import Page from '../components/Layout/Page';
-import Footer from '../components/Sections/Footer';
+import Page from '../../components/Layout/Page';
+import Footer from '../../components/Sections/Footer';
 import backgroundImage from '../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
+const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
 const CMSPage: FC<{ post: any }> = memo(({ post }) => {
-  const { title, date, body, featuredImage, gallery } = post;
+  const { name, description, photo, title, date, featuredImage, gallery } = post;
 
   return (
     <Page description={title} title={title}>
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
+        {/* Imagen de fondo futurista */}
         <Image
           alt="Background image"
           className="absolute z-0 h-full w-full object-cover opacity-80"
@@ -30,12 +31,26 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             onClick={() => window.history.back()} >
             Volver
           </button>
+          
+          {/* Imagen de Miembro */}
+          <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-blue-600 shadow-lg">
+            <Image alt={name} className="object-cover w-full h-full" src={photo} />
+          </div>
+
+          {/* Información general del miembro */}
           <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
-            {title}
+            {name}
           </h3>
+          <p className="text-gray-700 text-center text-lg mb-4 italic">
+            {description}
+          </p>
+          
+          {/* Información de publicación */}
           <p className="text-gray-700 text-center text-lg mb-4 italic">
             Publicado el: {new Date(date).toLocaleDateString()}
           </p>
+
+          {/* Imagen destacada */}
           {featuredImage && (
             <Image
               src={featuredImage}
@@ -64,7 +79,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           )}
 
           <div className="text-gray-600 text-sm text-justify leading-relaxed">
-            <div dangerouslySetInnerHTML={{ __html: body }} />
+            <div dangerouslySetInnerHTML={{ __html: post.body }} />
           </div>
         </div>
       </main>
@@ -74,7 +89,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 });
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
+  const postsDirectory = path.join(process.cwd(), 'src/pages/miembros');
   const filenames = fs.readdirSync(postsDirectory);
 
   const paths = filenames.map((filename) => {
@@ -95,16 +110,18 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const filePath = path.join(process.cwd(), 'src/pages/blog', `${slug}.md`);
+  const filePath = path.join(process.cwd(), 'src/pages/miembros', `${slug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  // Asegúrate de convertir la fecha a una cadena si es necesario
   const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
 
   return {
     props: {
       post: {
+        name: data.name,
+        description: data.description,
+        photo: data.photo || '/images/default-photo.jpg',
         title: data.title,
         date: postDate,
         body: content,
