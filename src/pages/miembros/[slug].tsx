@@ -7,14 +7,15 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import Link from 'next/link'; // Asegúrate de usar Link para las URLs internas
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
 const CMSPage: FC<{ post: any }> = memo(({ post }) => {
-  const { name, description, photo, title, date, featuredImage, gallery } = post;
+  const { name, description, photo, profileInfo, skills, socialLinks, gallery, featuredImage, date } = post;
 
   return (
-    <Page description={title} title={title}>
+    <Page description={name} title={name}>
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
         <Image
@@ -43,17 +44,25 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           <p className="text-gray-700 text-center text-lg mb-4 italic">
             {description}
           </p>
-          
+
           {/* Información de publicación */}
           <p className="text-gray-700 text-center text-lg mb-4 italic">
             Publicado el: {new Date(date).toLocaleDateString()}
           </p>
 
+          {/* Información del perfil */}
+          {profileInfo && (
+            <div className="text-gray-600 text-sm text-justify leading-relaxed mb-6">
+              <h4 className="text-xl font-semibold text-blue-600 mb-2">Acerca de {name}</h4>
+              <div dangerouslySetInnerHTML={{ __html: profileInfo }} />
+            </div>
+          )}
+
           {/* Imagen destacada */}
           {featuredImage && (
             <Image
               src={featuredImage}
-              alt={title}
+              alt={name}
               width={800}
               height={400}
               className="rounded-lg mb-6"
@@ -77,9 +86,31 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             </div>
           )}
 
-          <div className="text-gray-600 text-sm text-justify leading-relaxed">
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
-          </div>
+          {/* Habilidades del miembro */}
+          {skills && skills.length > 0 && (
+            <div className="mb-6">
+              <h4 className="text-xl font-semibold text-blue-600 mb-2">Habilidades</h4>
+              <ul className="list-disc pl-6 text-gray-700">
+                {skills.map((skill: string, index: number) => (
+                  <li key={index} className="text-lg">{skill}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Enlaces sociales */}
+          {socialLinks && socialLinks.length > 0 && (
+            <div className="flex gap-6 mb-8">
+              {socialLinks.map((link: { platform: string, url: string }, index: number) => (
+                <Link key={index} href={link.url} passHref>
+                  <a className="text-lg text-blue-600 hover:text-blue-800 transition duration-300">
+                    {link.platform}
+                  </a>
+                </Link>
+              ))}
+            </div>
+          )}
+
         </div>
       </main>
       <Footer />
@@ -134,7 +165,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         profileInfo: data.profileInfo || '',
         skills: data.skills || [], // Asegúrate de que skills esté bien definido
         socialLinks: data.socialLinks || [],
-        body: data.body || '', // Fallback si no existe body
+        gallery: data.gallery || [],
+        featuredImage: data.featuredImage || '',
+        date: data.date || '',
       },
     },
   };
