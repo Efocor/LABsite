@@ -1,7 +1,7 @@
 ---
 title: UOH avanza en investigación con microARNs para aplicaciones en salud y
   cambio climático
-shortTitle: Noticia_3
+shortTitle: noticia_3
 date: 2024-10-18T00:13:16.379Z
 featuredImage: /images/profe_carol.jpg
 ---
