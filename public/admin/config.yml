@@ -36,7 +36,8 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "proyecto-page.template"}
       - {label: "Name", name: "title", widget: "string"}
       - {label: "Short Title", name: "shortTitle", widget: "string"} # Título corto para el slug
-      - {label: "Image", name: "image", widget: "image"}                 # Imagen del producto
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Porcentaje", name: "porcentaje", widget: "string"}                 # Imagen del producto
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Descriptionlinea2", name: "descriptionlinea2", widget: "string"}
       - {label: "Descriptionlinea3", name: "descriptionlinea3", widget: "string"}
