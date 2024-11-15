@@ -2,6 +2,7 @@
 templateKey: proyecto-page.template
 title: Supercomputación para Innovación en Salud Regional
 image: /images/a copy.webp
+shortTitle: supercompu
 gallery: []
 description: El proyecto financiado por el Gobierno Regional tiene como objetivo
   implementar tecnología de supercomputación (HPC) avanzada en la Región de

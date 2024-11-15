@@ -31,15 +31,17 @@ collections:
     label_singular: "Proyecto"
     folder: "src/pages/proyecto"
     create: true
+    slug: "{{fields.shortTitle}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "proyecto-page.template"}
       - {label: "Name", name: "title", widget: "string"}
+      - {label: "Short Title", name: "shortTitle", widget: "string"} # Título corto para el slug
       - {label: "Image", name: "image", widget: "image"}                 # Imagen del producto
-      - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}} # Galería de imágenes
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Descriptionlinea2", name: "descriptionlinea2", widget: "string"}
       - {label: "Descriptionlinea3", name: "descriptionlinea3", widget: "string"}
-      - {label: "Ingredients", name: "ingredients", widget: "list"}
+      - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "Otro", name: "otros", widget: "list"}
 
   - name: "miembros"
     label: "Miembros"
