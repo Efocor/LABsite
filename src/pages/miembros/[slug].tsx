@@ -17,7 +17,6 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
     <Page description={title} title={title}>
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
-        {/* Imagen de fondo futurista */}
         <Image
           alt="Background image"
           className="absolute z-0 h-full w-full object-cover opacity-80"
@@ -97,8 +96,11 @@ export async function getStaticPaths() {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
 
+    // Usar el slug del frontmatter si está definido, sino usar el nombre del archivo
+    const slug = data.slug || filename.replace(/\.md$/, '');
+
     return {
-      params: { slug: data.slug || filename.replace(/\.md$/, '') }, // Usa el slug del frontmatter o el nombre del archivo
+      params: { slug }, // Usar el slug que ya sea extraído del frontmatter o nombre de archivo
     };
   });
 
@@ -114,7 +116,8 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
+  // Convertir la fecha a formato ISO o el formato que necesites
+  const postDate = new Date(data.date).toISOString();
 
   return {
     props: {
@@ -126,7 +129,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         date: postDate,
         body: content,
         featuredImage: data.featuredImage || '/images/default-image.jpg',
-        gallery: data.gallery || [], // Asegúrate de que la galería también esté en los datos
+        gallery: data.gallery || [],
       },
     },
   };
