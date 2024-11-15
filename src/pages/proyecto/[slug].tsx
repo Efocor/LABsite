@@ -4,6 +4,7 @@ import { FC, memo } from 'react';
 import Page from '../../components/Layout/Page';
 import Footer from '../../components/Sections/Footer';
 import backgroundImage from '../../images/header-background.webp';
+import ReactMarkdown from 'react-markdown'; // Importa react-markdown
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -47,7 +48,11 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">{description}</p>
           {descriptionlinea2 && <p className="text-gray-700 text-center text-lg">{descriptionlinea2}</p>}
-          {descriptionlinea3 && <p className="text-gray-700 text-center text-lg mb-4">{descriptionlinea3}</p>}
+          {descriptionlinea3 && (
+            <div className="prose text-gray-700 text-center text-lg mb-4">
+              <ReactMarkdown>{descriptionlinea3}</ReactMarkdown>
+            </div>
+          )}
 
           {/* Imagen del Proyecto */}
           <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
