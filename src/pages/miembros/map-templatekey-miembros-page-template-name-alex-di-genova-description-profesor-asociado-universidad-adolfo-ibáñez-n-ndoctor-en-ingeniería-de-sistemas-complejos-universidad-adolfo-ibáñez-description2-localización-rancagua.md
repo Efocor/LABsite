@@ -5,14 +5,15 @@ description: |-
   Profesor Asociado, Universidad Adolfo Ibáñez
 
   Doctor en Ingeniería de Sistemas Complejos, Universidad Adolfo Ibáñez
-description2: >-
+description2: |
   Localización: Rancagua, Chile
-
-  Grado Académico: Doctor en Ingeniería de Sistemas Complejos, Universidad Adolfo Ibáñez
 photo: /images/perfil_alex_genova.jpg
 link: miembro 2
 profileInfo: >-
   <!--StartFragment-->
+
+
+  Grado Académico: Doctor en Ingeniería de Sistemas Complejos, Universidad Adolfo Ibáñez
 
 
   Alex Di Genova es Ingeniero en Bioinformática de la Universidad de Talca y Doctor en Ingeniería de Sistemas Complejos de la Universidad Adolfo Ibáñez. Su línea de investigación se centra en el desarrollo de nuevos algoritmos para el análisis de datos genómicos. Ha publicado más de 30 artículos científicos en revistas ISI y ha participado en proyectos genómicos tanto nacionales como internacionales.
