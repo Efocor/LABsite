@@ -37,6 +37,13 @@ skills:
   - Diseño de experimentos en biología molecular
   - Bioinformática y Biología Computacional
   - Genómica
+  - Análisis de secuencias
+  - Desarrollo de software bioinformático
+  - Programación en Python y R
+  - Análisis de datos científicos
+  - Secuenciación de genomas
+  - Análisis de datos NGS
+  - Genómica comparativa
 socialLinks:
   - platform: Google Scholar
     url: https://scholar.google.com/citations?hl=es&user=V9nSX74AAAAJ&view_op=list_works&sortby=pubdate
