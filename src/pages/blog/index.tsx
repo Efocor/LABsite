@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import Page from '../../components/Layout/Page';
 import Footer from '../../components/Sections/Footer';
 import backgroundImage from '../../images/header-background.webp';
@@ -19,7 +19,15 @@ interface Post {
   featuredImage: string;
 }
 
-const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
+interface BlogPageProps {
+  posts: Post[];
+  totalPages: number;
+  currentPage: number;
+}
+
+const POSTS_PER_PAGE = 6;
+
+const BlogPage: FC<BlogPageProps> = ({ posts, totalPages, currentPage }) => {
   return (
     <Page title="Blog" description="Últimas noticias y artículos">
       <Header />
@@ -54,6 +62,18 @@ const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
               </div>
             ))}
           </div>
+          <div className="w-full flex justify-between mt-8">
+            {currentPage > 1 && (
+              <Link href={`/blog/page/${currentPage - 1}`} className="text-blue-600 hover:text-blue-500">
+                Página Anterior
+              </Link>
+            )}
+            {currentPage < totalPages && (
+              <Link href={`/blog/page/${currentPage + 1}`} className="text-blue-600 hover:text-blue-500">
+                Página Siguiente
+              </Link>
+            )}
+          </div>
         </div>
       </main>
       <Footer />
@@ -61,7 +81,7 @@ const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
 
   // Verifica si el directorio de publicaciones existe
@@ -75,7 +95,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   // Lee solo archivos .md
   for (const filename of filenames) {
-    // Filtra archivos que no son .md (como los .tsx)
     if (filename.endsWith('.md')) {
       const filePath = path.join(postsDirectory, filename);
       const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -90,10 +109,55 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
 
+  // Ordena los posts por fecha (descendente)
+  posts.sort((a, b) => (b.date ? new Date(b.date).getTime() : 0) - (a.date ? new Date(a.date).getTime() : 0));
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const currentPage = parseInt(params?.page as string, 10) || 1;
+
+  // Pagina los posts según la página actual
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const paginatedPosts = posts.slice(startIndex, endIndex);
+
   return {
     props: {
-      posts,
+      posts: paginatedPosts,
+      totalPages,
+      currentPage,
     },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
+  const filenames = fs.readdirSync(postsDirectory);
+  const posts: Post[] = [];
+
+  // Lee solo archivos .md
+  for (const filename of filenames) {
+    if (filename.endsWith('.md')) {
+      const filePath = path.join(postsDirectory, filename);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const { data } = matter(fileContent);
+
+      posts.push({
+        slug: data.slug || filename.replace(/\.md$/, ''),
+        title: data.title || 'Título no disponible',
+        date: data.date ? new Date(data.date).toLocaleDateString() : null,
+        featuredImage: data.featuredImage || '/images/default-image.jpg',
+      });
+    }
+  }
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const paths = Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+
+  return {
+    paths,
+    fallback: false, // No permite rutas no pre-renderizadas
   };
 };
 
