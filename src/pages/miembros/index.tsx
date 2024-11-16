@@ -54,7 +54,6 @@ const Miembros: FC<MiembrosProps> = memo(({ members }) => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-5xl font-bold text-center text-blue-900 mb-12">Nuestro Equipo</h1>
 
             {/* Sección de Miembros Actuales */}
             <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
