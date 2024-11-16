@@ -7,9 +7,6 @@ description2: |
 photo: /images/David-Salas.jpg
 link: miembro 3
 profileInfo: >-
-  <!--StartFragment-->
-
-
   Grado Académico: Matemáticas y Modelamiento, Université de Montpellier, Francia
 
 
@@ -17,9 +14,6 @@ profileInfo: >-
 
 
   Su tesis doctoral trató de diferentes problemáticas de geometría en espacios de dimensión infinita. Realizó dos años de post-doctorado en el laboratorio PROMES de la Universidad de Perpignan (Francia), donde realizó investigaciones relacionadas con teoría de juegos, energías renovables y uso eficiente de recursos naturales. Cuenta con varias publicaciones ISI en diversas áreas de la matemática, tanto teóricas como aplicadas.
-
-
-  <!--EndFragment-->
 skills:
   - Habilidad 1
   - Habilidad 2

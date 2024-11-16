@@ -6,9 +6,5 @@ description2: "Localización: Rancagua, Chile"
 photo: /images/susan-calfunao.jpg
 link: miembro 7
 profileInfo: |-
-  <!--StartFragment-->
-
   Grado Académico:MSc (c) en Farmacología, Universidad de Chile
-
-  <!--EndFragment-->
 ---

@@ -6,9 +6,6 @@ description2: "Localización: Rancagua, Chile"
 photo: /images/nairo-torres.jpg
 link: miembro 4
 profileInfo: >-
-  <!--StartFragment-->
-
-
   Grado Académico: Doctorado en Ciencias de la Bioingeniería de la UOH ©
 
 
@@ -16,9 +13,6 @@ profileInfo: >-
 
 
   Actualmente trabaja en el desarrollo de algoritmos para el estudio de imágenes histológicas, con enfoque en el deep learning y convencido de que ciencias como la biología y medicina pueden beneficiarse enormemente con desarrollos algorítmicos/matemáticos planteados desde la comprensión de las propiedades físicas de los sistemas estudiados, tomando como base herramientas de otros campos de estudio, pero también definiendo nuevas herramientas concebidas por y para la comprensión de los sistemas biológicos.
-
-
-  <!--EndFragment-->
 skills:
   - "Algoritmo en imágenes histológicas "
   - Conocimientos de montajes ópticos
