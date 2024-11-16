@@ -13,7 +13,7 @@ import ReactMarkdown from 'react-markdown'; // Para renderizar Markdown
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
 const CMSPage: FC<{ post: any }> = memo(({ post }) => {
-  const { name, description, photo, profileInfo, skills, socialLinks, gallery, featuredImage } = post;
+  const { name, description, description2, photo, profileInfo, skills, socialLinks, gallery, featuredImage } = post;
 
   return (
     <Page description={name} title={name}>
@@ -45,6 +45,10 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           </h3>
           <ReactMarkdown className="text-gray-700 text-center text-lg mb-4 italic">
             {description}
+          </ReactMarkdown>
+          
+          <ReactMarkdown className="text-gray-700 text-center text-lg mb-4 italic">
+            {description2}
           </ReactMarkdown>
 
           {/* Información del perfil */}
@@ -162,6 +166,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       post: {
         name: data.name || 'Sin nombre',
         description: data.description || 'Sin descripción',
+        description2: data.description2 || 'Sin descripción',
         photo: data.photo || '/images/default-photo.jpg',
         link: data.link || '#',
         profileInfo: data.profileInfo || '',

@@ -5,6 +5,7 @@ import { FC, memo } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import ReactMarkdown from 'react-markdown';
 import Page from '../../components/Layout/Page';
 import Footer from '../../components/Sections/Footer';
 import testimonialImage from '../../images/header-background.webp';
@@ -25,7 +26,9 @@ const MemberProfile: FC<Member> = ({ name, photo, description, link }) => (
   >
     <Image alt={name} className="rounded-full w-32 h-32 mb-4 object-cover" src={photo} />
     <h3 className="text-2xl font-bold text-blue-700 mb-2 hover:underline">{name}</h3>
-    <p className="text-gray-700 mb-2">{description}</p>
+    <ReactMarkdown className="text-gray-700 mb-2">
+     {description}
+    </ReactMarkdown>
   </Link>
 );
 
