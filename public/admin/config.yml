@@ -57,7 +57,7 @@ collections:
     label_singular: "Miembro"
     folder: "src/pages/miembros"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.name}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "miembros-page.template"}
       - {label: "Name", name: "name", widget: "string"}
