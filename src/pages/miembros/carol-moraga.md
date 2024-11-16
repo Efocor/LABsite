@@ -41,7 +41,7 @@ socialLinks:
   - platform: Research Gate
     url: https://www.researchgate.net/profile/Carol-Moraga-Quinteros
   - platform: LinkedIn
-    url: https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAAqXoJ4BL7kikl02KFib0XN4DRar7rS6iQA&keywords=carol%20moraga&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=185aedf4-38aa-4125-8c61-c49d35156e85&sid=Zez&spellCorrectionEnabled=true
+    url: https://www.linkedin.com/in/camoragaq/
   - platform: GitHub
     url: https://github.com/carolmoraga
 date: 2024-11-14T12:00:00.000Z
