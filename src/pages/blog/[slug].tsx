@@ -33,7 +33,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           >
             Volver
           </button>
-          <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
+          <h3 className="text-4xl font-bold text-blue-700 mb-4 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
             {title}
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">
