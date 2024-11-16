@@ -88,7 +88,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Habilidades</h4>
             <ul className="grid grid-cols-2 gap-4 text-gray-800 text-center">
               {skills && skills.length > 0 && skills.map((skill: string, index: number) => (
-                <li key={index}>🔧 {skill}</li>
+                <li key={index}>🔬 {skill}</li>
               ))}
             </ul>
           </div>
