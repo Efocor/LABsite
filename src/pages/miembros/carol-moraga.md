@@ -7,6 +7,8 @@ description: |-
   PhD en Bioinformática, Université Claude Bernard Lyon 1, Francia
 
   Localización: Rancagua, Chile
+description2: |-
+  Localización: Rancagua, Chile
 photo: /images/Carol-Moraga-1.jpg
 link: https://juanperez.dev
 profileInfo: >-
