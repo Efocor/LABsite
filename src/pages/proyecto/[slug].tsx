@@ -50,6 +50,13 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
           <h3 className="text-4xl font-bold text-blue-700 mb-8 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
             {title}
           </h3>
+
+          
+          {/* Imagen del Proyecto */}
+          <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
+            <Image alt={title} className="object-cover w-full h-full" src={image} />
+          </div>
+          
           <p className="text-gray-700 text-center text-lg mb-4 italic">{description}</p>
           {descriptionlinea2 && (
             <div className="prose text-gray-700 text-center text-lg mb-4">
@@ -61,11 +68,6 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
               <ReactMarkdown>{descriptionlinea3}</ReactMarkdown>
             </div>
           )}
-
-          {/* Imagen del Proyecto */}
-          <div className="relative w-full h-60 overflow-hidden mb-6 border-4 border-blue-600 shadow-lg rounded-lg">
-            <Image alt={title} className="object-cover w-full h-full" src={image} />
-          </div>
           
           {/* Progreso del proyecto */}
           <div className="w-full mt-4">
