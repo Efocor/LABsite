@@ -5,8 +5,6 @@ shortTitle: noticia_3
 date: 2024-10-18T00:13:16.379Z
 featuredImage: /images/profe_carol.jpg
 ---
-<!--StartFragment-->
-
 ## **Avances en modelos de análisis y diagnóstico**
 
 Investigadores del [Instituto de Ciencias de la Ingeniería](https://www.uoh.cl/instituto-de-ciencias-de-la-ingenieria/) (ICI) de la [Universidad de O’Higgins](http://www.uoh.cl/) (UOH) avanzan en análisis de moléculas microARN para identificar la expresión de proteínas y su comportamiento multicelular, con lo que se podría progresar en el **diagnóstico preventivo de enfermedades como el cáncer de mamas, tratamientos para la sarcopenia**, así como la posibilidad de entender mecanismos de plantas y resiliencia climática.
@@ -30,5 +28,3 @@ La investigadora reconoce que estos avances se han logrado gracias a la colabora
 Entre tanto, añade la experta, ya se está armando un repositorio de microARNs de hongos en colaboración con el académico Rodrigo Verschae del ICI-UOH, alumnos de pregrado de Ingeniería Civil en Computación e investigadores de la Universidad Mayor, basado en algoritmos de Machine Learning, con lo que se podrá predecir, y determinar, o no, las secuencias candidatas de microARN, así como su biogénesis en este tipo de especies.  “De manera que es clave contar con métodos y algoritmos que sean eficientes a la hora de predecir estas moléculas para la elección de un microARN marcador con el que se puedan elaborar productos que beneficien la agricultura, como el hecho de acelerar la floración en los árboles, producir tomates, o ciertas hortalizas durante todo el año”.
 
 La experta reconoce finalmente que el Premio Nobel de Medicina otorgado a los científicos norteamericanos Víctor Ambros y Gary Ruvkun, por haber descubierto los microARNs, reafirman la importancia de seguir avanzando en estos estudios para la predicción de enfermedades neoplásicas, al tiempo de abrir nuevos campos para la investigación en materia agrícola y medioambiental, preservación de biodiversidad, junto con terapias médicas cruciales para el aumento de la calidad de vida de las personas.
-
-<!--EndFragment-->
