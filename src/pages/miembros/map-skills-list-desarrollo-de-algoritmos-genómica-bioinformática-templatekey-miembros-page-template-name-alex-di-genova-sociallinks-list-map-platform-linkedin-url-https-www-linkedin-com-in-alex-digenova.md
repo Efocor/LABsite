@@ -30,7 +30,7 @@ skills:
   - Bioinformática
 socialLinks:
   - platform: LinkedIn
-    url: https://www.linkedin.com/in/alex-digenova
+    url: https://www.linkedin.com/in/alex-di-genova-522b99246/
   - platform: GitHub
     url: https://github.com/alexdigenova
   - platform: Google Scholar
