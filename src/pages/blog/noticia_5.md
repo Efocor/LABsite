@@ -4,14 +4,8 @@ shortTitle: Noticia_5
 date: 2023-07-24T01:55:33.384Z
 featuredImage: /images/facilities_digenoma_lab_cluster.jpeg
 ---
-<!--StartFragment-->
-
 * *El Laboratorio de Computación de Alto Rendimiento (HPC) permite obtener información científica esencial para el desarrollo de medicina de precisión, la compresión de fenómenos meteorológicos e industriales, además de efectuar aplicaciones matemáticas en el diseño de prótesis médicas, entre otros usos.*
 
-<!--EndFragment-->
-
-<!--StartFragment-->
-<br/>
 
 Con tecnología de vanguardia y altas capacidades, la [Universidad de O’Higgins](http://www.uoh.cl/) (UOH) presentó su nuevo y moderno Laboratorio de Computación de Alto Rendimiento (HPC), con capacidad de transformar datos en información esencial para el desarrollo de diferentes líneas de investigación y aplicaciones industriales.
 
@@ -30,5 +24,3 @@ Desde marzo de este año, el clúster se encuentra operativo y ha permitido cola
 ## **Primer genoma**
 
 Sobre la creación del primer genoma chileno efectuado con el HPC, el académico Alex Di Genova comenta que “es importante entender que la creación del genoma más allá de permitir conocer nuestros orígenes, es impactar con la secuenciación del genoma humano en la medicina de precisión, que busca entender nuestra genética, analizar el entorno y nuestro estilo de vida para recomendarnos tratamientos, fármacos y mejorar la calidad de vida de las personas. En el año 2000 la secuenciación de un genoma humano costaba 100 millones de dólares y actualmente en la UOH estamos secuenciando por 750 dólares y esperamos llegar a hacerlo por menos de 500”, finalizó.
-
-<!--EndFragment-->
