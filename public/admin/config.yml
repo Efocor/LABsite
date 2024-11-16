@@ -40,7 +40,7 @@ collections:
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Porcentaje", name: "porcentaje", widget: "string"}                 # Imagen del producto
       - {label: "Description", name: "description", widget: "string"}
-      - {label: "Descriptionlinea2", name: "descriptionlinea2", widget: "string"}
+      - {label: "Descriptionlinea2", name: "descriptionlinea2", widget: "markdown"}
       - {label: "Descriptionlinea3", name: "descriptionlinea3", widget: "markdown"}
       - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
       - {label: "Otro", name: "otros", widget: "list"}
