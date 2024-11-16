@@ -27,12 +27,16 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           src={backgroundImage}
         />
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
-          <button
-            className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            onClick={() => window.history.back()}
-          >
-            Volver
-          </button>
+          {/* Contenedor del botón Volver con margen adecuado */}
+          <div className="w-full flex justify-end mb-8">
+            <button
+              className="px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
+              onClick={() => window.history.back()}
+            >
+              Volver
+            </button>
+          </div>
+
           <h3 className="text-4xl font-bold text-blue-700 mb-4 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
             {title}
           </h3>
