@@ -20,6 +20,12 @@ interface Project {
   logs: string[];
 }
 
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  return date.toLocaleDateString('es-ES', options);
+};
+
 const Pagination: FC<{
   totalPages: number;
   currentPage: number;
@@ -82,7 +88,9 @@ const ProjectListPage: FC<{ projects: Project[] }> = ({ projects }) => {
             <Link key={project.shortTitle} href={`/proyecto/${project.shortTitle}`}>
               <article className="relative p-6 bg-white shadow-lg rounded-lg mb-6 border border-gray-300 transition-transform duration-300 hover:scale-105 cursor-pointer w-full">
                 <h2 className="text-xl font-bold text-blue-600 mb-2">{project.title}</h2>
-                <p className="text-sm text-gray-500">{project.date}</p>
+                <p className="text-sm text-gray-500">
+                  {project.date !== 'Fecha desconocida' ? formatDate(project.date) : project.date}
+                </p>
                 <div className="mt-4">
                   <div className="flex items-center justify-between mb-2">
                     <span>Progreso:</span>
@@ -122,7 +130,7 @@ export async function getStaticProps() {
     return {
       title: data.title || 'Proyecto sin título',
       shortTitle: data.shortTitle || filename.replace(/\.md$/, ''),
-      date: data.date || 'Fecha desconocida',
+      date: data.date ? new Date(data.date).toISOString() : 'Fecha desconocida', // Convertimos a cadena ISO
       percentage: data.porcentaje || 0,
       tools: data.tools || [],
       logs: data.logs || [],
