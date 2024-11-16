@@ -383,11 +383,11 @@ const NavItem: FC<{
         isSoftwareSection
           ? '/infraestructura'
           : isNewsSection
-          ? '/noticias'
+          ? '/noticia'
           : isContactSection
           ? '/contacto'
           : isProyectosSection
-          ? '/proyectos'
+          ? '/proyecto'
           : isNosotrosSection
           ? '/nosotros'
           : `/#${section}`
