@@ -25,6 +25,11 @@ profileInfo: >-
 
 
   <!--EndFragment-->
+skills:
+  - Desarrollo de algoritmos
+  - Bioinformática
+  - "Análisis de datos genómicos "
+  - "Biología Computacional "
 socialLinks:
   - platform: LinkedIn
     url: https://www.linkedin.com/in/alex-digenova
