@@ -32,21 +32,17 @@ profileInfo: >-
   Carol lleva a cabo investigaciones en el área de Biología Computacional y Biotecnología en el Instituto de Ciencias de la Ingeniería en la Universidad de O'Higgins en Rancagua.
 skills:
   - Recolección y trabajo en terreno
-  - Modelado de sistemas complejos
+  - Desarrollo de software bioinformático
   - Diseño de experimentos en biología molecular
   - Bioinformática y Biología Computacional
-  - Genómica
-  - Análisis de secuencias
-  - Desarrollo de software bioinformático
-  - Programación en Python y R
-  - Análisis de datos científicos
-  - Secuenciación de genomas
-  - Análisis de datos NGS
-  - Genómica comparativa
 socialLinks:
   - platform: Google Scholar
     url: https://scholar.google.com/citations?hl=es&user=V9nSX74AAAAJ&view_op=list_works&sortby=pubdate
   - platform: Research Gate
     url: https://www.researchgate.net/profile/Carol-Moraga-Quinteros
+  - platform: LinkedIn
+    url: https://www.linkedin.com/in/carol-moraga
+  - platform: GitHub
+    url: https://github.com/carolmoraga
 date: 2024-11-14T12:00:00.000Z
 ---
