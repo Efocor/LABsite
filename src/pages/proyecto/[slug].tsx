@@ -36,14 +36,14 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
         />
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
           <button
-            className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
+            className="absolute top-6 right-6 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
             onClick={() => window.history.back()}
           >
             Volver
           </button>
 
           {/* Información general del proyecto */}
-          <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
+          <h3 className="text-4xl font-bold text-blue-700 mb-8 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
             {title}
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">{description}</p>
