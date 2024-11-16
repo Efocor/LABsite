@@ -26,5 +26,5 @@ descriptionlinea3: |-
   Despliegue en producción
 miembroasociado:
   - nombremiembro: Alex Di Genova
-    url: /miembros/alex-di-genova
+    url: /miembros/alex-digenova
 ---
