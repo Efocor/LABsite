@@ -83,19 +83,21 @@ export async function getStaticProps() {
   const membersDirectory = path.join(process.cwd(), 'src/pages/miembros');
   const filenames = fs.readdirSync(membersDirectory);
 
-  const members: Member[] = filenames.map((filename) => {
-    const filePath = path.join(membersDirectory, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data } = matter(fileContent);
+  const members: Member[] = filenames
+    .filter((filename) => filename.endsWith('.md')) // Filtra archivos que no son .md (como los .tsx)
+    .map((filename) => {
+      const filePath = path.join(membersDirectory, filename);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const { data } = matter(fileContent);
 
-    const slug = data.slug || filename.replace(/\.md$/, '').toLowerCase();
-    return {
-      name: data.name || 'Sin nombre',
-      photo: data.photo || '/images/default-photo.jpg',
-      description: data.description || 'Sin descripción',
-      link: `/miembros/${slug}`, // URL dinámica para cada miembro
-    };
-  });
+      const slug = data.slug || filename.replace(/\.md$/, '').toLowerCase();
+      return {
+        name: data.name || 'Sin nombre',
+        photo: data.photo || '/images/default-photo.jpg',
+        description: data.description || 'Sin descripción',
+        link: `/miembros/${slug}`, // URL dinámica para cada miembro
+      };
+    });
 
   return {
     props: {
