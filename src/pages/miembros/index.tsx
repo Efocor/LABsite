@@ -25,7 +25,7 @@ const MemberProfile: FC<Member> = ({ name, photo, description, link }) => (
     href={link}
   >
     <Image alt={name} className="rounded-full w-32 h-32 mb-4 object-cover" src={photo} />
-    <h3 className="text-2xl font-bold text-blue-700 mb-2 hover:underline">{name}</h3>
+    <h3 className="text-2xl font-bold text-blue-700 mb-2 hover:underline text-center">{name}</h3>
     <ReactMarkdown className="text-gray-700 mb-2">
      {description}
     </ReactMarkdown>
