@@ -7,7 +7,8 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import ReactMarkdown from 'react-markdown'; // Importa react-markdown
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'; // Para mejor manejo de saltos de línea y listas
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
@@ -65,9 +66,12 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             </div>
           )}
 
-          {/* Usar ReactMarkdown para renderizar el contenido markdown */}
+          {/* Usar ReactMarkdown con remarkGfm para renderizar el contenido markdown */}
           <div className="text-gray-600 text-sm text-justify leading-relaxed">
-            <ReactMarkdown>{body}</ReactMarkdown> {/* Aquí se renderiza el contenido en Markdown */}
+            <ReactMarkdown 
+              children={body} 
+              remarkPlugins={[remarkGfm]} // Esto habilita tablas, listas de tareas y otros elementos de Markdown
+            />
           </div>
         </div>
       </main>
