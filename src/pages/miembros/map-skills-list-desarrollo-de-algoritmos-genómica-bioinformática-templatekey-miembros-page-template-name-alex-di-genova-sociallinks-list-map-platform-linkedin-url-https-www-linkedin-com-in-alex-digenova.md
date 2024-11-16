@@ -31,4 +31,8 @@ skills:
 socialLinks:
   - platform: LinkedIn
     url: https://www.linkedin.com/in/alex-digenova
+  - platform: GitHub
+    url: https://github.com/alexdigenova
+  - platform: Google Scholar
+    url: https://scholar.google.com/citations?hl=es&user=KtBttDgAAAAJ
 ---
