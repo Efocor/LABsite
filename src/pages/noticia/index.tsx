@@ -69,7 +69,7 @@ const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
                 )}
                 <div className="p-4">
                   <h3 className="text-xl font-semibold text-blue-600 hover:text-blue-500">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    <Link href={`/noticia/${post.slug}`}>{post.title}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm italic">{post.date}</p>
                 </div>
