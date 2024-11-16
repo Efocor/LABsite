@@ -83,30 +83,15 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             </div>
           )}
 
-          {/* Habilidades */}
-          {skills && skills.length > 0 && (
-            <div className="mb-6">
-              <h4 className="text-xl font-semibold text-blue-600 mb-2">Habilidades</h4>
-              <ul className="list-none pl-0 text-gray-700 space-y-2">
-                {skills.map(
-                  (skill: { name: string; icon?: string }, index: number) => (
-                    <li key={index} className="flex items-center text-lg">
-                      {skill.icon && (
-                        <Image
-                          src={skill.icon}
-                          alt={skill.name}
-                          width={24}
-                          height={24}
-                          className="mr-2"
-                        />
-                      )}
-                      {skill.name}
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          )}
+          {/* Sección de habilidades */}
+          <div className="w-full mb-6">
+            <h4 className="text-2xl font-semibold text-blue-600 mb-4 text-center">Habilidades</h4>
+            <ul className="grid grid-cols-2 gap-4 text-gray-800 text-center">
+              {skills && skills.length > 0 && skills.map((skill: string, index: number) => (
+                <li key={index}>🔧 {skill}</li>
+              ))}
+            </ul>
+          </div>
 
           {/* Enlaces sociales */}
           {socialLinks && socialLinks.length > 0 && (
