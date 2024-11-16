@@ -1,14 +1,14 @@
-import dynamic from 'next/dynamic';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps } from 'next';
 import Page from '../../components/Layout/Page';
 import Footer from '../../components/Sections/Footer';
 import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import dynamic from 'next/dynamic';
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
@@ -19,15 +19,29 @@ interface Post {
   featuredImage: string;
 }
 
-interface BlogPageProps {
-  posts: Post[];
-  totalPages: number;
-  currentPage: number;
-}
+const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
+  // Estado para manejar la página actual
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
 
-const POSTS_PER_PAGE = 6;
+  // Calcular los posts a mostrar en la página actual
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-const BlogPage: FC<BlogPageProps> = ({ posts, totalPages, currentPage }) => {
+  // Funciones para cambiar de página
+  const nextPage = () => {
+    if (currentPage < Math.ceil(posts.length / postsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <Page title="Blog" description="Últimas noticias y artículos">
       <Header />
@@ -42,7 +56,7 @@ const BlogPage: FC<BlogPageProps> = ({ posts, totalPages, currentPage }) => {
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
           <h1 className="text-4xl font-bold text-blue-700 mb-8">Noticias</h1>
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {currentPosts.map((post) => (
               <div key={post.slug} className="bg-white shadow-lg rounded-lg overflow-hidden">
                 {post.featuredImage && (
                   <Image
@@ -62,17 +76,23 @@ const BlogPage: FC<BlogPageProps> = ({ posts, totalPages, currentPage }) => {
               </div>
             ))}
           </div>
-          <div className="w-full flex justify-between mt-8">
-            {currentPage > 1 && (
-              <Link href={`/blog/page/${currentPage - 1}`} className="text-blue-600 hover:text-blue-500">
-                Página Anterior
-              </Link>
-            )}
-            {currentPage < totalPages && (
-              <Link href={`/blog/page/${currentPage + 1}`} className="text-blue-600 hover:text-blue-500">
-                Página Siguiente
-              </Link>
-            )}
+
+          {/* Paginación */}
+          <div className="flex justify-between w-full mt-8">
+            <button
+              onClick={prevPage}
+              className="bg-blue-600 text-white px-4 py-2 rounded-md disabled:opacity-50"
+              disabled={currentPage === 1}
+            >
+              Anterior
+            </button>
+            <button
+              onClick={nextPage}
+              className="bg-blue-600 text-white px-4 py-2 rounded-md disabled:opacity-50"
+              disabled={currentPage === Math.ceil(posts.length / postsPerPage)}
+            >
+              Siguiente
+            </button>
           </div>
         </div>
       </main>
@@ -81,7 +101,7 @@ const BlogPage: FC<BlogPageProps> = ({ posts, totalPages, currentPage }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
   const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
 
   // Verifica si el directorio de publicaciones existe
@@ -95,6 +115,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   // Lee solo archivos .md
   for (const filename of filenames) {
+    // Filtra archivos que no son .md (como los .tsx)
     if (filename.endsWith('.md')) {
       const filePath = path.join(postsDirectory, filename);
       const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -108,56 +129,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       });
     }
   }
-
-  // Ordena los posts por fecha (descendente)
-  posts.sort((a, b) => (b.date ? new Date(b.date).getTime() : 0) - (a.date ? new Date(a.date).getTime() : 0));
-
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const currentPage = parseInt(params?.page as string, 10) || 1;
-
-  // Pagina los posts según la página actual
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const endIndex = startIndex + POSTS_PER_PAGE;
-  const paginatedPosts = posts.slice(startIndex, endIndex);
 
   return {
     props: {
-      posts: paginatedPosts,
-      totalPages,
-      currentPage,
+      posts,
     },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
-  const filenames = fs.readdirSync(postsDirectory);
-  const posts: Post[] = [];
-
-  // Lee solo archivos .md
-  for (const filename of filenames) {
-    if (filename.endsWith('.md')) {
-      const filePath = path.join(postsDirectory, filename);
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(fileContent);
-
-      posts.push({
-        slug: data.slug || filename.replace(/\.md$/, ''),
-        title: data.title || 'Título no disponible',
-        date: data.date ? new Date(data.date).toLocaleDateString() : null,
-        featuredImage: data.featuredImage || '/images/default-image.jpg',
-      });
-    }
-  }
-
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const paths = Array.from({ length: totalPages }, (_, i) => ({
-    params: { page: (i + 1).toString() },
-  }));
-
-  return {
-    paths,
-    fallback: false, // No permite rutas no pre-renderizadas
   };
 };
 
