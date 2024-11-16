@@ -1,22 +1,78 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { FC, memo } from 'react';
-import Page from '../../components/Layout/Page';
-import Footer from '../../components/Sections/Footer';
-import backgroundImage from '../../images/header-background.webp';
+import Link from 'next/link';
+import { FC, useState } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import Page from '../../components/Layout/Page';
+import Footer from '../../components/Sections/Footer';
+import backgroundImage from '../../images/header-background.webp';
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
-const CMSPage: FC<{ post: any }> = memo(({ post }) => {
-  const { title, date, body, featuredImage, gallery } = post;
+interface Project {
+  title: string;
+  shortTitle: string;
+  date: string;
+  percentage: number;
+  tools: string[];
+  logs: string[];
+}
+
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  return date.toLocaleDateString('es-ES', options);
+};
+
+const Pagination: FC<{
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}> = ({ totalPages, currentPage, onPageChange }) => {
+  const handlePrev = () => currentPage > 1 && onPageChange(currentPage - 1);
+  const handleNext = () => currentPage < totalPages && onPageChange(currentPage + 1);
 
   return (
-    <Page description={title} title={title}>
+    <div className="flex justify-center items-center mt-8 space-x-4">
+      <button
+        onClick={handlePrev}
+        disabled={currentPage === 1}
+        className={`px-4 py-2 bg-blue-500 text-white rounded ${
+          currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+      >
+        Anterior
+      </button>
+      <span className="bg-green-700 text-white font-bold text-sm rounded-md p-3 shadow-md flex items-center justify-center border border-green-700">
+        Página {currentPage} de {totalPages}
+      </span>
+      <button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        className={`px-4 py-2 bg-blue-500 text-white rounded ${
+          currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+      >
+        Siguiente
+      </button>
+    </div>
+  );
+};
+
+const ProjectListPage: FC<{ projects: Project[] }> = ({ projects }) => {
+  const projectsPerPage = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const currentProjects = projects.slice(
+    (currentPage - 1) * projectsPerPage,
+    currentPage * projectsPerPage
+  );
+
+  return (
+    <Page title="Proyectos" description="Lista de proyectos">
       <Header />
       <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
         <Image
@@ -26,120 +82,66 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           priority
           src={backgroundImage}
         />
-        <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
-          <button
-            className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            onClick={() => window.history.back()} >
-            Volver
-          </button>
-          <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
-            {title}
-          </h3>
-          <p className="text-gray-700 text-center text-lg mb-4 italic">
-            Publicado el: {new Date(date).toLocaleDateString()}
-          </p>
-          {featuredImage && (
-            <Image
-              src={featuredImage}
-              alt={title}
-              width={800}
-              height={400}
-              className="rounded-lg mb-6"
-            />
-          )}
-
-          {/* Mostrar la galería de imágenes horizontalmente */}
-          {gallery && gallery.length > 0 && (
-            <div className="gallery-container flex justify-center gap-4 mb-8">
-              {gallery.map((photo: any, index: number) => (
-                <div key={index} className="gallery-item">
-                  <Image
-                    src={photo.image}
-                    alt={`Gallery image ${index + 1}`}
-                    width={300}
-                    height={200}
-                    className="rounded-lg shadow-lg object-cover"
-                  />
+        <div className="z-10 max-w-6xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center">
+          <h1 className="text-4xl font-bold text-blue-700 mb-6 tracking-wide">Lista de Proyectos</h1>
+          {currentProjects.map((project) => (
+            <Link key={project.shortTitle} href={`/proyecto/${project.shortTitle}`}>
+              <article className="relative p-6 bg-white shadow-lg rounded-lg mb-6 border border-gray-300 transition-transform duration-300 hover:scale-105 cursor-pointer w-full">
+                <h2 className="text-xl font-bold text-blue-600 mb-2">{project.title}</h2>
+                <p className="text-sm text-gray-500">
+                  {project.date !== 'Fecha desconocida' ? formatDate(project.date) : project.date}
+                </p>
+                <div className="mt-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span>Progreso:</span>
+                    <span className="font-semibold">{project.percentage}%</span>
+                  </div>
+                  <div className="bg-gray-300 rounded-full h-2">
+                    <div
+                      className="bg-green-600 h-2 rounded-full"
+                      style={{ width: `${project.percentage}%` }}
+                    />
+                  </div>
                 </div>
-              ))}
-            </div>
-          )}
-
-          <div className="text-gray-600 text-sm text-justify leading-relaxed">
-            <div dangerouslySetInnerHTML={{ __html: body }} />
-          </div>
+              </article>
+            </Link>
+          ))}
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
         </div>
       </main>
       <Footer />
     </Page>
   );
-});
+};
 
-export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
-  
-  // Verifica que el directorio exista
-  if (!fs.existsSync(postsDirectory)) {
-    console.error("Directorio de publicaciones no encontrado:", postsDirectory);
-    return { paths: [], fallback: false };
-  }
+export async function getStaticProps() {
+  const projectsDirectory = path.join(process.cwd(), 'src/pages/proyecto');
+  const filenames = fs.readdirSync(projectsDirectory).filter((filename) => filename.endsWith('.md'));
 
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const paths = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-
-    // Verifica si el archivo existe
-    if (!fs.existsSync(filePath)) {
-      console.error(`Archivo no encontrado: ${filePath}`);
-      return null; // Retorna null si no se encuentra el archivo
-    }
-
+  const projects = filenames.map((filename) => {
+    const filePath = path.join(projectsDirectory, filename);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
 
     return {
-      params: { slug: data.slug || filename.replace(/\.md$/, '') }, // Usa el slug o el nombre del archivo
+      title: data.title || 'Proyecto sin título',
+      shortTitle: data.shortTitle || filename.replace(/\.md$/, ''),
+      date: data.date ? new Date(data.date).toISOString() : 'Fecha desconocida', // Convertimos a cadena ISO
+      percentage: data.porcentaje || 0,
+      tools: data.tools || [],
+      logs: data.logs || [],
     };
-  }).filter(Boolean); // Filtra valores null
-
-  return {
-    paths,
-    fallback: false, // false para que no haya rutas dinámicas no encontradas
-  };
-}
-
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), 'src/pages/blog', `${slug}.md`);
-
-  // Verifica que el archivo existe
-  if (!fs.existsSync(filePath)) {
-    console.error(`Archivo no encontrado: ${filePath}`);
-    return { notFound: true }; // Si no se encuentra el archivo, retorna notFound
-  }
-
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-
-  // Procesar el contenido Markdown a HTML
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
-
-  // Asegúrate de convertir la fecha a una cadena si es necesario
-  const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
+  });
 
   return {
     props: {
-      post: {
-        title: data.title || 'Título no disponible',
-        date: postDate,
-        body: contentHtml, // Aquí pasamos el HTML procesado
-        featuredImage: data.featuredImage || '/images/default-image.jpg',
-        gallery: data.gallery || [],
-      },
+      projects,
     },
   };
 }
 
-export default CMSPage;
+export default ProjectListPage;
