@@ -7,7 +7,7 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown'; // Importa react-markdown
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
@@ -28,7 +28,8 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
         <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
           <button
             className="absolute top-4 right-4 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            onClick={() => window.history.back()} >
+            onClick={() => window.history.back()}
+          >
             Volver
           </button>
           <h3 className="text-4xl font-bold text-blue-700 mb-2 tracking-wide hover:underline hover:text-blue-500 transition duration-300">
@@ -64,9 +65,10 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             </div>
           )}
 
-          <ReactMarkdown className="text-gray-700 text-center text-lg mb-4 italic">
-            {body}
-          </ReactMarkdown>
+          {/* Usar ReactMarkdown para renderizar el contenido markdown */}
+          <div className="text-gray-600 text-sm text-justify leading-relaxed">
+            <ReactMarkdown>{body}</ReactMarkdown> {/* Aquí se renderiza el contenido en Markdown */}
+          </div>
         </div>
       </main>
       <Footer />
@@ -76,7 +78,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 
 export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
-  
+
   // Verifica que el directorio exista
   if (!fs.existsSync(postsDirectory)) {
     console.error("Directorio de publicaciones no encontrado:", postsDirectory);
@@ -119,9 +121,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data } = matter(fileContent);
+  const { data, content } = matter(fileContent);
 
-  // Asegúrate de convertir la fecha a una cadena si es necesario
+  // No es necesario procesar el contenido markdown a HTML porque ReactMarkdown se encarga de ello
   const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
 
   return {
@@ -129,7 +131,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       post: {
         title: data.title || 'Título no disponible',
         date: postDate,
-        body: data.body || 'Sin descripción', // Aquí pasamos el HTML procesado
+        body: content, // Aquí pasamos el contenido Markdown directamente
         featuredImage: data.featuredImage || '/images/default-image.jpg',
         gallery: data.gallery || [],
       },
