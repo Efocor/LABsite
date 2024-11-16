@@ -43,7 +43,7 @@ miembroasociado:
   - nombremiembro: Carol Moraga
     url: /miembros/carol-moraga
   - nombremiembro: Alex Di Genova
-    url: /miembros/alex-di-genova
+    url: /miembros/alex-digenova
   - nombremiembro: David Salas
     url: /miembros/david-salas
 ---
