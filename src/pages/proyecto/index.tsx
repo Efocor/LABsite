@@ -84,6 +84,9 @@ const ProjectListPage: FC<{ projects: Project[] }> = ({ projects }) => {
         />
         <div className="z-10 max-w-6xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center">
           <h1 className="text-4xl font-bold text-blue-700 mb-6 tracking-wide">Lista de Proyectos</h1>
+          <p className="text-gray-700 text-center text-lg mb-4 italic">
+            Aquí podrás encontrar nuestros proyectos actuales y completados, haz click en cualquiera de ellos para poder ver más detalles.
+          </p>
           {currentProjects.map((project) => (
             <Link key={project.shortTitle} href={`/proyecto/${project.shortTitle}`}>
               <article className="relative p-6 bg-white shadow-lg rounded-lg mb-6 border border-gray-300 transition-transform duration-300 hover:scale-105 cursor-pointer w-full">
