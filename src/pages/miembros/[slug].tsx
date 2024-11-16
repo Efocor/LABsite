@@ -12,6 +12,11 @@ import ReactMarkdown from 'react-markdown'; // Para renderizar Markdown
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
+// Función para limpiar los fragmentos HTML innecesarios
+const cleanFragment = (text: string) => {
+  return text.replace(/<!--StartFragment-->.*?<!--EndFragment-->/gs, '').trim();
+};
+
 const CMSPage: FC<{ post: any }> = memo(({ post }) => {
   const { name, description, description2, photo, profileInfo, skills, socialLinks, gallery, featuredImage } = post;
 
@@ -55,7 +60,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           {profileInfo && (
             <div className="text-gray-600 text-sm leading-relaxed mb-6 space-y-4">
               <h4 className="text-xl font-semibold text-blue-600 mb-2">Acerca de {name}</h4>
-              <ReactMarkdown>{profileInfo}</ReactMarkdown>
+              <ReactMarkdown>{cleanFragment(profileInfo)}</ReactMarkdown>
             </div>
           )}
 
