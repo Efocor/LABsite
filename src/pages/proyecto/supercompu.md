@@ -1,13 +1,22 @@
 ---
 porcentaje: "71"
-descriptionlinea2: "Herramientas: Python R CUDA TensorFlow"
+descriptionlinea2: |-
+  #### Herramientas: 
+
+  Python 
+
+  R 
+
+  CUDA 
+
+  TensorFlow
 ingredients:
   - "Miembros: Ana María Rusque Ana María Rusque Juan Pérez Juan Pérez David
     Salas David Salas"
 templateKey: proyecto-page.template
 title: Supercomputación para Innovación en Salud Regional
-shortTitle: supercompu
 date: 2024-11-14T12:00:00.000Z
+shortTitle: supercompu
 image: /images/a copy.webp
 description: El proyecto financiado por el Gobierno Regional tiene como objetivo
   implementar tecnología de supercomputación (HPC) avanzada en la Región de
