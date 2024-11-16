@@ -67,7 +67,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
           )}
 
           {/* Usar ReactMarkdown con remarkGfm para renderizar el contenido markdown */}
-          <div className="text-gray-600 text-sm text-justify leading-relaxed">
+          <div className="text-gray-600 text-sm text-justify leading-relaxed space-y-4">
             <ReactMarkdown 
               children={body} 
               remarkPlugins={[remarkGfm]} // Esto habilita tablas, listas de tareas y otros elementos de Markdown
