@@ -34,4 +34,7 @@ descriptionlinea3: |-
 
   Implementación de módulos de capacitación
 gallery: []
+miembroasociado:
+  - nombremiembro: Carol Moraga
+    url: /miembros/carol-moraga
 ---

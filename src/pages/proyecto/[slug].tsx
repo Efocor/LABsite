@@ -21,6 +21,7 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
     descriptionlinea3 = '',
     gallery = [],
     otros = [],
+    miembrosAsociados = [],
   } = project;
 
   return (
@@ -79,6 +80,20 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
               />
             </div>
           </div>
+
+          {/* Lista de miembros asociados */}
+          {miembrosAsociados.length > 0 && (
+            <div className="w-full mt-6">
+              <h4 className="text-xl font-semibold text-blue-600 mb-2">Lista de Miembros Asociados</h4>
+              <ul className="list-none pl-0">
+                {miembrosAsociados.map((miembro: { nombremiembro: string, url: string }, index: number) => (
+                  <li key={index} className="text-blue-700 hover:text-blue-500 transition duration-300">
+                    <a href={miembro.url} className="hover:underline">{miembro.nombremiembro}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Galería de imágenes */}
           {gallery.length > 0 && (
@@ -167,6 +182,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
         descriptionlinea3: data.descriptionlinea3 || '',
         gallery: data.gallery || [],
         otros: data.otros || [],
+        miembrosAsociados: data.miembroasociado || [], // Incluyendo los miembros asociados
       },
     },
   };
