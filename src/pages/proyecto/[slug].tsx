@@ -50,7 +50,11 @@ const ProjectPage: FC<{ project: any }> = memo(({ project }) => {
             {title}
           </h3>
           <p className="text-gray-700 text-center text-lg mb-4 italic">{description}</p>
-          {descriptionlinea2 && <p className="text-gray-700 text-center text-lg">{descriptionlinea2}</p>}
+          {descriptionlinea2 && (
+            <div className="prose text-gray-700 text-center text-lg mb-4">
+              <ReactMarkdown>{descriptionlinea2}</ReactMarkdown>
+            </div>
+          )}
           {descriptionlinea3 && (
             <div className="prose text-gray-700 text-center text-lg mb-4">
               <ReactMarkdown>{descriptionlinea3}</ReactMarkdown>
