@@ -73,18 +73,21 @@ export const getStaticProps: GetStaticProps = async () => {
   const filenames = fs.readdirSync(postsDirectory);
   const posts: Post[] = [];
 
-  // Lee cada archivo .md
+  // Lee solo archivos .md
   for (const filename of filenames) {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data } = matter(fileContent);
+    // Filtra archivos que no son .md (como los .tsx)
+    if (filename.endsWith('.md')) {
+      const filePath = path.join(postsDirectory, filename);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const { data } = matter(fileContent);
 
-    posts.push({
-      slug: data.slug || filename.replace(/\.md$/, ''),
-      title: data.title || 'Título no disponible',
-      date: data.date ? new Date(data.date).toLocaleDateString() : null,
-      featuredImage: data.featuredImage || '/images/default-image.jpg',
-    });
+      posts.push({
+        slug: data.slug || filename.replace(/\.md$/, ''),
+        title: data.title || 'Título no disponible',
+        date: data.date ? new Date(data.date).toLocaleDateString() : null,
+        featuredImage: data.featuredImage || '/images/default-image.jpg',
+      });
+    }
   }
 
   return {
