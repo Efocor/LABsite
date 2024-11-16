@@ -110,8 +110,10 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 
           {/* Enlaces sociales */}
           {socialLinks && socialLinks.length > 0 && (
-            <div className="w-full bg-blue-100 p-4 rounded-lg shadow-md mb-8">
-              <h4 className="text-xl font-semibold text-blue-600 mb-2 text-center">Enlaces Sociales</h4>
+            <div className="w-full mb-8">
+              <h4 className="text-xl font-semibold text-blue-600 mb-4 text-center">
+                ¡Conoce más sobre sus investigaciones, artículos y otros!
+              </h4>
               <div className="flex flex-wrap justify-center gap-4">
                 {socialLinks.map((link: { platform: string, url: string }, index: number) => (
                   <Link key={index} href={link.url} passHref>
@@ -134,6 +136,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
   );
 });
 
+// Código de generación de rutas y props (sin cambios)
 export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), 'src/pages/miembros');
   const filenames = fs.readdirSync(postsDirectory);
