@@ -35,6 +35,7 @@ collections:
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "proyecto-page.template"}
       - {label: "Name", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Short Title", name: "shortTitle", widget: "string"} # Título corto para el slug
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Porcentaje", name: "porcentaje", widget: "string"}                 # Imagen del producto
