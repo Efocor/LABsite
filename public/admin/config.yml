@@ -6,10 +6,10 @@ media_folder: "public/images"
 public_folder: "/images"
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    label_singular: "Post"
-    folder: "src/pages/blog"
+  - name: "noticia"
+    label: "Noticias"
+    label_singular: "Noticia"
+    folder: "src/pages/noticia"
     create: true
     slug: "{{fields.shortTitle}}" # Usar un título corto como slug
     fields:

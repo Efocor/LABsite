@@ -85,7 +85,7 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
 });
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
+  const postsDirectory = path.join(process.cwd(), 'src/pages/noticia');
 
   // Verifica que el directorio exista
   if (!fs.existsSync(postsDirectory)) {
@@ -120,7 +120,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const filePath = path.join(process.cwd(), 'src/pages/blog', `${slug}.md`);
+  const filePath = path.join(process.cwd(), 'src/pages/noticia', `${slug}.md`);
 
   // Verifica que el archivo existe
   if (!fs.existsSync(filePath)) {

@@ -102,7 +102,7 @@ const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const postsDirectory = path.join(process.cwd(), 'src/pages/blog');
+  const postsDirectory = path.join(process.cwd(), 'src/pages/noticia');
 
   // Verifica si el directorio de publicaciones existe
   if (!fs.existsSync(postsDirectory)) {
