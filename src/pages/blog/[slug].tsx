@@ -7,8 +7,7 @@ import backgroundImage from '../../images/header-background.webp';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import ReactMarkdown from 'react-markdown';
 
 const Header = dynamic(() => import('../../components/Sections/Header'), { ssr: false });
 
@@ -65,9 +64,9 @@ const CMSPage: FC<{ post: any }> = memo(({ post }) => {
             </div>
           )}
 
-          <div className="text-gray-600 text-sm text-justify leading-relaxed">
-            <div dangerouslySetInnerHTML={{ __html: body }} />
-          </div>
+          <ReactMarkdown className="text-gray-700 text-center text-lg mb-4 italic">
+            {body}
+          </ReactMarkdown>
         </div>
       </main>
       <Footer />
@@ -120,11 +119,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-
-  // Procesar el contenido Markdown a HTML
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
+  const { data } = matter(fileContent);
 
   // Asegúrate de convertir la fecha a una cadena si es necesario
   const postDate = new Date(data.date).toISOString(); // O el formato que prefieras
@@ -134,7 +129,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       post: {
         title: data.title || 'Título no disponible',
         date: postDate,
-        body: contentHtml, // Aquí pasamos el HTML procesado
+        body: data.body || 'Sin descripción', // Aquí pasamos el HTML procesado
         featuredImage: data.featuredImage || '/images/default-image.jpg',
         gallery: data.gallery || [],
       },
