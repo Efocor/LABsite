@@ -2,14 +2,15 @@
 templateKey: miembros-page.template
 name: "David Salas "
 description: Ingeniero Civil Matemático, Universidad de Chile
-description2: >-
+description2: |
   Localización: Rancagua, Chile
-
-  Grado Académico: Matemáticas y Modelamiento, Université de Montpellier, Francia
 photo: /images/David-Salas.jpg
 link: miembro 3
 profileInfo: >-
   <!--StartFragment-->
+
+
+  Grado Académico: Matemáticas y Modelamiento, Université de Montpellier, Francia
 
 
   David Salas realizó sus estudios de pregrado en la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile. Posteriormente, hizo sus estudios doctorales en la Universidad de Montpellier (Francia) bajo la dirección de Lionel Thibault.
