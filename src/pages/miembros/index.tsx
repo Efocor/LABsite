@@ -48,9 +48,9 @@ const Miembros: FC<MiembrosProps> = memo(({ members }) => {
       </div>
 
       {/* Contenido principal */}
-      <main className="bg-gray-20 min-h-screen flex flex-col items-center pt-[calc(64px+1rem)]">
-        {/* Agrega espacio para que el contenido no se superponga con el Header */}
-        <div className="relative min-h-screen w-full flex justify-center items-center">
+      <main className="bg-gray-20 min-h-screen flex flex-col items-center">
+        {/* Imagen de fondo posicionada detrás del Header */}
+        <div className="relative w-full h-[60vh]">
           <Image
             alt="Background image"
             className="absolute z-0 h-full w-full object-cover"
@@ -58,21 +58,23 @@ const Miembros: FC<MiembrosProps> = memo(({ members }) => {
             priority
             src={testimonialImage}
           />
-          <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            {/* Sección de Miembros Actuales */}
-            <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
-              <h2 className="text-4xl font-semibold text-center text-blue-700 mb-6">Miembros Actuales</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {members.map((member, index) => (
-                  <MemberProfile
-                    key={index}
-                    name={member.name}
-                    photo={member.photo}
-                    description={member.description}
-                    link={member.link}
-                  />
-                ))}
-              </div>
+        </div>
+
+        {/* Contenedor principal con padding para evitar solapamiento */}
+        <div className="relative z-10 w-full max-w-screen-lg px-4 lg:px-0 -mt-[calc(64px)]">
+          {/* Sección de Miembros Actuales */}
+          <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
+            <h2 className="text-4xl font-semibold text-center text-blue-700 mb-6">Miembros Actuales</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {members.map((member, index) => (
+                <MemberProfile
+                  key={index}
+                  name={member.name}
+                  photo={member.photo}
+                  description={member.description}
+                  link={member.link}
+                />
+              ))}
             </div>
           </div>
         </div>
