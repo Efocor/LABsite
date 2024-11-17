@@ -27,7 +27,7 @@ const MemberProfile: FC<Member> = ({ name, photo, description, link }) => (
     <Image alt={name} className="rounded-full w-32 h-32 mb-4 object-cover" src={photo} />
     <h3 className="text-2xl font-bold text-blue-700 mb-2 hover:underline text-center">{name}</h3>
     <ReactMarkdown className="text-gray-700 mb-2">
-     {description}
+      {description}
     </ReactMarkdown>
   </Link>
 );
@@ -42,9 +42,14 @@ const Miembros: FC<MiembrosProps> = memo(({ members }) => {
       description="Conoce a nuestro equipo de expertos en bioinformática e investigación científica."
       title="Miembros"
     >
-      <Header />
-      <main className="bg-gray-20 min-h-screen flex flex-col items-center">
-        {/* Contenedor principal con fondo de imagen */}
+      {/* Fija el Header en la parte superior */}
+      <div className="fixed top-0 w-full z-50">
+        <Header />
+      </div>
+
+      {/* Contenido principal */}
+      <main className="bg-gray-20 min-h-screen flex flex-col items-center pt-[calc(64px+1rem)]">
+        {/* Agrega espacio para que el contenido no se superponga con el Header */}
         <div className="relative min-h-screen w-full flex justify-center items-center">
           <Image
             alt="Background image"
@@ -54,7 +59,6 @@ const Miembros: FC<MiembrosProps> = memo(({ members }) => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-
             {/* Sección de Miembros Actuales */}
             <div className="bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-8">
               <h2 className="text-4xl font-semibold text-center text-blue-700 mb-6">Miembros Actuales</h2>
