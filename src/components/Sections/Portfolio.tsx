@@ -37,7 +37,7 @@ const Portfolio: FC = memo(() => {
       <div className="flex justify-center mt-4">
        {/* Botón "Ver más" */}
        <button className="w-max rounded-full border-2 border-black-700 bg-green-900 px-10 py-3 text-sm font-medium text-white shadow-md outline-none hover:bg-green-600 transition duration-200"
-       onClick={() => router.push('/proyectos')}>
+       onClick={() => router.push('/proyecto')}>
         Ver más
        </button>
        </div>
