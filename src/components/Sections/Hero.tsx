@@ -12,65 +12,59 @@ const Hero: FC = memo(() => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Cambiar la imagen cada 3 segundos con un efecto de desplazamiento suave
   useEffect(() => {
     const intervalId = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSrc.length);
         setIsTransitioning(false);
-      }, 500); // Duración de la animación (ajusta según sea necesario)
-    }, 5000); // Cambiar cada 3 segundos
+      }, 500);
+    }, 5000);
 
-    return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonta
+    return () => clearInterval(intervalId);
   }, [imageSrc.length]);
 
-  // Cambiar de imagen manualmente
   const handleImageChange = (direction: 'left' | 'right') => {
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentImageIndex((prevIndex) => {
         if (direction === 'left') {
-          return (prevIndex - 1 + imageSrc.length) % imageSrc.length; // Decrementar y manejar el ciclo
+          return (prevIndex - 1 + imageSrc.length) % imageSrc.length;
         } else {
-          return (prevIndex + 1) % imageSrc.length; // Incrementar y manejar el ciclo
+          return (prevIndex + 1) % imageSrc.length;
         }
       });
       setIsTransitioning(false);
-    }, 500); // Duración de la animación
+    }, 500);
   };
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
-      <div className="relative flex h-screen w-full items-center justify-center">
-        {/* Contenedor con las imágenes deslizándose */}
+      <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
+        {/* Image Slider */}
         <div
           className={classNames(
-            'absolute inset-0 overflow-hidden',  // Asegura que el contenedor de las imágenes esté en el fondo y no afecte al contenido
+            'absolute inset-0 flex h-full transition-transform duration-500 ease-in-out',
             isTransitioning ? 'transition-all duration-500 ease-in-out' : ''
           )}
+          style={{
+            transform: `translateX(-${currentImageIndex * 100}%)`,
+          }}
         >
-          <div
-            className="flex w-full transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${currentImageIndex * 100}%)`,
-            }}
-          >
-            {imageSrc.map((src, index) => (
+          {imageSrc.map((src, index) => (
+            <div key={index} className="relative h-full w-full flex-shrink-0">
               <Image
-                key={index}
                 alt={`${name}-image-${index}`}
-                className="w-full h-full object-cover"
-                style={{ marginTop: '-10%' }}
+                className="h-full w-full object-cover object-center"
                 src={src}
                 placeholder="blur"
                 priority
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Controles de navegación para cambiar las imágenes */}
+        {/* Navigation Controls */}
         <button
           className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white"
           onClick={() => handleImageChange('left')}
@@ -81,13 +75,15 @@ const Hero: FC = memo(() => {
           className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white"
           onClick={() => handleImageChange('right')}
         >
-          <ChevronDownIcon className="h-8 w-8 rotate-[-90deg]"  />
+          <ChevronDownIcon className="h-8 w-8 rotate-[-90deg]" />
         </button>
 
-        {/* Contenido principal */}
+        {/* Main Content */}
         <div className="z-10 max-w-screen-lg px-4 lg:px-0">
           <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/70 p-6 text-center shadow-lg backdrop-blur-sm">
-            <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-7xl font-montserrat">{name}</h1>
+            <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-7xl font-montserrat">
+              {name}
+            </h1>
             {description}
             <div className="flex gap-x-4 text-neutral-100">
               <Socials />
