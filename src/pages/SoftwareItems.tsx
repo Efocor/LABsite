@@ -1,4 +1,3 @@
-// SoftwareItems.tsx
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link'; // Importa Link de Next.js
@@ -44,6 +43,23 @@ const SoftwareItems: React.FC = () => (
             <h2 className="text-center font-bold text-white">{item.title}</h2>
             <p className="text-xs text-white">{item.description}</p>
           </Link>
+        </div>
+
+        {/* Agregar el texto debajo de cada imagen */}
+        <div className="text-center mt-2 text-sm text-gray-700">
+          {/* Enlace a la página de miembro2.tsx */}
+          <p>
+            <Link href="/miembro2" className="text-blue-600 hover:underline">
+              Persona a cargo: Alex Di Genova
+            </Link>
+          </p>
+
+          {/* Enlace a la página de contacto.tsx */}
+          <p>
+            <Link href="/contacto" className="text-blue-600 hover:underline">
+              Contacta con nosotros
+            </Link>
+          </p>
         </div>
       </div>
     ))}

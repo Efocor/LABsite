@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { FC, memo } from 'react';
+import Link from 'next/link'; // Asegúrate de importar Link desde next/link
 
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
@@ -43,6 +44,17 @@ const SequencingLabSection: FC = () => (
         la precisión y reproducibilidad de los resultados.
       </p>
     </div>
+
+    {/* Agregar el texto y los enlaces debajo */}
+    <div className="mt-8 text-center">
+      <p>
+        <strong>Persona a cargo:</strong> <Link href="/miembro2" className="text-blue-600 hover:underline">Alex Di Genova</Link>
+      </p>
+      <p>
+        <Link href="/contacto" className="text-blue-600 hover:underline">Contacta con nosotros</Link>
+      </p>
+    </div>
+
     {/* Imagen centrada dentro del rectángulo blanco */}
     <div className="mt-8 flex justify-center">
       <Image src={labImage} alt="Imagen del laboratorio de secuenciación" className="rounded-lg max-w-full" />

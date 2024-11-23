@@ -1,15 +1,15 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import {FC, memo} from 'react';
+import { FC, memo } from 'react';
 
 import Page from '../components/Layout/Page';
 import Footer from '../components/Sections/Footer';
-import {homePageMeta} from '../data/data';
+import { homePageMeta } from '../data/data';
 import testimonialImage from '../images/header-background.webp';
 import SoftwareItems from './SoftwareItems'; // Importa tu nuevo componente
 
 // Importación dinámica del Header
-const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
+const Header = dynamic(() => import('../components/Sections/Header'), { ssr: false });
 
 // Componente para la sección de software
 const SoftwareSection: FC = () => (
@@ -94,7 +94,7 @@ const SoftwareSection: FC = () => (
 
 // Componente principal
 const Home: FC = memo(() => {
-  const {title, description} = homePageMeta;
+  const { title, description } = homePageMeta;
 
   return (
     <Page description={description} title={title}>
