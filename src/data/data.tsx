@@ -19,9 +19,9 @@ import heroImage3 from '../images/Imagen_inicio_3.jpg';
 import heroImage4 from '../images/MicroARNs-1-1024x683.jpg';
 import heroImage5 from '../images/a.jpg';
 import testimonialImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
-import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
+import porfolioImage1 from '../images/portfolio/logo_1.jpg';
+import porfolioImage2 from '../images/portfolio/logo_2.jpg';
+import porfolioImage3 from '../images/portfolio/logo_3.jpg';
 // import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
 // import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
 // import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
@@ -31,7 +31,7 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
 // import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
 // import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
 // import porfolioImage12 from '../images/portfolio/portfolio-12.jpg';
-import profilepic from '../images/profilepic.jpg';
+import profilepic from '../images/logo_4.jpg';
 import {
   About,
   ContactSection,
@@ -107,7 +107,7 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `El Laboratorio de Innovación y Desarrollo Científico se especializa en explorar nuevas fronteras tecnológicas y científicas, abordando desafíos complejos con un enfoque interdisciplinario. Nuestra misión es impulsar el progreso científico y tecnológico mediante la investigación de vanguardia y la formación de futuros líderes en ciencia.`,
+  description: `El Laboratorio de secuenciación y Super computo se especializa en explorar nuevas fronteras tecnológicas y científicas, abordando desafíos complejos con un enfoque interdisciplinario. Nuestra misión es impulsar el progreso científico y tecnológico mediante la investigación de vanguardia y la formación de futuros líderes en ciencia.`,
   aboutItems: [
     {
       label: 'Áreas de Investigación',
@@ -119,10 +119,10 @@ export const aboutData: About = {
       text: 'Además de nuestra labor investigativa, nos dedicamos a la educación, ofreciendo programas que forman a jóvenes científicos. Nuestro compromiso es con la transferencia de conocimiento y tecnología que tenga un impacto positivo en la sociedad. Con una mirada al futuro, estamos enfocados en expandir nuestras capacidades y continuar liderando la innovación científica.',
       Icon: CalendarIcon,
     },
-    {label: 'Nacionalidad', text: 'Chilena', Icon: FlagIcon},
-    {label: 'Intereses', text: 'Genómica, Reino Plantae, Cancer, Software', Icon: SparklesIcon},
+    {label: 'País', text: 'Chile', Icon: FlagIcon},
+    {label: 'Intereses', text: 'Genómica, Cancer, Software, Plantas', Icon: SparklesIcon},
     {label: 'Centro de Estudio', text: 'Universidad de O´Higgins', Icon: AcademicCapIcon},
-    {label: 'Integrantes', text: '10', Icon: BuildingOffice2Icon},
+    {label: 'Integrantes', text: '9', Icon: BuildingOffice2Icon},
   ],
 };
 
@@ -208,21 +208,21 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Supercomputación para innovación en Salud Regional: HPC-UOH y HRLBO Juntos hacia la Medicina de Precisión',
     description:
       'Proyecto financiado por el Gobierno Regional, que busca implementar tecnología HPC avanzada en la Región de O’Higgins, para formar y capacitar estudiantes y profesionales en HPC.',
-    url: '/proyecto1',
+    url: 'https://centrouohbioinfo.netlify.app/proyecto/supercompu/',
     image: porfolioImage1,
   },
   {
-    title: 'Modelo de crecimiento de plantas',
+    title: 'Análisis preditivo de datos de salud',
     description:
-      'El modelado de crecimiento de plantas se enfoca en simular el desarrollo de las plantas bajo diversas condiciones ambientales como luz, agua y nutrientes.',
-    url: 'https://reactresume.com',
+      'Desarrollo de modelos predictivos para el análisis de datos de salud, utilizando técnicas avanzadas de Machine Learning para optimizar la atención médica.',
+    url: 'https://centrouohbioinfo.netlify.app/proyecto/analisis_predictivo/',
     image: porfolioImage2,
   },
   {
-    title: 'Sistemas de Diagnóstico Portátiles Basados en ADN',
+    title: 'Plataforma de telemedicina avanzada',
     description:
-      'Desarrollo de dispositivos portátiles que utilizan tecnología de secuenciación rápida de ADN para la detección de enfermedades en tiempo real.',
-    url: 'https://reactresume.com',
+      'Implementación de una plataforma de telemedicina que facilita consultas a distancia entre médicos y pacientes, integrando inteligencia artificial para diagnósticos.',
+    url: 'https://centrouohbioinfo.netlify.app/proyecto/plataforma/',
     image: porfolioImage3,
   },
   /**{
