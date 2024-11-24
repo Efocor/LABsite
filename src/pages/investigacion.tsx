@@ -42,22 +42,21 @@ const Research: FC = memo(() => {
   return (
     <Page description="Conoce más sobre nuestros trabajos." title="Investigaciones">
       <Header />
-      <main className="bg-gray-20 min-h-screen flex flex-col items-center">
+      <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
         {/* Contenedor principal con fondo de imagen */}
         <div className="relative min-h-screen w-full flex justify-center items-center">
           {/* Imagen de fondo optimizada con Next.js */}
           <Image
             alt="Background image"
-            className="absolute z-0 h-full w-full object-cover"
+            className="absolute z-0 h-full w-full object-cover opacity-80"
             placeholder="blur"
             priority
             src={testimonialImage}
           />
-          <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-5xl font-bold text-center text-blue-900 mb-12">Nuestras investigaciones</h1>
+          <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
             {/* Cuadro para la descripción general */}
             <div className="bg-white bg-opacity-90 shadow-lg rounded-lg p-8 mb-10">
-              <h1 className="text-5xl font-bold text-center text-blue-900 mb-4">Investigaciones en Bioinformática</h1>
+              <h1 className="text-4xl font-bold text-blue-700 mb-8 text-center">Investigaciones en Bioinformática</h1>
               <p className="text-lg text-gray-700 text-justify mb-4">
                 En nuestro laboratorio de bioinformática, nos dedicamos a avanzar en la ciencia a través de investigaciones
                 innovadoras. Empleamos técnicas de análisis de datos, modelado computacional y secuenciación de alta

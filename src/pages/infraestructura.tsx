@@ -13,15 +13,15 @@ const Header = dynamic(() => import('../components/Sections/Header'), { ssr: fal
 
 // Componente para la sección de software
 const SoftwareSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-gray-800 mb-4">Software construidos en el laboratorio</h2>
-    <p className="text-gray-700 mb-4">
+  <section className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+    <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Software construidos en el laboratorio</h2>
+    <p className="text-lg text-gray-700 mb-4 text-justify">
       En el laboratorio de Bioinformática, hemos desarrollado un conjunto de herramientas de software de código abierto
       para facilitar la investigación en genómica de alto rendimiento. Nuestro software está diseñado con la
       reproducibilidad en mente, utilizando tecnologías de contenedorización como Docker y Singularity para garantizar
       que nuestros flujos de trabajo se ejecuten de manera consistente en diferentes entornos y plataformas.
     </p>
-    <p className="text-gray-700 mb-4">
+    <p className="text-lg text-gray-700 mb-6 text-justify">
       Nuestro software está optimizado para ejecutarse en clústeres de computación de alto rendimiento (HPC),
       aprovechando al máximo los recursos de computación de alto rendimiento para permitir un análisis rápido de
       conjuntos de datos genómicos a gran escala.
@@ -111,7 +111,7 @@ const Home: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Desarrollo de Software</h1>
+            
             <SoftwareSection />
           </div>
         </div>
