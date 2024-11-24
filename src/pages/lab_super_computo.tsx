@@ -14,16 +14,16 @@ const Header = dynamic(() => import('../components/Sections/Header'), { ssr: fal
 
 // Sección del laboratorio de supercómputo
 const SuperComputingLabSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-gray-800 mb-4">Laboratorio de Supercómputo</h2>
-    <p className="text-gray-700 mb-4">
+  <section className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+    <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Laboratorio de Supercómputo</h2>
+    <p className="text-lg text-gray-700 mb-4 text-justify">
       El laboratorio de supercómputo es un centro de investigación dedicado a resolver problemas complejos mediante el
       uso de tecnologías avanzadas de computación. Equipado con clústeres de computadoras de alto rendimiento (HPC),
       este laboratorio está diseñado para ejecutar simulaciones masivas, modelar fenómenos naturales, analizar grandes
       cantidades de datos y realizar investigaciones interdisciplinarias en áreas como la física, la biología computacional
       y la inteligencia artificial.
     </p>
-    <p className="text-gray-700 mb-4">
+    <p className="text-lg text-gray-700 mb-6 text-justify">
       Gracias a su infraestructura de vanguardia, el laboratorio de supercómputo permite a los investigadores ejecutar
       algoritmos y modelos que requieren una capacidad de procesamiento extremadamente alta. Además, se optimiza el uso
       de recursos para garantizar una ejecución eficiente y sin fallos en los proyectos más exigentes.
@@ -38,7 +38,7 @@ const SuperComputingLabSection: FC = () => (
     </div>
     <div className="mt-6">
       <h3 className="text-xl font-bold text-gray-800 mb-2">Infraestructura y Recursos</h3>
-      <p className="text-gray-700">
+      <p className="text-lg text-gray-700 mb-6 text-justify">
         El laboratorio cuenta con un clúster de supercomputadoras de última generación, con procesadores multinúcleo,
         memoria de alta velocidad y almacenamiento distribuido, lo que permite realizar simulaciones paralelizadas de
         gran escala. El acceso a este hardware está optimizado mediante sistemas de gestión de colas que asignan recursos
@@ -82,14 +82,7 @@ const SuperComputingLabPage: FC = memo(() => {
             src={superComputoBackground}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Laboratorio de Supercómputo</h1>
-            <div className="relative mb-10">
-              {/* Rectángulo blanco sobre el fondo */}
-              <div className="absolute inset-0 bg-white opacity-80 z-10"></div>
-              <div className="relative z-20">
                 <SuperComputingLabSection />
-              </div>
-            </div>
           </div>
         </div>
       </main>

@@ -14,15 +14,15 @@ const Header = dynamic(() => import('../components/Sections/Header'), { ssr: fal
 
 // Sección del laboratorio de secuenciación
 const SequencingLabSection: FC = () => (
-  <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-    <h2 className="text-2xl font-bold text-gray-800 mb-4">Laboratorio de Secuenciación</h2>
-    <p className="text-gray-700 mb-4">
+  <section className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+    <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Laboratorio de Secuenciación</h2>
+    <p className="text-lg text-gray-700 mb-4 text-justify">
       El laboratorio de secuenciación de nuestro centro se especializa en el análisis de datos genómicos de alta
       precisión. Utilizamos tecnologías de secuenciación de última generación para proporcionar soluciones avanzadas
       en genómica, que incluyen secuenciación de ADN, ARN, y metagenómica. El laboratorio cuenta con una infraestructura
       de computación avanzada para procesar grandes volúmenes de datos de manera eficiente.
     </p>
-    <p className="text-gray-700 mb-4">
+    <p className="text-lg text-gray-700 mb-6 text-justify">
       Nuestro equipo de bioinformáticos altamente capacitados se encarga de realizar análisis complejos utilizando
       herramientas de software de vanguardia, lo que nos permite obtener resultados rápidos y precisos para investigaciones
       en genómica, salud, biotecnología y más.
@@ -81,14 +81,7 @@ const SequencingLabPage: FC = memo(() => {
             src={secuenciacionBackground}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-            <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">Laboratorio de Secuenciación Genómica</h1>
-            <div className="relative mb-10">
-              {/* Rectángulo blanco sobre el fondo */}
-              <div className="absolute inset-0 bg-white opacity-80 z-10"></div>
-              <div className="relative z-20">
-                <SequencingLabSection />
-              </div>
-            </div>
+            <SequencingLabSection />
           </div>
         </div>
       </main>
