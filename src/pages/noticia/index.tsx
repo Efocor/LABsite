@@ -53,7 +53,7 @@ const BlogPage: FC<{ posts: Post[] }> = ({ posts }) => {
           priority
           src={backgroundImage}
         />
-        <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+        <div className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50 mb-20">
           <h1 className="text-4xl font-bold text-blue-700 mb-8">Noticias</h1>
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentPosts.map((post) => (

@@ -17,7 +17,7 @@ const Home: FC = memo(() => {
     <Page description={description} title={title}>
       <Header />
 
-      <main className="bg-gray-100 min-h-screen flex flex-col items-center relative">
+      <main className="bg-gray-100 min-h-screen flex flex-col items-center relative ">
         <div className="relative min-h-screen w-full flex justify-center items-center">
           <Image
             alt="Background image"

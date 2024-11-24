@@ -74,7 +74,7 @@ const ProjectListPage: FC<{ projects: Project[] }> = ({ projects }) => {
   return (
     <Page title="Proyectos" description="Lista de proyectos">
       <Header />
-      <main className="bg-gray-900 min-h-screen flex flex-col items-center relative">
+      <main className="bg-gray-900 min-h-screen flex flex-col items-center relative ">
         <Image
           alt="Background image"
           className="absolute z-0 h-full w-full object-cover opacity-80"

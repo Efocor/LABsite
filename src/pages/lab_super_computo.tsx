@@ -14,7 +14,7 @@ const Header = dynamic(() => import('../components/Sections/Header'), { ssr: fal
 
 // Sección del laboratorio de supercómputo
 const SuperComputingLabSection: FC = () => (
-  <section className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+  <section className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50 mb-20">
     <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Laboratorio de Supercómputo</h2>
     <p className="text-lg text-gray-700 mb-4 text-justify">
       El laboratorio de supercómputo es un centro de investigación dedicado a resolver problemas complejos mediante el
