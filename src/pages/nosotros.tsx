@@ -26,21 +26,21 @@ const AboutUs: FC = memo(() => {
             src={testimonialImage}
           />
           <div className="z-10 max-w-screen-lg px-4 lg:px-0">
-          <h1 className="text-5xl font-bold text-center text-white-900 mb-12">Acerca de Nosotros</h1>
+          
 
             {/* Descripción General */}
-            <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-blue-600 mb-4">
+            <section className="z-10 max-w-4xl w-full mt-20 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+              <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">
                 Laboratorio de Innovación y Desarrollo Científico
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 En nuestro laboratorio, nos comprometemos a explorar y expandir los límites del conocimiento. Con un
                 equipo diverso de científicos e ingenieros, nuestra misión es abordar desafíos complejos a través de la
                 investigación interdisciplinaria. Cada día, nos esforzamos por fomentar un ambiente donde la creatividad
                 y la innovación florezcan, llevando a cabo proyectos que pueden transformar el paisaje científico y
                 tecnológico.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 Nos dedicamos a formar a los futuros líderes en ciencia, brindando no solo formación académica, sino
                 también oportunidades prácticas que preparan a nuestros estudiantes para enfrentar los desafíos del
                 mundo real. Creemos firmemente que la investigación no solo debe ser un ejercicio intelectual, sino
@@ -49,8 +49,8 @@ const AboutUs: FC = memo(() => {
             </section>
 
             {/* Información básica */}
-            <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-blue-600 mb-4">Información Adicional</h2>
+            <section className="z-10 max-w-4xl w-full mt-10 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+              <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Información Adicional</h2>
               <p className="text-gray-700 mb-2">
                 <strong>Nacionalidad:</strong> Chilena
               </p>
@@ -64,7 +64,7 @@ const AboutUs: FC = memo(() => {
               <p className="text-gray-700 mb-4">
                 <strong>Integrantes:</strong> 10
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 En nuestro equipo, contamos con investigadores de diversas disciplinas, lo que nos permite abordar
                 problemas desde múltiples ángulos. Cada miembro aporta su experiencia única, creando un entorno de
                 colaboración donde las ideas pueden fluir libremente.
@@ -72,15 +72,15 @@ const AboutUs: FC = memo(() => {
             </section>
 
             {/* Áreas de Investigación */}
-            <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-blue-600 mb-4">Áreas de Investigación</h2>
-              <p className="text-gray-700 mb-4">
+            <section className="z-10 max-w-4xl w-full mt-10 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50">
+              <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Áreas de Investigación</h2>
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 Nuestros proyectos se centran en varias áreas de vanguardia, incluyendo inteligencia artificial,
                 biotecnología y nanotecnología. Cada área es un campo fértil para la innovación, y buscamos
                 continuamente formas de aplicar nuestras investigaciones a problemas prácticos que afectan a la
                 sociedad.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 Por ejemplo, en inteligencia artificial, estamos desarrollando modelos que pueden ayudar a predecir
                 enfermedades y mejorar la calidad de vida de los pacientes. En biotecnología, investigamos nuevas formas
                 de tratamiento que pueden revolucionar la medicina moderna. A través de estas iniciativas, estamos
@@ -89,15 +89,15 @@ const AboutUs: FC = memo(() => {
             </section>
 
             {/* Compromiso y Futuro */}
-            <section className="p-6 bg-white rounded-lg shadow-lg mb-10 backdrop-blur-md">
-              <h2 className="text-3xl font-bold text-blue-600 mb-4">Compromiso y Futuro</h2>
-              <p className="text-gray-700 mb-4">
+            <section className="z-10 max-w-4xl w-full mt-10 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl rounded-xl p-8 flex flex-col items-center transition-shadow duration-300 hover:shadow-blue-500/50 mb-20">
+              <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">Compromiso y Futuro</h2>
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 Nuestra dedicación a la educación y la investigación es inquebrantable. A través de programas de
                 formación, buscamos inspirar a la próxima generación de científicos a explorar, descubrir y crear.
                 Estamos convencidos de que el futuro de la ciencia depende de la capacidad de los jóvenes para pensar
                 críticamente y abordar problemas complejos con creatividad.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-lg text-gray-700 mb-4 text-justify">
                 Al mirar hacia adelante, nuestra meta es expandir nuestras capacidades y continuar liderando la
                 innovación científica. Queremos forjar nuevas colaboraciones, aumentar nuestra presencia en el ámbito
                 internacional y seguir contribuyendo al desarrollo sostenible y responsable de la tecnología.
